@@ -20,8 +20,8 @@ const Main = () => {
   
 
   return (
-    <div className="flex flex-col h-screen">
-      <div className="relative ">
+    <div className="flex flex-col h-screen" >
+      <div className="relative z-0 " >
             <img src={slideImages[0].url} alt={slideImages[0].caption} className='w-full object-cover shadow-md'/>
       </div>
       <div className=' absolute top-24 right-3 sm:right-5'>
@@ -30,7 +30,7 @@ const Main = () => {
         </div>
 
       </div>
-      <div className='md:hidden'>
+      <div className='md:hidden z-10' >
       <Donateform/>
       </div>
     </div>

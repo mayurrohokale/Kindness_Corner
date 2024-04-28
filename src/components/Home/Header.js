@@ -22,30 +22,31 @@ export default function Header() {
 
             <nav className="lg:flex hidden">
               <ul className="flex gap-10 text-lg items-start font-inter">
-                <li>
+                <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#home">Home</a>
                 </li>
-                <li>
+                <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#donate">Donate</a>
                 </li>
-                <li>
+                <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#transaction">Transactions</a>
                 </li>
-                <li>
+                <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#works">Works</a>
                 </li>
-                <li>
+                <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#angels">Angels</a>
                 </li>
               </ul>
             </nav>
 
             <div className="hidden md:flex">
-              <button>Search</button>
+              <input type="text" name="search"  placeholder="Search..." className="rounded-lg shadow-lg border border-black p-1 md:p-2" />
+
             </div>
 
             <div
-              className="lg:hidden cursor-pointer text-lg text-gray-400  flex items-center"
+              className="lg:hidden cursor-pointer text-lg text-[#E91E63]  flex items-center"
               onClick={toggleMenu}
             >
               <MdMenu className="mr-1 " /> MENU
@@ -78,32 +79,31 @@ export default function Header() {
         </header>
        
       </div>
-      <div className=" absolute top-17 right-3 sm:right-5 ">
+      <div className=" absolute top-17 right-3 sm:right-5 z-30">
       {menuOpen && (
-            <nav className="lg:hidden flex flex-col items-end  bg-black/20 p-3 ">
-              <ul className="flex flex-col gap-3 items-start text-sm font-semibold">
-                <li>
+            <nav className="lg:hidden flex flex-col items-end  bg-white border shadow-lg p-3  ">
+              <ul className="flex flex-col gap-3 items-start text-sm font-semibold ">
+                <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
                   <a href="#home">Home</a>
                 </li>
-                <li>
+                <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
                   <a href="#about">Donate</a>
                 </li>
-                <li>
+                <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
                   <a href="#resume">Transactions</a>
                 </li>
-                <li>
-                  <a href="#page-2">Skills</a>
-                </li>
-                <li>
+               
+                <li className="transform hover:text-lg hover:underline hover:text-[#E91E63]">
                   <a href="#services">Works</a>
                 </li>
-                <li>
+                <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
                   <a href="#projects">Angels</a>
                 </li>
               </ul>
             </nav>
           )}
       </div>
+      <hr className="mb-1"/>
     </div>
   );
 }

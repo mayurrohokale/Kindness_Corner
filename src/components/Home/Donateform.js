@@ -1,6 +1,6 @@
 import Currencybutton from "../Elements/currencybutton";
 import Custombutton from "../Elements/custombutton";
-
+import { BsCurrencyRupee } from "react-icons/bs";
 
 export default function Donateform(){
     return(
@@ -10,7 +10,8 @@ export default function Donateform(){
                 <Custombutton text={"Monthly"} />
 
             </div>
-            <p className="flex justify-start px-9 py-2 text-[12px] text-[#E91E63] font-itim mt-2 mb-1">Monthly gifts help save lives all years long</p>
+            <p className="flex justify-start px-9 py-2 text-[12px] text-[#E91E63] font-itim mt-2 mb-1">Monthly gifts help save lives all years long
+             <img src="./images/arrow.png" className="w-[20px] h-[16px] transform rotate-180  ml-2 " alt="arrow" /></p>
             <div className="flex flex-row item-center justify-center gap-3 mt-2 mb-4 " >
                 <Currencybutton text={"₹ 100"}/>
                 <Currencybutton text={"₹ 500"}/>
@@ -19,7 +20,7 @@ export default function Donateform(){
             <p className="font-inter text-[23px] mt-2 mb-2">or Enter another amount</p>
             <div className="mt-2 relative">
                 <input type="number" name="amount" className="border border-black w-[419px] h-[71px] 
-                "
+                " 
             />
             <button className="w-[268px] h-[76px] items-center  bg-[#E91E63] text-white text-[28px] font-bold mt-10 mb-2 shadow-lg font-inter">DONATE NOW</button>
             </div>
