@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       fontFamily:{
         "inter": ["Inter", "sans-serif"],
+        "monserrat": ["Montserrat", "sans-serif"],
+        "itim":["Itim", "cursive"],
       }
     },
   },
