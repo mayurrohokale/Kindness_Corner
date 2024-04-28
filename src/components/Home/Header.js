@@ -41,7 +41,7 @@ export default function Header() {
             </nav>
 
             <div className="hidden md:flex">
-              <input type="text" name="search"  placeholder="Search..." className="rounded-lg shadow-lg border border-black p-1 md:p-2" />
+              <input type="text" name="search"  placeholder="Search..." className="rounded-[200px] shadow-lg border border-black p-1 md:p-2 " />
 
             </div>
 
@@ -103,7 +103,7 @@ export default function Header() {
             </nav>
           )}
       </div>
-      <hr className="mb-1"/>
+      <hr className="mt-1"/>
     </div>
   );
 }
