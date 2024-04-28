@@ -9,7 +9,7 @@ export default function Currencybutton({text}){
     
     return(
         <button
-        className={`border border-[#2196F3] w-[134px] h-[52px] px-2 py-2 font-itim text-[25px] ${clicked ? 'bg-[#2196F3] text-white border-black' : ''}`}
+        className={`border border-[#2196F3] w-[87px] md:w-[134px] h-[52px] px-2 py-2 font-itim text-[16px] md:text-[25px] ${clicked ? 'bg-[#2196F3] text-white border-black' : ''}`}
         onClick={handleClick}
       >
         {text}
