@@ -2,6 +2,24 @@ import React from "react";
 import { useState } from "react";
 import { MdMenu } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
+
+
+const MENU_ITEMS = [ 
+    { title: 'Home', path:'#home' },
+    { 
+        title: 'Donate', path:'#donate'
+    },
+    {
+         title: 'Transactions', path:'#transactions'
+    },
+    {
+         title: 'Works', path: '#works'
+    },
+    {
+        title: 'Angels', path: '#angels'
+    }
+]
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -23,7 +41,7 @@ export default function Header() {
 
             <nav className="lg:flex hidden">
               <ul className="flex gap-10 text-lg items-start font-inter">
-                <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
+                {/* <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#home">Home</a>
                 </li>
                 <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
@@ -37,8 +55,15 @@ export default function Header() {
                 </li>
                 <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#angels">Angels</a>
+                </li> */}
+               {
+                MENU_ITEMS.map(({ path, title }) => (
+                    <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]"  key={title}>
+                  <a href={path}>{title}</a>
                 </li>
+               ))}
               </ul>
+
             </nav>
 
             <div className="hidden md:flex">
@@ -86,9 +111,9 @@ export default function Header() {
       </div>
       <div className=" absolute top-17 right-3 sm:right-5 z-30">
       {menuOpen && (
-            <nav className="lg:hidden flex flex-col items-end  bg-white border shadow-lg p-3  ">
+            <nav className="lg:hidden flex flex-col items-start  bg-white border shadow-lg p-3 w-32 ">
               <ul className="flex flex-col gap-3 items-start text-sm font-semibold ">
-                <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
+                {/* <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
                   <a href="#home">Home</a>
                 </li>
                 <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
@@ -103,7 +128,13 @@ export default function Header() {
                 </li>
                 <li className="hover:text-lg hover:underline hover:text-[#E91E63]">
                   <a href="#projects">Angels</a>
+                </li> */}
+                 {
+                MENU_ITEMS.map(({ path, title }) => (
+                    <li className=" hover:underline hover:text-[#E91E63]" key={title}>
+                  <a href={path}>{title}</a>
                 </li>
+               ))}
               </ul>
             </nav>
           )}
