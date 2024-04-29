@@ -36,12 +36,12 @@ const Main = () => {
       <div className="md:hidden z-10 px-3 py-5 ">
         <Donateform />
       </div>
-      <div className="bg-[#BBDEFB]">
+      <div className="bg-[#BBDEFB] ">
         <p className="mt-8 font-semibold text-[20px] md:text-[45px] font-itim">
           Together We can Make Difference
         </p>
         <hr className="border border-black" />
-        <div className="flex flex-row gap-4 justify-center bg-gradient-to-r from-[#B7D8F4] to-[#2196F3] w-[347px] h-[932px] md:w-full md:h-40 mt-2">
+        <div className="flex flex-col md:flex-row gap-4 justify-center bg-gradient-to-r from-[#B7D8F4] to-[#2196F3] w-screen h-[932px] md:w-full md:h-40 mt-2">
           <div>Transactions</div>
           <div>Total Money</div>
           <div>To Go</div>
@@ -53,7 +53,7 @@ const Main = () => {
           <span className="bg-[#E91E63] text-white p-1">AS VOLUNTEER</span>
         </p>
 
-        <div className="flex flex-col md:flex-row  w-full gap-4 mt-10">
+        <div className="flex flex-col lg:flex-row  w-full gap-4 mt-10 mb-6">
           <div className="m-5 flex flex-col items-center">
             <img
               src="./images/mayurphoto.jpg"
@@ -69,9 +69,10 @@ const Main = () => {
             <p className="text-end font-bold">-Mayur Rohokale</p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-16 text-center text-[20px] justify-center items-center mr-0 md:mr-12">
-            <div className="bg-white w-[254px] h-[290px]">
+          <div className="flex flex-col md:flex-row gap-16 text-center text-[17px] lg:text-[20px] justify-center items-center mr-0 md:mr-12">
+            <div className="bg-white w-[254px] h-[290px] ">
               <p>
+                <span className=" font-bold">About-US</span><br/>
                 "At Kindness corner, we empower you to make a difference.
                 Through our platform, you can donate securely and transparently,
                 with real-time updates on transactions and the total amount
