@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { MdMenu } from "react-icons/md";
+import { CiUser } from "react-icons/ci";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -41,9 +42,13 @@ export default function Header() {
             </nav>
 
             <div className="hidden md:flex">
-              <input type="text" name="search"  placeholder="Search..." className="rounded-[200px] shadow-lg border border-black p-1 md:p-2 " />
-
+              <input type="text" name="search"  placeholder="Search..." className="rounded-[200px] shadow-lg border border-black p-1 md:p-2  " />
+              
             </div>
+            <div className="hidden  md:flex text-[35px] shadow-xl rounded-[20px]">
+            <CiUser/>
+            </div>
+            
 
             <div
               className="lg:hidden cursor-pointer text-lg text-[#E91E63]  flex items-center"
