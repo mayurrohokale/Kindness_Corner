@@ -9,6 +9,7 @@ module.exports = {
         "inter": ["Inter", "sans-serif"],
         "monserrat": ["Montserrat", "sans-serif"],
         "itim":["Itim", "cursive"],
+        "josiefin":["Josefin Sans", "sans-serif"],
       }
     },
   },
