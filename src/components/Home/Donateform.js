@@ -4,7 +4,7 @@ import { BsCurrencyRupee } from "react-icons/bs";
 
 export default function Donateform() {
   return (
-    <div className="bg-[#F6F2F2] flex flex-col sm:w-[493px] max-w-full sm:max-w-[493px]  rounded-[25px] border border-black md:border-none shadow-lg">
+    <div className="bg-[#F6F2F2] flex flex-col sm:w-[493px] max-w-full sm:max-w-[493px]  rounded-[25px] border border-black lg:border-none shadow-lg">
       <div className="flex flex-row items-center justify-center gap-6 pt-8 md:pt-12">
         <Custombutton theme={"blue"} text={"One Time"} />
         <Custombutton text={"Monthly"} />
