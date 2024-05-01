@@ -19,7 +19,7 @@ export default function Volentier() {
           <span className="bg-[#E91E63] text-white p-3">AS VOLUNTEER</span>
         </p>
 
-        <div className="flex flex-col lg:flex-row lg:justify-between  w-full gap-4 mt-10 mb-6 px-10">
+        <div className="flex flex-col lg:flex-row lg:justify-center lg:gap-32  w-full gap-4 mt-10 mb-6 px-10">
           <div className="w-full lg:w-[250px] flex flex-col items-center">
             <div className="m-5 flex flex-col items-center  max-w-[250px]">
               <img
