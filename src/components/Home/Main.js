@@ -1,12 +1,14 @@
 import React from "react";
 import Donateform from "./Donateform";
-import Campaign from "./Campaign";
+import Campaign from "./Campaign/Campaign";
 import { MdArrowOutward } from "react-icons/md";
+import Votingform from "./Campaign/votingform";
 
 const slideImages = [
   {
     url: "./images/img1.jpg",
     caption: "We Belive in Transparency",
+    caption2:"",
   },
   {
     url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
@@ -20,6 +22,7 @@ const slideImages = [
 
 const Main = () => {
   return (
+    <div>
     <div className="flex flex-col h-screen 
      max-w-[1536px]">
       <div className="relative w-full">
@@ -36,7 +39,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="md:hidden z-10 px-3 py-5 ">
+      <div className="md:hidden z-10 px-3 py-2 lg:px-3 lg:py-5 ">
         <Donateform />
       </div>
       <div className="bg-[#BBDEFB] ">
@@ -73,7 +76,7 @@ const Main = () => {
           </div>
 
           <div className="flex flex-col md:flex-row gap-16 text-center text-[17px] lg:text-[20px] justify-center items-center mr-0 md:mr-12">
-            <div className="bg-white w-[254px] h-[290px]  ">
+            <div className="bg-white w-[254px] h-[290px] shadow-lg  ">
               <p className="p-2">
                 <span className=" font-bold">About-US</span><br/>
                 "At Kindness corner, we empower you to make a difference.
@@ -82,7 +85,7 @@ const Main = () => {
                 raised.
               </p>
             </div>
-            <div className="bg-white w-[254px] h-[290px]">
+            <div className="bg-white w-[254px] h-[290px] shadow-lg">
               <p className="p-2">
                 Whether you choose to donate anonymously or openly, your
                 contributions go towards supporting NGOs. What sets us apart is
@@ -90,7 +93,7 @@ const Main = () => {
                 which NGOs receive the funds.
               </p>
             </div>
-            <div className="bg-white w-[254px] h-[290px]">
+            <div className="bg-white w-[254px] h-[290px] shadow-lg">
               <p className="p-2">
                 Together, we amplify the impact of your generosity and create
                 positive change in the world."<br/>
@@ -99,13 +102,14 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-end mx-16 mt-8 mb-4 p-2">
-          <button className="bg-[#E91E63] p-1 font-bold text-[30px] flex flex-row">APPLY NOW &ensp;<MdArrowOutward className=" items-center"/></button>
+        <div className="flex justify-center md:justify-end mx-16 mt-8 mb-4 p-2">
+          <button className="bg-[#E91E63] p-2 text-white font-bold text-[15px] md:text-[25px] flex flex-row font-josiefin">APPLY NOW &ensp;<MdArrowOutward className=" items-center"/></button>
         </div>
       </div>
-      <div>
-       
+      <div className="mt-8">
+       <Campaign/>
       </div>
+    </div>
     </div>
   );
 };
