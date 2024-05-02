@@ -5,6 +5,7 @@ import Volentier from "./Volentier";
 // import Votingform from "./Campaign/votingform";
 import Completedworks from "./Completedworks";
 import Blogs from "./Blogs";
+import Footer from "./Footer";
 
 const slideImages = [
   {
@@ -53,6 +54,9 @@ const Main = () => {
       </div>
       <div>
         <Blogs/>
+      </div>
+      <div>
+        <Footer/>
       </div>
      
     </div>
