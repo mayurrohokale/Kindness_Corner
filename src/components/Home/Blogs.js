@@ -9,14 +9,14 @@ export default function Blogs(){
             <p className=" justify-center md:justify-end underline font-semibold font-serif mt-3">View all Community Blogs</p>
             </div>
           
-        <div className="flex flex-col lg:flex-row justify-center items-center h-full gap-4 md:gap-10 mt-12 pb-28 ">
+        <div className="flex flex-col lg:flex-row justify-center items-center h-full gap-4 md:gap-10 mt-12 pb-10 ">
             
           <div><Blogsform/></div>
       
 
         </div>
         <div className=" flex flex-row justify-center">
-
+            <img src="./images/img2.jpg" className="w-screen max-h-[220px] object-cover" alt="bgngoimage"/>
         </div>
         </div>
     )

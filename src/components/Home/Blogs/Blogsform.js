@@ -1,6 +1,6 @@
 export default function Blogsform() {
    
-    const Blogs =[
+    const Blogs = [
         {
             id:1,
             title:"together we  can make a difference",
@@ -22,11 +22,11 @@ export default function Blogsform() {
     ]
   
     return (
-      <div className="flex flex-col md:flex-row justify-center py-2 w-full hover:shadow-lg">
+      <div className="flex flex-col lg:flex-row justify-center py-2 w-full gap-4 ">
         {Blogs.map((item, index) => (
           <div
             key={item.id}
-            className={`w-full flex flex-col gap-2 md:max-w-[391px] md:h-max rounded-lg hover:border-blue-500 border-black p-3 ${
+            className={`w-full flex flex-col gap-2 md:max-w-[391px] md:h-max rounded-lg bg-[#78BCF5] border  border-black p-3 hover:shadow-lg ${
               index < Blogs.length - 1 ? 'mb-4' : ''
             }`}
           >
