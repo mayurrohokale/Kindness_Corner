@@ -4,7 +4,7 @@ export default function Campaign(){
     return(
         <div className="mt-6  max-w-full mx-2  h-full">
             <div className="justify-start">
-            <p className=" justify-center md:justify-start font-bold text-[55px] font-josiefin ">Current <span className="bg-[#E91E63] p-3 text-white">Campaign</span> </p>
+            <p className=" justify-center md:justify-start font-bold text-[40px] md:text-[55px] font-josiefin ">Current <span className="bg-[#E91E63] p-3 text-white">Campaign</span> </p>
             <p className=" justify-center md:justify-end underline font-semibold font-serif mt-3">View all Campaign</p>
             </div>
           
