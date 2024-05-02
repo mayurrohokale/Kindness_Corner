@@ -15,9 +15,21 @@ export default function Blogs(){
       
 
         </div>
-        <div className=" flex flex-row justify-center">
-            <img src="./images/img2.jpg" className="w-screen max-h-[220px] object-cover" alt="bgngoimage"/>
-        </div>
+        <div className="relative pb-12">
+  <img
+    src="./images/img2.jpg"
+    className="w-screen max-h-[261px] object-cover opacity-50"
+    alt="bgngoimage"
+  />
+  <div className="absolute inset-0 flex flex-col items-center justify-center">
+    <p className="text-white text-[20px] md:text-[35px] font-itim">“Sharing Kindness, transforming Communities”</p>
+    <div className=" mt-4   text-[12px] md:text-[20px]  ">
+      <button className="bg-[#2196F3] text-white px-4 py-2  rounded-lg hover:shadow-lg font-itim mr-4">Become Angel</button>
+      <button className="bg-[#E91E63] text-white px-4 py-2 rounded-lg hover:shadow-lg font-itim">Donate</button>
+    </div>
+  </div>
+</div>
+
         </div>
     )
 }

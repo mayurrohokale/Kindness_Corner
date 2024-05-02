@@ -26,7 +26,7 @@ export default function Blogsform() {
         {Blogs.map((item, index) => (
           <div
             key={item.id}
-            className={`w-full flex flex-col gap-2 md:max-w-[391px] md:h-max rounded-lg bg-[#78BCF5] border  border-black p-3 hover:shadow-lg ${
+            className={`w-full flex flex-col gap-2 md:max-w-[391px] md:h-max rounded-lg bg-[#78BCF5] border  border-black p-3 hover:shadow-lg font-monserrat ${
               index < Blogs.length - 1 ? 'mb-4' : ''
             }`}
           >
