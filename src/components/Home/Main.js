@@ -3,6 +3,7 @@ import Donateform from "./Donateform";
 import Campaign from "./Campaign/Campaign";
 import Volentier from "./Volentier";
 // import Votingform from "./Campaign/votingform";
+import Completedworks from "./Completedworks";
 
 const slideImages = [
   {
@@ -46,7 +47,10 @@ const Main = () => {
       <div className="mt-8">
        <Campaign/>
       </div>
-      
+      <div>
+      <Completedworks/>
+      </div>
+     
     </div>
     
     </div>
