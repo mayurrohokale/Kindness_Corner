@@ -7,10 +7,11 @@ import { TiSocialLinkedin } from "react-icons/ti";
 const Footer = () => {
     const faqs = [
         { question: 'how can i make Donation?', answer: 'You can Simply go to Donation page where you can donate Nomously or Anonymously' },
-        { question: 'How do I install React?', answer: 'You can install React using npm or yarn.' },
-        { question: 'What are the key features of React?', answer: 'Key features of React include virtual DOM, JSX, and component-based architecture.' },
-        { question: 'Can I use React with other libraries?', answer: 'Yes, React can be used with other libraries and frameworks such as Redux, React Router, and more.' },
-        { question: 'Is React a framework or a library?', answer: 'React is a library, not a framework.' }
+        { question: 'How does the Donation System Work?', answer: 'Our donation Voting system allows user to vote for preferred NGO from a list of options if the vote ratio is above 51% then money will disburseed to that NGO' },
+        { question: 'How can i trust that my donation will be used transparently?', answer: 'We ensure transparency by providing real-time transactions system on how funds are being transffered and recieved and you have authority to donate the money from list of options of NGO' },
+        { question: 'Can I suggest an NGO that is not on list?', answer: 'Absolutely! We welcome suggestions for NGOs that you would like to see included. just fill out the add NGO Form in the NGO page' },
+        { question: 'Is my donation tax-deductible?', answer: 'We work withregistered NGOs that are eligible for tax deductions. You will recieve a donation reciept that you can use for tax purpose.' },
+        {question: 'How often can i vote for an NGO?', answer: 'You can vote once for each donation cycle. We believe in giving everyone equal opportunity to support their preffered cause.'}
     ];
 
     const [activeIndex, setActiveIndex] = useState(null);
