@@ -25,16 +25,18 @@ const slideImages = [
 
 const Main = () => {
   return (
-    <div>
+    <div id="home">
     <div className="flex flex-col
      max-w-[1536px]">
       <div className="relative w-full">
         <div className="relative z-0 ">
+       
           <img
             src={slideImages[0].url}
             alt={slideImages[0].caption}
-            className="w-full object-cover shadow-md lg:h-screen xl:h-[88vh]"
-          />
+            className="w-full object-cover shadow-md lg:h-screen xl:h-[88vh]" 
+          /> 
+          
         </div>
         <div className=" absolute top-3 xl:top-8 right-3 sm:right-5 ">
           <div className="hidden lg:flex  ">

@@ -10,7 +10,7 @@ const MENU_ITEMS = [
         title: 'Donate', path:'#donate'
     },
     {
-         title: 'Transactions', path:'#transactions'
+         title: 'Transactions', path:'#voulunteers'
     },
     {
          title: 'Works', path: '#works'
@@ -36,7 +36,9 @@ export default function Header() {
         >
           <div className="flex flex-row justify-between w-full items-center">
             <div className="logo text-lg md:text-2xl font-bold">
+            <a href="#home" className="cursor-pointer">
               <img src="./images/logo.png" alt="logo" className=" w-28 md:w-32 p-2" />
+              </a>
             </div>
 
             <nav className="lg:flex hidden">

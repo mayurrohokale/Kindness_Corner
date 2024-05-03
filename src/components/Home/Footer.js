@@ -30,7 +30,7 @@ const Footer = () => {
                 <div key={index} className="faq-item" onClick={() => toggleAnswer(index)}>
                     <div className="question font-semibold p-2 cursor-pointer text-gray-500 text-[13px] md:text-[20px]">{faq.question}</div>
                     {activeIndex === index && (
-                        <div className="answer pb-2 cursor-pointer text-black  text-[10px] md:text-[18px] italic ">
+                        <div className="answer pb-2 px-14 md:px-32 cursor-pointer text-black  text-[10px] md:text-[18px] italic ">
                             {faq.answer}
                             <hr className='border border-gray-400 border-spacing-1 ' />
                         </div>

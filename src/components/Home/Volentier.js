@@ -2,7 +2,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 export default function Volentier() {
     return (
-      <div className="bg-[#BBDEFB] ">
+      <div className="bg-[#BBDEFB] " id="voulunteers">
         <p className="mt-8 font-semibold text-[20px] md:text-[45px] font-itim mb-3">
           Together We can Make Difference
         </p>
