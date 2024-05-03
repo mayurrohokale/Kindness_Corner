@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { FaXTwitter } from "react-icons/fa6";
+import { SiInstagram } from "react-icons/si";
+import { TiSocialLinkedin } from "react-icons/ti";
+
 
 const Footer = () => {
     const faqs = [
@@ -16,7 +20,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="faq ">
+        <div className="faq  ">
            
             <div className='pt-8' >
                 <h1 className='font-bold pb-4 text-[26px] md:text-[35px]'>Frequently Asked Questions ?</h1>
@@ -25,7 +29,7 @@ const Footer = () => {
                 <div key={index} className="faq-item" onClick={() => toggleAnswer(index)}>
                     <div className="question font-semibold p-2 cursor-pointer text-gray-500 text-[13px] md:text-[20px]">{faq.question}</div>
                     {activeIndex === index && (
-                        <div className="answer pb-2 cursor-pointer text-black font-semibold text-[10px] md:text-[18px] ">
+                        <div className="answer pb-2 cursor-pointer text-black  text-[10px] md:text-[18px] italic ">
                             {faq.answer}
                             <hr className='border border-gray-400 border-spacing-1 ' />
                         </div>
@@ -72,7 +76,20 @@ const Footer = () => {
                             <h3>Volunteers</h3>
                         </div>
                     </div>
-                    <hr className='border border-black border-spacing-1 '/>
+                   
+                </div>
+                <hr className='border border-white  '/>
+                <div className='flex flex-col mt-4 pb-3 md:flex-row justify-center gap-8 '>
+                    <div>
+                        <h1>@Kinder2024</h1>
+                        <h1>All rights Reserved</h1>
+                    </div>
+                    <div className='flex flex-row gap-8 text-[20px] pt-4 justify-center'>
+                    <FaXTwitter/>
+                    <SiInstagram/>
+                    <TiSocialLinkedin className='border border-black rounded-md'/>
+                    </div>
+                    
                 </div>
             </div>
         </div>
