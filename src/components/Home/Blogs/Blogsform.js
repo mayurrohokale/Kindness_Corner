@@ -3,20 +3,20 @@ export default function Blogsform() {
     const Blogs = [
         {
             id:1,
-            title:"together we  can make a difference",
-            text:"Your Donation can help to provide food to people who are struggling to feed themselves and their families ",
+            title:"Making an Impact:",
+            text:" In this blog, you can share inspiring stories of individuals or communities that have benefited from the donations and support received through your platform. Highlight the positive impact made by the collective efforts of the users and the NGOs they voted for"
 
         },
         {
             id:2,
-            title:"together we  can make a difference",
-            text:"Your Donation can help to provide food to people who are struggling to feed themselves and their families ",
+            title:"NGO Spotlight: ",
+            text:"This blog series can feature in-depth profiles of different NGOs that are part of your donation voting system. Share their missions, projects, and success stories. It's a great way to raise awareness about the important work being done by these organizations",
 
         },
         {
             id:3,
-            title:"together we  can make a difference",
-            text:"Your Donation can help to provide food to people who are struggling to feed themselves and their families ",
+            title:"Tips for Effective Giving:",
+            text:" Offer practical advice and tips to your community on how they can make their donations go further. Share insights on researching NGOs, evaluating their effectiveness, and understanding how their donations can create sustainable change. Encourage readers ",
 
         },
     ]
