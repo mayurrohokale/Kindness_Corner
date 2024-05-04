@@ -15,7 +15,7 @@ const CustomInput = ({ label, type, placeholder }) => {
         <label className="">{label}</label>
         <br />
         <input
-          className="border border-black rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] mx-4 "
+          className="border border-black rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] mx-4 px-2 "
           type={type}
           placeholder={placeholder}
         />
