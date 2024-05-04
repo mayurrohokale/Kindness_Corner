@@ -37,9 +37,9 @@ export default function Header() {
         >
           <div className="flex flex-row justify-between w-full items-center">
             <div className="logo text-lg md:text-2xl font-bold">
-            <a href="#home" className="cursor-pointer">
+            <Link to="/" className="cursor-pointer">
               <img src="./images/logo.png" alt="logo" className=" w-28 md:w-32 p-2" />
-              </a>
+              </Link>
             </div>
 
             <nav className="lg:flex hidden">
