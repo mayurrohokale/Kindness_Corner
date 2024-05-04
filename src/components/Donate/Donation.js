@@ -8,13 +8,17 @@ const Cstbutton = ({ text }) => {
   );
 };
 
-const CustomInput = ({ label, type }) => {
+const CustomInput = ({ label, type, placeholder }) => {
   return (
     <div>
-      <div className="" >
+      <div className="">
         <label className="">{label}</label>
         <br />
-        <input className="border border-black rounded shadow-lg w-[800px] h-[50px] " type={type} />
+        <input
+          className="border border-black rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] mx-4 "
+          type={type}
+          placeholder={placeholder}
+        />
       </div>
     </div>
   );
@@ -41,7 +45,7 @@ export default function Donation() {
           className={`mx-2 px-4 py-2 rounded ${
             isNamedDonation
               ? "bg-[#2196F3] text-white"
-              : "bg-white text-[#2196F3] border border-[#2196F3] "
+              : "bg-white text-[#2196F3] border border-black "
           }`}
           onClick={handleNamedDonationClick}
         >
@@ -65,18 +69,40 @@ export default function Donation() {
             *In a named donation, your details are proudly displayed, making you
             a recognized hero! It's like getting the applause you deserve!
           </p>
-          <div>
-            <CustomInput label="Name" type="text" />
-            <CustomInput label="Amount" type="text" />
-            <CustomInput label="Email" type="email" required />
+          <div className="flex flex-col lg:flex-row justify-center mt-4">
+            <CustomInput label="First Name" type="text" />
+            <CustomInput label="Last Name" type="text" />
           </div>
           <div>
-            <input
+            <CustomInput label="Email" type="email" required />
+            <CustomInput label="Address" type="text" required />
+            <CustomInput
+              label=""
               type="number"
-              name="amount"
-              className="border border-black w-[285px] h-[43px]  md:w-[419px] md:h-[71px] hover:shadow-lg px-10 text-[lg]  md:px-16 font-bold md:text-3xl md:pt-0 font-ititm
-                "
+              placeholder={"  Enter an amount"}
+              required
             />
+          </div>
+          <div>
+            <button>Monthly</button>
+            <button>One Time</button>
+          </div>
+          <div>
+            <h1>Payment Options</h1>
+            <div className="flex flex-col justify-center">
+              <div>
+                <input type="radio" name="" value="" />
+                <label>UPI</label>
+              </div>
+              <div>
+                <input type="radio" name="" value="" />
+                <label>Credit Card</label>
+              </div>
+              <div>
+                <input type="radio" name="" value="" />
+                <label>UPI</label>
+              </div>
+            </div>
           </div>
 
           <Cstbutton text="Donate" />

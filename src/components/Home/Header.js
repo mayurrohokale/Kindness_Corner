@@ -17,7 +17,7 @@ const MENU_ITEMS = [
          title: 'Works', path: 'works'
     },
     {
-        title: 'Angels', path: '#angels'
+        title: 'Vote', path: 'vote'
     }
 ]
 

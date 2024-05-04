@@ -25,7 +25,7 @@ export default function Volentier() {
               <img
                 src="./images/mayurphoto.jpg"
                 alt="profile"
-                className="rounded-full shadow-xl w-24"
+                className="rounded-[80%] shadow-xl w-24"
               />
               <p className="text-center mt-6 italic">
                 "I would encourage anyone who is looking for a meaningful way to
