@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Cstbutton = ({ text }) => {
   return (
-    <button className="bg-[#E91E63] mt-3 text-white font-bold py-2 px-4 rounded">
+    <button className="bg-[#E91E63] mt-3 text-white font-bold py-2 px-4  rounded">
       {text}
     </button>
   );
@@ -26,6 +26,15 @@ const CustomInput = ({ label, type, placeholder }) => {
 
 export default function Donation() {
   const [isNamedDonation, setIsNamedDonation] = useState(true);
+  const [isButtonClick, setButtonClick] = useState(true);
+
+  const handleOneTime = () => {
+    setButtonClick(true);
+  };
+
+  const handleMonthly = () => {
+    setButtonClick(false);
+  };
 
   const handleNamedDonationClick = () => {
     setIsNamedDonation(true);
@@ -40,7 +49,7 @@ export default function Donation() {
       <h1 className="text-center mt-5 font-bold">
         Make a donation to support our mission!
       </h1>
-      <div className="flex justify-center mt-5 font-bold font-monserrat">
+      <div className="flex justify-center mt-5 font-bold font-monserrat text-[10px] md:text-[20px]">
         <button
           className={`mx-2 px-4 py-2 rounded ${
             isNamedDonation
@@ -76,6 +85,31 @@ export default function Donation() {
           <div>
             <CustomInput label="Email" type="email" required />
             <CustomInput label="Address" type="text" required />
+            <div className="mt-4">
+              <button
+                type="button"
+                className={`mx-2 px-4 py-2 rounded ${
+                  isButtonClick
+                    ? "bg-[#2196F3] text-white"
+                    : "bg-white text-[#2196F3] border border-black"
+                }`}
+                onClick={handleOneTime}
+              >
+                One Time
+              </button>
+
+              <button
+                type="button"
+                className={`mx-2 px-4 py-2 rounded ${
+                  !isButtonClick
+                    ? "bg-[#2196F3] text-white"
+                    : "bg-white text-[#2196F3] border border-black"
+                }`}
+                onClick={handleMonthly}
+              >
+                Monthly
+              </button>
+            </div>
             <CustomInput
               label=""
               type="number"
@@ -83,13 +117,12 @@ export default function Donation() {
               required
             />
           </div>
-          <div>
-            <button>Monthly</button>
-            <button>One Time</button>
-          </div>
+          
+          
+         
           <div>
             <h1>Payment Options</h1>
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-start">
               <div>
                 <input type="radio" name="" value="" />
                 <label>UPI</label>
@@ -100,11 +133,10 @@ export default function Donation() {
               </div>
               <div>
                 <input type="radio" name="" value="" />
-                <label>UPI</label>
+                <label>Net Banking</label>
               </div>
             </div>
           </div>
-
           <Cstbutton text="Donate" />
         </form>
       ) : (
