@@ -1,6 +1,7 @@
 import Currencybutton from "../Elements/currencybutton";
 import Custombutton from "../Elements/custombutton";
 import { BsCurrencyRupee } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function Donateform() {
   return (
@@ -33,12 +34,12 @@ export default function Donateform() {
         <input
           type="number"
           name="amount"
-          className="border border-black w-[285px] h-[43px]  md:w-[419px] md:h-[71px] hover:shadow-lg px-10 text-[lg]  md:px-16 font-bold md:text-3xl md:pt-0
+          className="border border-black w-[285px] h-[43px]  md:w-[419px] md:h-[71px] hover:shadow-lg px-10 text-[lg]  md:px-16 font-bold md:text-3xl md:pt-0 font-ititm
                 " 
         />
 
         <button className=" w-[150px] h-[48px] md:w-[260px] md:h-[70px] items-center  bg-[#E91E63] text-white text-[15px] md:text-[25px] font-bold mt-10 mb-2 shadow-lg font-inter hover:scale-110">
-          DONATE NOW
+         <Link to="/donate">DONATE NOW</Link>
         </button>
       </div>
       <div className="flex flex-row items-center justify-center mt-10 gap-3 md:gap-8 mb-8 ">

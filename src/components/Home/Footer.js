@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaXTwitter } from "react-icons/fa6";
 import { SiInstagram } from "react-icons/si";
-import { TiSocialLinkedin } from "react-icons/ti";
+import { FaLinkedin } from "react-icons/fa";
 
 
 const Footer = () => {
@@ -25,7 +25,9 @@ const Footer = () => {
            
             <div className='pt-8 pb-8' >
                 <h1 className='font-bold pb-4 text-[26px] md:text-[35px]'>Frequently Asked Questions ?</h1>
+                <hr border border-black />
             </div>
+            
             {faqs.map((faq, index) => (
                 <div key={index} className="faq-item" onClick={() => toggleAnswer(index)}>
                     <div className="question font-semibold p-2 cursor-pointer text-gray-500 text-[13px] md:text-[20px]">{faq.question}</div>
@@ -88,7 +90,7 @@ const Footer = () => {
                     <div className='flex flex-row gap-8 text-[20px] pt-4 justify-center'>
                     <FaXTwitter/>
                     <SiInstagram/>
-                    <TiSocialLinkedin className='border border-black rounded-md'/>
+                    <FaLinkedin className=''/>
                     </div>
                     
                 </div>

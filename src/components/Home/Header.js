@@ -2,18 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { MdMenu } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 
 const MENU_ITEMS = [ 
-    { title: 'Home', path:'#home' },
+    { title: 'Home', path:'home' },
     { 
-        title: 'Donate', path:'#donate'
+        title: 'Donate', path:'donate'
     },
     {
-         title: 'Transactions', path:'#voulunteers'
+         title: 'Transactions', path:'transaction'
     },
     {
-         title: 'Works', path: '#works'
+         title: 'Works', path: 'works'
     },
     {
         title: 'Angels', path: '#angels'
@@ -61,7 +62,7 @@ export default function Header() {
                {
                 MENU_ITEMS.map(({ path, title }) => (
                     <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]"  key={title}>
-                  <a href={path}>{title}</a>
+                  <Link to={path}>{title}</Link>
                 </li>
                ))}
               </ul>
@@ -134,7 +135,7 @@ export default function Header() {
                  {
                 MENU_ITEMS.map(({ path, title }) => (
                     <li className=" hover:underline hover:text-[#E91E63]" key={title}>
-                  <a href={path}>{title}</a>
+                  <Link to={path}>{title}</Link>
                 </li>
                ))}
               </ul>
