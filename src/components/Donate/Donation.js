@@ -1,5 +1,17 @@
 import React, { useState } from "react";
+import { useAppState } from "../../utils/appState";
 
+
+const DEFAULT_TYPES = [
+  {
+    text: "One Time",
+    value: "one_time"
+  },
+  {
+    text: "Monthly",
+    value: "monthly"
+  }
+]
 const Cstbutton = ({ text }) => {
   return (
     <button className="bg-[#E91E63] mt-3 text-white font-bold py-2 px-4  rounded">
@@ -8,16 +20,18 @@ const Cstbutton = ({ text }) => {
   );
 };
 
-const CustomInput = ({ label, type, placeholder }) => {
+const CustomInput = ({ label, type, placeholder, value, onChange }) => {
   return (
     <div>
       <div className="">
         <label className="">{label}</label>
         <br />
         <input
-          className="border border-black rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] mx-4 "
+          className="border border-black rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] px-5 py-2"
           type={type}
           placeholder={placeholder}
+          value={value}
+          onChange={onChange}
         />
       </div>
     </div>
@@ -26,15 +40,17 @@ const CustomInput = ({ label, type, placeholder }) => {
 
 export default function Donation() {
   const [isNamedDonation, setIsNamedDonation] = useState(true);
-  const [isButtonClick, setButtonClick] = useState(true);
+  // const [isButtonClick, setButtonClick] = useState(true);
 
-  const handleOneTime = () => {
-    setButtonClick(true);
-  };
+  const { amount, setAmount, payment_type, setPaymentType } = useAppState();
 
-  const handleMonthly = () => {
-    setButtonClick(false);
-  };
+  // const handleOneTime = () => {
+  //   setButtonClick(true);
+  // };
+
+  // const handleMonthly = () => {
+  //   setButtonClick(false);
+  // };
 
   const handleNamedDonationClick = () => {
     setIsNamedDonation(true);
@@ -44,6 +60,17 @@ export default function Donation() {
     setIsNamedDonation(false);
   };
 
+  function handlePaymentTypeChange(e) {
+    setPaymentType(e.target.value);
+  }
+
+  function handleAmountChange(e) {
+    if (e.target.value === "") {
+      setAmount(0);
+      return;
+    }
+    setAmount(parseInt(e.target.value)>0 ? parseInt(e.target.value) : 0);
+  }
   return (
     <div>
       <h1 className="text-center mt-5 font-bold">
@@ -86,35 +113,32 @@ export default function Donation() {
             <CustomInput label="Email" type="email" required />
             <CustomInput label="Address" type="text" required />
             <div className="mt-4">
-              <button
-                type="button"
-                className={`mx-2 px-4 py-2 rounded ${
-                  isButtonClick
-                    ? "bg-[#2196F3] text-white"
-                    : "bg-white text-[#2196F3] border border-black"
-                }`}
-                onClick={handleOneTime}
-              >
-                One Time
-              </button>
 
-              <button
-                type="button"
-                className={`mx-2 px-4 py-2 rounded ${
-                  !isButtonClick
-                    ? "bg-[#2196F3] text-white"
-                    : "bg-white text-[#2196F3] border border-black"
-                }`}
-                onClick={handleMonthly}
-              >
-                Monthly
-              </button>
+              {
+                DEFAULT_TYPES.map((item, index) => (
+                  <button
+                    key={index}
+                    className={`mx-2 px-4 py-2 rounded ${
+                      item.value === payment_type
+                        ? "bg-[#2196F3] text-white"
+                        : "bg-white text-[#2196F3] border border-black"
+                    }`}
+                    value={item.value}
+                    onClick={handlePaymentTypeChange}
+                  >
+                    {item.text}
+                  </button>
+                ))
+
+              }
             </div>
             <CustomInput
               label=""
               type="number"
               placeholder={"  Enter an amount"}
               required
+              value={amount}
+              onChange={handleAmountChange}
             />
           </div>
           
