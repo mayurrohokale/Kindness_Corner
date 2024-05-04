@@ -69,8 +69,8 @@ export default function Header() {
 
             </nav>
 
-            <div className="hidden md:flex">
-              <input type="text" name="search"  placeholder="Search..." className="rounded-[200px] shadow-lg border border-black p-1 md:p-2  " />
+            <div className="hidden md:flex ">
+              <input type="text" name="search"  placeholder="Search..." className="rounded-[200px] shadow-lg border border-black px-5 py-2 " />
               
             </div>
             <div className="hidden  md:flex text-[35px] shadow-xl rounded-[20px]">

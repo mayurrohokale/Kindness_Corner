@@ -1,16 +1,16 @@
-import { useState } from "react";
 
-export default function Currencybutton({text}){
-    const [clicked, setClicked] = useState(false);
+export default function Currencybutton({text, value, onClick, isSelected=false,}) {
+  //   const [clicked, setClicked] = useState(false);
 
-  const handleClick = () => {
-    setClicked(!clicked);
-  };
+  // const handleClick = () => {
+  //   setClicked(!clicked);
+  // };
     
     return(
         <button
-        className={`border border-[#2196F3] w-[87px] md:w-[134px] h-[52px] px-2 py-2 font-itim text-[16px] md:text-[25px] ${clicked ? 'bg-[#2196F3] text-white border-black' : ''}`}
-        onClick={handleClick}
+        className={`border border-[#2196F3] w-[87px] md:w-[134px] px-2 py-2 font-itim text-[16px] md:text-[25px] ${isSelected ? 'bg-[#2196F3] text-white border-black' : ''}`}
+        onClick={onClick}
+        value={value}
       >
         {text}
       </button>
