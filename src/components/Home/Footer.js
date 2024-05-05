@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaXTwitter } from "react-icons/fa6";
 import { SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -47,12 +48,12 @@ const Footer = () => {
                     <div className='py-4'>
                         <h1 className='font-bold py-2'>Donate</h1>
                         <div className='flex flex-col md:flex-row gap-0 md:gap-2 text-white '>
-                            <h3>Home</h3>
-                            <h3>Transactions</h3>
+                            <Link to="home"><h3>Home</h3></Link>
+                            <Link to="transaction"><h3>Transactions</h3></Link>
                         </div>
                         <div className='flex flex-col md:flex-row  gap-0 md:gap-2 text-white'>
-                            <h3>worls</h3>
-                            <h3>Angels</h3>
+                            <Link to="work"><h3>works</h3></Link>
+                            <Link to="vote"><h3>Vote</h3></Link>
                         </div>
                     </div>
                     

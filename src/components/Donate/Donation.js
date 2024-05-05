@@ -27,7 +27,7 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
         <label className="">{label}</label>
         <br />
         <input
-          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] px-5 py-2"
+          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg   w-[240px]  lg:w-[390px] max:w-[1536px]  px-5 py-3"
           type={type}
           placeholder={placeholder}
           value={value}
@@ -72,7 +72,7 @@ export default function Donation() {
     setAmount(parseInt(e.target.value)>0 ? parseInt(e.target.value) : 0);
   }
   return (
-    <div>
+    <div className=" container  p-4">
       <h1 className="text-center mt-5 font-bold">
         Make a donation to support our mission!
       </h1>
@@ -109,8 +109,12 @@ export default function Donation() {
             <CustomInput label="First Name" type="text" placeholder={"John"} />
             <CustomInput label="Last Name" type="text" placeholder={"Doe"} />
           </div>
-          <div className="mt-4">
+          <div className="flex flex-col lg:flex-row justify-center mt-4 gap-2">
             <CustomInput label="Email" type="email" required placeholder={"xyz@gmail.com"} />
+            <CustomInput label="Phone/Mobile" type="phone" required placeholder={"0000000000"}/>
+          </div>
+          <div className="mt-4">
+            
             <CustomInput label="Address" type="text" required placeholder={"23 F, New Yotk Street , USA"}  />
             <div className="mt-4">
 
@@ -144,7 +148,7 @@ export default function Donation() {
           
           
          
-          <div>
+          {/* <div>
             <h1>Payment Options</h1>
             <div className="flex flex-col justify-start">
               <div>
@@ -160,7 +164,7 @@ export default function Donation() {
                 <label>Net Banking</label>
               </div>
             </div>
-          </div>
+          </div> */}
           <Cstbutton text="Donate" />
         </form>
       ) : (
@@ -171,7 +175,7 @@ export default function Donation() {
             they'll be securely stored for government compliance. It's like
             being a secret hero!
           </p>
-          <div className="flex flex-col lg:flex-row justify-center mt-4 gap-2">
+          <div className="flex flex-col justify-center mt-4 gap-2">
             <CustomInput label="First Name" type="text" placeholder={"John"} />
             <CustomInput label="Last Name" type="text" placeholder={"Doe"} />
           </div>
@@ -209,7 +213,7 @@ export default function Donation() {
           
           
          
-          <div>
+          {/* <div>
             <h1>Payment Options</h1>
             <div className="flex flex-col justify-start">
               <div>
@@ -225,7 +229,7 @@ export default function Donation() {
                 <label>Net Banking</label>
               </div>
             </div>
-          </div>
+          </div> */}
           <Cstbutton text="Donate" />
         </form>
       )}
