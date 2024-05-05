@@ -74,7 +74,11 @@ export default function Header() {
               
             </div>
             <div className="hidden  md:flex text-[35px] shadow-xl rounded-[20px]">
-            <CiUser/>
+              <div>
+                <Link to="login"><CiUser/></Link>
+               
+              </div>
+            
             </div>
             
 

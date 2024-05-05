@@ -8,6 +8,8 @@ import Donation from "./components/Donate/Donation";
 import Volentier from "./components/Home/Volentier";
 import Completedworks from "./components/Home/Completedworks";
 import Campaign from "./components/Home/Campaign/Campaign";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/transaction" element={<Volentier/>}/>
             <Route path="/works" element={<Completedworks/>}/>
             <Route path="/vote" element={<Campaign/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
 
           </Routes>
         </Layout>

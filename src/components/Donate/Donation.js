@@ -27,7 +27,7 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
         <label className="">{label}</label>
         <br />
         <input
-          className="border border-black rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] px-5 py-2"
+          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg h-[30px]  w-[240px]  lg:w-[380px] max:w-[1536px] md:h-[40px] px-5 py-2"
           type={type}
           placeholder={placeholder}
           value={value}
@@ -105,13 +105,13 @@ export default function Donation() {
             *In a named donation, your details are proudly displayed, making you
             a recognized hero! It's like getting the applause you deserve!
           </p>
-          <div className="flex flex-col lg:flex-row justify-center mt-4">
-            <CustomInput label="First Name" type="text" />
-            <CustomInput label="Last Name" type="text" />
+          <div className="flex flex-col lg:flex-row justify-center mt-4 gap-2">
+            <CustomInput label="First Name" type="text" placeholder={"John"} />
+            <CustomInput label="Last Name" type="text" placeholder={"Doe"} />
           </div>
-          <div>
-            <CustomInput label="Email" type="email" required />
-            <CustomInput label="Address" type="text" required />
+          <div className="mt-4">
+            <CustomInput label="Email" type="email" required placeholder={"xyz@gmail.com"} />
+            <CustomInput label="Address" type="text" required placeholder={"23 F, New Yotk Street , USA"}  />
             <div className="mt-4">
 
               {
@@ -171,7 +171,61 @@ export default function Donation() {
             they'll be securely stored for government compliance. It's like
             being a secret hero!
           </p>
-          <CustomInput label="Amount" type="text" />
+          <div className="flex flex-col lg:flex-row justify-center mt-4 gap-2">
+            <CustomInput label="First Name" type="text" placeholder={"John"} />
+            <CustomInput label="Last Name" type="text" placeholder={"Doe"} />
+          </div>
+          <div className="mt-4">
+            <CustomInput label="Email" type="email" required placeholder={"xyz@gmail.com"} />
+            <div className="mt-4">
+
+              {
+                DEFAULT_TYPES.map((item, index) => (
+                  <button
+                    key={index}
+                    className={`mx-2 px-4 py-2 rounded ${
+                      item.value === payment_type
+                        ? "bg-[#2196F3] text-white"
+                        : "bg-white text-[#2196F3] border border-black"
+                    }`}
+                    value={item.value}
+                    onClick={handlePaymentTypeChange}
+                  >
+                    {item.text}
+                  </button>
+                ))
+
+              }
+            </div>
+            <CustomInput
+              label=""
+              type="number"
+              placeholder={"  Enter an amount"}
+              required
+              value={amount}
+              onChange={handleAmountChange}
+            />
+          </div>
+          
+          
+         
+          <div>
+            <h1>Payment Options</h1>
+            <div className="flex flex-col justify-start">
+              <div>
+                <input type="radio" name="" value="" />
+                <label>UPI</label>
+              </div>
+              <div>
+                <input type="radio" name="" value="" />
+                <label>Credit Card</label>
+              </div>
+              <div>
+                <input type="radio" name="" value="" />
+                <label>Net Banking</label>
+              </div>
+            </div>
+          </div>
           <Cstbutton text="Donate" />
         </form>
       )}
