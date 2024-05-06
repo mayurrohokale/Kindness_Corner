@@ -14,7 +14,7 @@ const slideImages = [
   },
   {
     url: "./images/img3.jpg",
-    caption: "together We make difference",
+    caption: "Give a little, change a lot.",
   },
   {
     url: "./images/img4.jpg",
