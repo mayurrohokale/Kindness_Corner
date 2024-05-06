@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 
 const Cstbutton = ({ text }) => {
   return (
-    <button className="bg-[#2196F3] mt-3 text-white font-bold py-2 px-4 rounded">
+    <button className="bg-[#2196F3] mt-3 w-full text-white font-bold py-3 rounded">
       {text}
     </button>
   );
@@ -10,11 +12,11 @@ const Cstbutton = ({ text }) => {
 const CustomInput = ({ label, type, placeholder, value, onChange }) => {
   return (
     <div>
-      <div className="">
-        <label className="">{label}</label>
-        <br />
+      <div className=" flex flex-col gap-1">
+        <label className="text-start">{label}</label>
+  
         <input
-          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg h-[30px] w-[240px] lg:w-[380px] max:w-[1536px] md:h-[40px] px-5 py-2"
+          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-5 py-3"
           type={type}
           placeholder={placeholder}
           value={value}
@@ -32,22 +34,24 @@ export default function Register() {
         <div>
         <h1 className="font-bold text-2xl">Register!</h1>
           <form action="/login" method="post">
-            <div>
-              <CustomInput label="Email" type="text" />
+            <div className="text-start flex flex-col gap-2">
+            <CustomInput label="User Name" type="text" placeholder={"John Doe"} />
+              <CustomInput label="Email" type="text" />            
               <CustomInput
                 label="Password"
                 type="password"
                 placeholder={"Enter your password"}
               />
+              <CustomInput label="Confirm Password" type="password" placeholder={"Re-Enter Passsword"} />
             </div>
             <Cstbutton text={"SignUp"} />
           </form>
-          
+          <p>Aleready Registered?<Link to="/login">Login Here!</Link></p>
         </div>
 
         {/* If user is logged in, display logout button */}
         <div className="w-[200px] h-200px]">
-          <img src="./images/img6.jpg" className="rounded-lg " alt="wg" />
+          <img src="./images/img7.jpg" className="rounded-lg " alt="wg" />
         </div>
       </div>
     </div>

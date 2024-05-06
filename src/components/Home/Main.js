@@ -24,6 +24,19 @@ const slideImages = [
 ];
 
 const Main = () => {
+
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === slideImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+  
   return (
     <div id="home">
     <div className="flex flex-col
@@ -31,12 +44,13 @@ const Main = () => {
       <div className="relative w-full">
         <div className="relative z-0 ">
        
-          <img
-            src={slideImages[0].url}
-            alt={slideImages[0].caption}
-            className="w-full object-cover shadow-md lg:h-screen xl:h-[88vh]" 
-          /> 
-          
+          {
+            <img
+            src={slideImages[currentImageIndex].url}
+            alt={slideImages[currentImageIndex].caption}
+            className="w-full object-cover shadow-md lg:h-screen xl:h-[88vh]"
+          />
+          }
         </div>
         <div className=" absolute top-3 xl:top-8 right-3 sm:right-5 ">
           <div className="hidden lg:flex  ">
