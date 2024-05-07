@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { useAppState } from "../../utils/appState";
-
+import { SiPhonepe } from "react-icons/si";
+import { FaGooglePay } from "react-icons/fa";
+import { FaPaypal } from "react-icons/fa"
+import { FaAmazonPay } from "react-icons/fa";
+import { SiPaytm } from "react-icons/si";
+import { FaApplePay } from "react-icons/fa";
+import { FaCcMastercard } from "react-icons/fa";
 
 const DEFAULT_TYPES = [
   {
@@ -72,6 +78,7 @@ export default function Donation() {
     setAmount(parseInt(e.target.value)>0 ? parseInt(e.target.value) : 0);
   }
   return (
+    <div>
     <div className=" container  p-4">
       <h1 className="text-center mt-5 font-bold">
         Make a donation to support our mission!
@@ -234,5 +241,16 @@ export default function Donation() {
         </form>
       )}
     </div>
+    <div className="flex flex-row gap-4 md:gap-8 justify-center py-4 text-[20px] md:text-[30px]"><SiPhonepe/>
+      <FaGooglePay/>
+      <FaPaypal/>
+      <FaAmazonPay/>
+      <SiPaytm/>
+      <FaApplePay/>
+      <FaCcMastercard/>
+    </div>
+    
+    </div>
   );
+  
 }

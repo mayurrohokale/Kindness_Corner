@@ -31,10 +31,10 @@ export default function Blogs() {
           </p>
           <div className=" mt-4   text-[12px] md:text-[20px]  ">
             <button className="bg-[#2196F3] text-white px-4 py-2  rounded-lg hover:shadow-lg font-itim mr-4">
-              Become Angel
+              <Link to="/register">Register</Link>
             </button>
             <button className="bg-[#E91E63] text-white px-4 py-2 rounded-lg hover:shadow-lg font-itim">
-              <Link to="donate">Donate</Link>
+              <Link to="/donate">Donate</Link>
             </button>
           </div>
         </div>
