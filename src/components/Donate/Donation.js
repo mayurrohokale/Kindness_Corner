@@ -7,6 +7,7 @@ import { FaAmazonPay } from "react-icons/fa";
 import { SiPaytm } from "react-icons/si";
 import { FaApplePay } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
+import { BiLogoVisa } from "react-icons/bi";
 
 const DEFAULT_TYPES = [
   {
@@ -122,7 +123,7 @@ export default function Donation() {
           </div>
           <div className="mt-4">
             
-            <CustomInput label="Address" type="text" required placeholder={"23 F, New Yotk Street , USA"}  />
+            <CustomInput label="Address" type="text" required placeholder={"23 F, New Yotk Street , USA"} />
             <div className="mt-4">
 
               {
@@ -241,13 +242,14 @@ export default function Donation() {
         </form>
       )}
     </div>
-    <div className="flex flex-row gap-4 md:gap-8 justify-center py-4 text-[20px] md:text-[30px]"><SiPhonepe/>
+    <div className=" flex flex-row gap-4 md:gap-16 justify-center py-4 text-[20px] md:text-[30px]"><SiPhonepe/>
       <FaGooglePay/>
       <FaPaypal/>
       <FaAmazonPay/>
       <SiPaytm/>
       <FaApplePay/>
       <FaCcMastercard/>
+      <BiLogoVisa/>
     </div>
     
     </div>

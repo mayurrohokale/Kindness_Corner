@@ -39,13 +39,13 @@ const Main = () => {
     <div id="home">
       <div className="flex flex-col max-w-[1536px]">
         <div className="relative w-full">
-          <div className="relative z-0">
+          <div className="relative z-0 ease-in-out">
             <img
               src={slideImages[currentImageIndex].url}
               alt={slideImages[currentImageIndex].caption}
-              className="w-full object-cover shadow-md lg:h-screen xl:h-[88vh]"
+              className="w-full object-cover shadow-md lg:h-screen xl:h-[88vh]  "
             />
-            <div className="absolute bottom-4 md:bottom-16 left-0 right-0 bg-black bg-opacity-10 text-white text-start py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin">
+            <div className="absolute bottom-4 md:bottom-16 left-0 right-0 bg-black bg-opacity-10 text-white text-start py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin ">
               {slideImages[currentImageIndex].caption}
               {/* <p className="text-[10px] md:text-[20px]  text-black underline" >Read More!</p> */}
             </div>

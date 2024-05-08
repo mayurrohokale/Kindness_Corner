@@ -149,7 +149,7 @@ export default function Donateform() {
             <img
               key={index}
               src={item.url}
-              className=" w-[40px] h-[39px] md:w-[49px] md:h-[49px]"
+              className=" w-[40px] h-[39px] md:w-[49px] md:h-[46px]"
               alt={item.text}
             />
           ))

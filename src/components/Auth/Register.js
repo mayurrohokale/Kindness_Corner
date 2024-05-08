@@ -37,7 +37,7 @@ export default function Register() {
           <form action="/login" method="post">
             <div className="text-start flex flex-col gap-4">
               <CustomInput label="Name" type="text" placeholder={"John Doe"}/>
-              <CustomInput label="Email" type="text" />
+              <CustomInput label="Email" type="email" placeholder={"xyz@gmail.com"} />
               <CustomInput
                 label="Password"
                 type="password"
@@ -58,7 +58,7 @@ export default function Register() {
 
         {/* If user is logged in, display logout button */}
         <div className=" hidden  md:flex items-center max-w-[300px] w-full md:w-[300px] h-200px] ">
-          <img src="./images/img7.jpg" className="rounded-lg flexx justify-center items-center " alt="wg" />
+          <img src="./images/img8.jpg" className="rounded-lg flexx justify-center items-center " alt="wg" />
         </div>
       </div>
     </div>
