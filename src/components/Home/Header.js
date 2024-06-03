@@ -1,8 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdMenu } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 
 const MENU_ITEMS = [ 
@@ -23,6 +24,8 @@ const MENU_ITEMS = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+ 
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
