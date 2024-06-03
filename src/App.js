@@ -10,6 +10,7 @@ import Completedworks from "./components/Home/Completedworks";
 import Campaign from "./components/Home/Campaign/Campaign";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (

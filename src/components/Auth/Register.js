@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cstbutton = ({ text }) => {
   return (
@@ -33,8 +35,6 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
   const BASE_URL = 'http://localhost:8000';
 
@@ -42,7 +42,9 @@ export default function Register() {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      setErrorMessage("Passwords do not match");
+      toast.error("Passwords do not match",{
+        position: "top-center",
+      });
       return;
     }
 
@@ -53,13 +55,18 @@ export default function Register() {
         password,
       });
       console.log(response.data);
-      setSuccessMessage("Registered successfully!");
+      
+      toast.success("Registered Successfully", {
+        position: "top-center",
+      })
       setTimeout(() => {
         navigate('/login');
-      }, 2000); // Redirect to login after 2 seconds
+      }, 2000); 
     } catch (error) {
       console.error("There was an error registering the user!", error);
-      setErrorMessage("There was an error registering the user. Please try again.");
+     
+      toast.error("There was an error registering the user. Please try again.", {
+        position: "top-center"})
     }
   };
 
@@ -105,8 +112,7 @@ export default function Register() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-            {successMessage && <p className="text-green-500">{successMessage}</p>}
+            
             <Cstbutton text="Sign Up" />
           </form>
           <p className="py-4">
@@ -117,6 +123,7 @@ export default function Register() {
           <img src="./images/img8.jpg" className="rounded-lg" alt="wg" />
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 }

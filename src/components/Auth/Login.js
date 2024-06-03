@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cstbutton = ({ text }) => {
   return (
@@ -30,6 +32,8 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
 };
 
 export default function Login() {
+
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState(""); 
@@ -42,17 +46,25 @@ export default function Login() {
 
     try {
       const response = await Axios.post(`${BASE_URL}/login`, {
+        name,
         email,
         password,
       });
       console.log(response.data);
       setSuccessMessage("Login Successfully");
+      toast.success("Login Successfully", {
+        position: "top-center",
+      })
+      localStorage.setItem("user", JSON.stringify(email));
       setTimeout(() => {
         navigate("/home");
       }, 2000);
     } catch (err) {
       console.log(err);
       setErrorMessage("User cannot login");
+      toast.error("There was an error while login, please try again!", {
+        position: "top-center",
+      })
     }
   };
 
@@ -94,6 +106,7 @@ export default function Login() {
           />
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import fReact from "react";
 import { useState, useEffect } from "react";
 import { MdMenu } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
@@ -12,7 +12,7 @@ const MENU_ITEMS = [
         title: 'Donate', path:'donate'
     },
     {
-         title: 'Transactions', path:'transaction'
+         ftitle: 'Transactions', path:'transaction'
     },
     {
          title: 'Works', path: 'works'
@@ -25,7 +25,14 @@ const MENU_ITEMS = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
- 
+ const [email, setEmail] = useState("");
+
+ useEffect(() => {
+  const userEmail = JSON.parse(localStorage.getItem("email"));
+  if(userEmail){
+    setEmail(userEmail)
+  }
+ },[])
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
