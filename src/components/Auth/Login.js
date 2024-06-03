@@ -36,8 +36,7 @@ export default function Login() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); 
-  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
   const BASE_URL = "http://localhost:8000";
 
@@ -51,7 +50,7 @@ export default function Login() {
         password,
       });
       console.log(response.data);
-      setSuccessMessage("Login Successfully");
+     
       toast.success("Login Successfully", {
         position: "top-center",
       })
@@ -61,10 +60,9 @@ export default function Login() {
       }, 2000);
     } catch (err) {
       console.log(err);
-      setErrorMessage("User cannot login");
       toast.error("There was an error while login, please try again!", {
         position: "top-center",
-      })
+      });
     }
   };
 
@@ -92,8 +90,7 @@ export default function Login() {
             </div>
             <Cstbutton text={"Sign In"} />
           </form>
-          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-          {successMessage && <p className="text-green-500">{successMessage}</p>}
+         
           <p className="py-4">
             Not Registered? <Link to="/register">Register Now!</Link>
           </p>
