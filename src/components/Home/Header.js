@@ -12,7 +12,7 @@ const MENU_ITEMS = [
         title: 'Donate', path:'donate'
     },
     {
-         ftitle: 'Transactions', path:'transaction'
+         title: 'Transactions', path:'transaction'
     },
     {
          title: 'Works', path: 'works'
@@ -42,18 +42,18 @@ export default function Header() {
     <div className="">
       <div className=" relative ">
         <header
-          className=" md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-10 shadow-xl border-x-2"
+          className=" md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-10 shadow-xl border-x-2 font-medium "
           id="home"
         >
           <div className="flex flex-row justify-between w-full items-center">
             <div className="logo text-lg md:text-2xl font-bold">
             <Link to="/" className="cursor-pointer">
-              <img src="./images/logo.png" alt="logo" className=" w-28 md:w-32 p-2" />
+              <img src="./images/logo.png" alt="logo" className=" w-28 md:w-44 p-2" />
               </Link>
             </div>
 
             <nav className="lg:flex hidden">
-              <ul className="flex gap-10 text-lg items-start font-inter">
+              <ul className="flex gap-10  items-start  text-2xl font-Roboto ">
                 {/* <li className=" transform hover:scale-110 hover:underline hover:text-[#E91E63]">
                   <a href="#home">Home</a>
                 </li>
