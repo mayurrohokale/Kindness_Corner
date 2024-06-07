@@ -4,6 +4,8 @@ import Axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const BASE_URL = process.env.REACT_APP_API_KEY || "http://localhost:8000";
+
 const Cstbutton = ({ text }) => {
   return (
     <button className="hover:shadow-xl bg-[#2196F3] mt-4 text-white font-bold py-2 px-6 rounded text-xl">
@@ -36,7 +38,6 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-  const BASE_URL = 'http://localhost:8000';
 
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -49,12 +50,18 @@ export default function Register() {
     }
 
     try {
+      console.log("calling regi")
       const response = await Axios.post(`${BASE_URL}/signup`, {
         name,
         email,
         password,
       });
-      console.log(response.data);
+
+      const data = response?.data
+
+      if (data?.token) {
+        localStorage.setItem("token", data?.token);
+      }
       
       toast.success("Registered Successfully", {
         position: "top-center",
@@ -63,18 +70,23 @@ export default function Register() {
         navigate('/login');
       }, 2000); 
     } catch (error) {
-      console.error("There was an error registering the user!", error);
-     
-      toast.error("There was an error registering the user. Please try again.", {
-        position: "top-center"})
+      const data = error.response.data
+      
+      toast.error(
+        data?.message ||
+          "Something went wrong",
+        {
+          position: "top-center",
+        }
+      );
     }
   };
 
-  useEffect(() => {
-    Axios.get(`${BASE_URL}/users`).then((response) => {
-      console.log(response);
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get(`${BASE_URL}/users`).then((response) => {
+  //     console.log(response);
+  //   });
+  // }, []);
 
   return (
     <div className="flex justify-center items-center md:h-screen p-4">

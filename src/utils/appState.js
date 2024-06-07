@@ -5,6 +5,8 @@ const defaultValue = {
     setAmount: () => {},
     payment_type: "one_time",
     setPaymentType: () => {},
+    user: {},
+    setUser: () => {},
 
 };
 

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { MdMenu } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { useAppState } from "../../utils/appState";
+import { useNavigate } from "react-router-dom";
 
 const MENU_ITEMS = [
   { title: "Home", path: "home" },
@@ -23,25 +25,28 @@ const MENU_ITEMS = [
   },
 ];
 
-export const getUserData = () => {
-  const userEmail = localStorage.getItem("userEmail");
-  const userName = localStorage.getItem("userName");
-  return { userEmail, userName };
-};
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const [user, setUser] = useState({ userEmail: "", userName: "" });
-
-  useEffect(() => {
-    const userData = getUserData();
-    setUser(userData);
-  }, []);
+  const {user, setUser } = useAppState();
+  const navigate  = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  function handleLogout(){
+    localStorage.removeItem('token');
+    setUser(null);
+    if(!user){
+      navigate('/login');
+    }
+  }
+  
+
+  
 
   return (
     <div className="">
@@ -79,13 +84,13 @@ export default function Header() {
               <input type="text" name="search"  placeholder="Search..." className="rounded-[200px] shadow-lg border border-black px-5 py-2 " />
               
             </div> */}
-            <div className="hidden  md:flex text-[35px] shadow-xl rounded-[20px]">
-              <div>
-                <Link to="login">
-                  <CiUser />
-                </Link>
-                {/* <h1> {user.userName}</h1>
-                <p> {user.userEmail}</p> */}
+            <div className="hidden md:flex shadow-xl ">
+              <div className="" >
+                
+                <h1> {user?.name}</h1>
+                <button onClick={handleLogout}>
+                  Logout
+                </button>
               </div>
             </div>
 

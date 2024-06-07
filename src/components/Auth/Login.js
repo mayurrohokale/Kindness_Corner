@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
+const BASE_URL = process.env.REACT_APP_API_KEY || "http://localhost:8000";
 
 const Cstbutton = ({ text }) => {
   return (
@@ -38,8 +40,10 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const BASE_URL = "http://localhost:8000";
 
+  useEffect(()=> {
+
+  }, [])
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -51,25 +55,34 @@ export default function Login() {
       });
 
 
-      console.log(response.data);
+      const data = response?.data
+
+      if (data?.token) {
+        localStorage.setItem("token", data?.token);
+      }
      
       
       toast.success("Login Successfully", {
         position: "top-center",
       })
       
-      localStorage.setItem("userEmail", email);
-      localStorage.setItem("userName", name);
+      // localStorage.setItem("userEmail", email);
+      // localStorage.setItem("userName", name);
       
 
       setTimeout(() => {
         navigate("/home");
       }, 2000);
-    } catch (err) {
-      console.log(err);
-      toast.error("There was an error while login, please try again!", {
-        position: "top-center",
-      });
+    } catch (error) {
+      const data = error?.response?.data
+      
+      toast.error(
+        data?.message ||
+          "Something went wrong",
+        {
+          position: "top-center",
+        }
+      );
     }
   };
 
