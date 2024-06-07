@@ -15,7 +15,7 @@ const MENU_ITEMS = [
 
 export const DropdownMenu = ({ user, handleLogout }) => {
   return (
-    <div className="absolute top-full right-0 mt-2 w-30 bg-white border border-gray-200 rounded-md shadow-lg z-10 ">
+    <div className="absolute top-full right-0 mt-2 w-30 text-[#013159]  bg-white border border-gray-200 rounded-md shadow-lg z-10 ">
       <div className="py-2">
         {user ? (
           <>
@@ -35,7 +35,7 @@ export const DropdownMenu = ({ user, handleLogout }) => {
               <Link to="/login">Login</Link>
             </div>
             <div className="px-4 py-2 cursor-pointer hover:bg-gray-100 hover:text-[#F70059] hover:underline">
-              Signup
+              <Link to="/register">Register</Link>
             </div>
           </>
         )}
@@ -58,6 +58,8 @@ export default function Header() {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+
+  
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -84,7 +86,7 @@ export default function Header() {
             </div>
 
             <nav className="lg:flex hidden">
-              <ul className="flex gap-10 items-start text-2xl font-Roboto">
+              <ul className="flex gap-10 items-start text-2xl font-sans font-semibold text-[#013159]">
                 {MENU_ITEMS.map(({ path, title }) => (
                   <li
                     className="transform hover:scale-110 hover:underline hover:text-[#E91E63]"
@@ -99,10 +101,10 @@ export default function Header() {
             <div className="flex justify-end items-center p-4 bg-gray-100">
               <div className="relative cursor-pointer group" onClick={toggleDropdown}>
                 <div className="flex items-center">
-                  <span className="mr-2 text-[32px]">
+                  <span className="mr-2 text-[32px] text-[#013159]">
                     <FiUser />
                   </span>
-                  <span className="flex flex-col ">
+                  <span className="flex flex-col text-[#013159] ">
                     {user ? (
                       <>
                       <span className="text-sm">hello</span>
