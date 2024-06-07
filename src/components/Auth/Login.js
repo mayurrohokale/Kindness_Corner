@@ -49,12 +49,19 @@ export default function Login() {
         email,
         password,
       });
+
+
       console.log(response.data);
      
+      
       toast.success("Login Successfully", {
         position: "top-center",
       })
-      localStorage.setItem("user", JSON.stringify(email));
+      
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userName", name);
+      
+
       setTimeout(() => {
         navigate("/home");
       }, 2000);
