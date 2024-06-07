@@ -10,7 +10,8 @@ module.exports = {
         "monserrat": ["Montserrat", "sans-serif"],
         "itim":["Itim", "cursive"],
         "josiefin":["Josefin Sans", "sans-serif"],
-        "Roboto":["Roboto Condensed", "sans-serif"]
+        "Roboto":["Roboto Condensed", "sans-serif"],
+        "sans": ['"Source Sans Pro"', 'sans-serif'],
       }
     },
   },

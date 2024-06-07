@@ -65,6 +65,8 @@ export default function Login() {
       toast.success("Login Successfully", {
         position: "top-center",
       })
+     
+      
       
       // localStorage.setItem("userEmail", email);
       // localStorage.setItem("userName", name);
@@ -73,6 +75,7 @@ export default function Login() {
       setTimeout(() => {
         navigate("/home");
       }, 2000);
+      window.location.reload();
     } catch (error) {
       const data = error?.response?.data
       
