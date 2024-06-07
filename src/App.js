@@ -2,8 +2,8 @@ import "./App.css";
 
 import Main from "./components/Home/Main";
 import Layout from "./components/layout";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {useEffect, useState } from "react"
 import Donation from "./components/Donate/Donation";
 import Volentier from "./components/Home/Volentier";
 import Completedworks from "./components/Home/Completedworks";
@@ -11,12 +11,42 @@ import Campaign from "./components/Home/Campaign/Campaign";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import { ToastContainer } from "react-toastify";
+import { getMe } from "./components/api/user";
 
 function App() {
+
+  // const [user, setUser] = useState(null);
+  // const location = useLocation();
+  // const navigate = useNavigate();
+
+
+
+  // async function fetchProfile(){
+  //   const data = await getMe()
+  //   if (data) {
+  //     setUser(data?.user);
+  //   }
+  // }
+  // useEffect( ()=> {
+  //   fetchProfile();
+
+  // }, [])
+
+  // useEffect( ()=>{
+  //   if(user && location.pathname === '/login'){
+  //     navigate('/');
+  //   }
+  // }, [user,location, navigate])
+
+
+
+
+
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Layout>
+      {/* <BrowserRouter>
+        <Layout> */}
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/home" element={<Main />} />
@@ -28,8 +58,8 @@ function App() {
             <Route path="/register" element={<Register/>}/>
 
           </Routes>
-        </Layout>
-      </BrowserRouter>
+        {/* </Layout>
+      </BrowserRouter> */}
     </div>
   );
 }
