@@ -4,13 +4,16 @@ import { FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAppState } from "../../utils/appState";
 
-
 const MENU_ITEMS = [
   { title: "Home", path: "home" },
   { title: "Donate", path: "donate" },
   { title: "Transactions", path: "transaction" },
   { title: "Works", path: "works" },
   { title: "Vote", path: "vote" },
+  { title: "Profile", path: "profile"},
+  { title: "Login", path: "login"},
+  { title: "Logout", path: "logout"},
+  { title: "Register", path: "register"},
 ];
 
 export const DropdownMenu = ({ user, handleLogout }) => {
@@ -47,9 +50,7 @@ export const DropdownMenu = ({ user, handleLogout }) => {
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-
   const { user, setUser } = useAppState();
-  
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -59,46 +60,43 @@ export default function Header() {
     setShowDropdown(!showDropdown);
   };
 
-  
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUser(null);
-  
   };
+
+  const filteredMenuItems = user
+    ? MENU_ITEMS.slice(0, 5).concat(
+        MENU_ITEMS.find((item) => item.title === "Profile"),
+        MENU_ITEMS.find((item) => item.title === "Logout")
+      )
+    : MENU_ITEMS.slice(0, 5).concat(
+        MENU_ITEMS.find((item) => item.title === "Login"),
+        MENU_ITEMS.find((item) => item.title === "Register")
+      );
 
   return (
     <div className="">
       <div className="relative">
-        <header
-          className="md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-10 shadow-xl border-x-2 font-medium"
-          id="home"
-        >
+        <header className="md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-10 shadow-xl border-x-2 font-medium" id="home">
           <div className="flex flex-row justify-between w-full items-center">
             <div className="logo text-lg md:text-2xl font-bold">
               <Link to="/" className="cursor-pointer">
-                <img
-                  src="./images/logo.png"
-                  alt="logo"
-                  className="w-28 md:w-36 p-2"
-                />
+                <img src="./images/logo.png" alt="logo" className="w-28 md:w-36 p-2" />
               </Link>
             </div>
 
             <nav className="lg:flex hidden">
               <ul className="flex gap-10 items-start text-2xl font-sans font-semibold text-[#013159]">
-                {MENU_ITEMS.map(({ path, title }) => (
-                  <li
-                    className="transform hover:scale-110 hover:underline hover:text-[#E91E63]"
-                    key={title}
-                  >
+                {MENU_ITEMS.slice(0,5).map(({ path, title }) => (
+                  <li className="transform hover:scale-110 hover:underline hover:text-[#E91E63]" key={title}>
                     <Link to={path}>{title}</Link>
                   </li>
                 ))}
               </ul>
             </nav>
 
-            <div className="flex justify-end items-center p-4 bg-gray-100">
+            <div className="hidden md:flex justify-end items-center p-4 bg-gray-100">
               <div className="relative cursor-pointer group" onClick={toggleDropdown}>
                 <div className="flex items-center">
                   <span className="mr-2 text-[32px] text-[#013159]">
@@ -107,10 +105,9 @@ export default function Header() {
                   <span className="flex flex-col text-[#013159] ">
                     {user ? (
                       <>
-                      <span className="text-sm">hello</span>
-                      <span className="text-base">{user.name}</span>
+                        <span className="text-sm">hello</span>
+                        <span className="text-base">{user.name}</span>
                       </>
-                      
                     ) : (
                       <>
                         <span className="text-sm">hello</span>
@@ -125,10 +122,7 @@ export default function Header() {
               </div>
             </div>
 
-            <div
-              className="lg:hidden cursor-pointer text-lg text-[#E91E63] flex items-center"
-              onClick={toggleMenu}
-            >
+            <div className="lg:hidden cursor-pointer text-lg text-[#E91E63] flex items-center" onClick={toggleMenu}>
               <MdMenu className="mr-1" /> MENU
             </div>
           </div>
@@ -137,13 +131,18 @@ export default function Header() {
       <div className="absolute top-17 right-3 sm:right-5 z-30">
         {menuOpen && (
           <nav className="lg:hidden flex flex-col items-start bg-white border shadow-lg p-3 w-32">
-            <ul className="flex flex-col gap-3 items-start text-sm font-semibold">
-              {MENU_ITEMS.map(({ path, title }) => (
+             <ul className="flex flex-col gap-3 items-start text-sm font-semibold">
+              {filteredMenuItems.map(({ path, title }) => (
                 <li
-                  className="hover:underline hover:text-[#E91E63]"
+                  className="hover:underline hover:text-[#E91E63] cursor-pointer"
                   key={title}
+                  onClick={title === "Logout" ? handleLogout : null}
                 >
-                  <Link to={path}>{title}</Link>
+                  {title === "Logout" ? (
+                    "Logout"
+                  ) : (
+                    <Link to={path}>{title}</Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -153,4 +152,3 @@ export default function Header() {
     </div>
   );
 }
- 
