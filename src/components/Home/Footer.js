@@ -43,7 +43,7 @@ const Footer = () => {
 
             <div className='mt-6 max-w-screen  bg-[#132B3F]   font-itim md:px-8'>
                 <div className='flex flex-col md:flex-row md:justify-between  '>
-                    <div className='md:items-center justify-center flex'><img src="./images/logo3.png" alt="logo" className='w-36 md:w-32 p-1 mt-2 md:p-2 md:py-8 ' /></div>
+                    <div className='md:items-center justify-center flex'><img src="./images/logo4.png" alt="logo" className='w-36 md:w-44 p-1 mt-2 md:p-2 md:py-8 ' /></div>
                     
                     <div className='py-4'>
                         <h1 className='font-bold py-2'>Donate</h1>
