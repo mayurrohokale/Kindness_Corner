@@ -79,7 +79,7 @@ export default function Donateform() {
 
   return (
     <div className="bg-[#F6F2F2] flex flex-col sm:w-[493px] max-w-full sm:max-w-[493px]  rounded-[25px] border border-black lg:border-none shadow-lg py-5 md:py-8  gap-2">
-      <div className="flex flex-row items-center justify-center gap-2 sm:gap-6">
+      <div className="flex flex-row items-center justify-center gap-2 f sm:gap-6">
         {/* <Custombutton theme={"blue"} text={"One Time"} />
         <Custombutton text={"Monthly"} /> */}
         {
@@ -130,7 +130,7 @@ export default function Donateform() {
           type="number"
           name="amount"
           value={amount === 0 ? "Please enter an amount" : amount}
-          className="border border-black w-full max-w-[285px] h-[43px]  md:max-w-[419px] md:h-[71px] hover:shadow-lg px-10 text-[lg]  md:px-16 font-bold md:text-3xl md:pt-0 font-ititm
+          className="border border-black w-full max-w-[285px] h-[43px]  md:max-w-[419px] md:h-[71px] hover:shadow-lg px-10 text-[lg]  md:px-16 font-bold md:text-3xl md:pt-0 font-sans
                 " 
           onChange={handleAmountChange}
         />
@@ -139,7 +139,7 @@ export default function Donateform() {
           {amount === 0 ? "Please enter an amount" : `You are donating ₹ ${amount}`}
         </p>
 
-        <button className=" w-[150px] h-[48px] md:w-[260px] md:h-[70px] items-center  bg-[#E91E63] text-white text-[15px] md:text-[25px] font-bold  shadow-lg font-Roboto hover:scale-110">
+        <button className=" w-[150px] h-[48px] md:w-[260px] md:h-[70px] items-center  bg-[#E91E63] text-white text-[15px] md:text-[25px] font-bold  shadow-lg font-sans hover:scale-110">
          <Link to="/donate">DONATE NOW</Link>
         </button>
       </div>

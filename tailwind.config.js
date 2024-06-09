@@ -13,7 +13,8 @@ module.exports = {
         "Roboto":["Roboto Condensed", "sans-serif"],
         "sans": ['"Source Sans Pro"', 'sans-serif'],
       }
-    },
+    }
+  
   },
   plugins: [],
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Volentier() {
     return (
       <div className="bg-[#BBDEFB] " id="voulunteers">
-        <p className="mt-8 font-bold text-[20px] md:text-[45px] font-Roboto mb-3">
+        <p className="mt-8 font-bold text-[20px] md:text-[45px] font-sans mb-3">
           Together We can Make Difference
         </p>
         <hr className="border border-black" />
@@ -14,7 +14,7 @@ export default function Volentier() {
           <div>Voulunteers</div>
         </div>
 
-        <p className="font-bold font-Roboto text-[20px] md:text-[40px] mt-8 text-start mx-8">
+        <p className="font-bold font-sans text-[20px] md:text-[40px] mt-8 text-start mx-8">
           APPLY{" "}
           <span className="bg-[#E91E63] text-white p-3">AS VOLUNTEER</span>
         </p>
@@ -36,7 +36,7 @@ export default function Volentier() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-5 text-center text-sm text-black/60 lg:text-lg justify-center items-center font-Roboto">
+          <div className="flex flex-col md:flex-row gap-5 text-center text-sm text-black/60 lg:text-lg justify-center items-center font-sans">
             <div className="bg-white shadow-lg max-w-[220px] min-h-[220px] lg:h-full items-center flex  ">
               <p className="p-2 ">
                 <span className=" font-bold">About-US</span>
@@ -67,7 +67,7 @@ export default function Volentier() {
         </div>
         <div className="flex justify-center md:justify-end mx-16 mt-8 mb-4 p-2">
           <Link to="/login">
-          <button className="bg-[#E91E63]  p-2 text-white font-bold text-[15px] md:text-[25px] flex flex-row font-Roboto">
+          <button className="bg-[#E91E63]  p-2 text-white font-bold text-[15px] md:text-[25px] flex flex-row font-sans">
             APPLY NOW &ensp;
             <MdArrowOutward className=" items-center" />
           </button>
