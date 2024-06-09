@@ -41,7 +41,7 @@ const Footer = () => {
                 </div>
             ))}
 
-            <div className='mt-6 max-w-screen bg-gradient-to-b from-[#90CAF9]  to-[#276AA0] font-itim md:px-8'>
+            <div className='mt-6 max-w-screen  bg-[#132B3F]   font-itim md:px-8'>
                 <div className='flex flex-col md:flex-row md:justify-between  '>
                     <div className='md:items-center justify-center flex'><img src="./images/logo.png" alt="logo" className='w-36 md:w-32 p-1 mt-2 md:p-2 md:py-8 ' /></div>
                     
