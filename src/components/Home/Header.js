@@ -87,7 +87,7 @@ export default function Header() {
             </div>
 
             <nav className="lg:flex hidden">
-              <ul className="flex gap-10 items-start text-2xl font-sans font-semibold text-[#013159]">
+              <ul className="flex gap-10 items-start text-[22px] font-sans font-semibold text-[#013159]">
                 {MENU_ITEMS.slice(0,5).map(({ path, title }) => (
                   <li className="transform hover:scale-110 hover:underline hover:text-[#E91E63]" key={title}>
                     <Link to={path}>{title}</Link>
@@ -122,8 +122,8 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="lg:hidden cursor-pointer text-lg text-[#E91E63] flex items-center" onClick={toggleMenu}>
-              <MdMenu className="mr-1" /> MENU
+            <div className="lg:hidden cursor-pointer text-[25px] text-[#E91E63] flex items-center" onClick={toggleMenu}>
+              <MdMenu className="mr-1" /> 
             </div>
           </div>
         </header>
