@@ -82,7 +82,7 @@ export default function Header() {
           <div className="flex flex-row justify-between w-full items-center">
             <div className="logo text-lg md:text-2xl font-bold">
               <Link to="/" className="cursor-pointer">
-                <img src="./images/logo.png" alt="logo" className="w-28 md:w-36 p-2" />
+                <img src="./images/logo3.png" alt="logo" className="w-28 md:w-44 p-2" />
               </Link>
             </div>
 

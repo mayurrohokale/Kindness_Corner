@@ -35,7 +35,7 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
 
 export default function Login() {
 
-  const [name, setName] = useState("");
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -49,7 +49,6 @@ export default function Login() {
 
     try {
       const response = await Axios.post(`${BASE_URL}/login`, {
-        name,
         email,
         password,
       });
