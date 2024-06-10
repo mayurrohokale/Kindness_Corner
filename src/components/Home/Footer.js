@@ -22,7 +22,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="faq  ">
+        <div className="faq text-white  ">
            
             <div className='pt-8 pb-8' >
                 <h1 className='font-bold pb-4 text-[26px] md:text-[35px]'>Frequently Asked Questions ?</h1>
@@ -46,7 +46,7 @@ const Footer = () => {
                     <div className='md:items-center justify-center flex'><img src="./images/logo4.png" alt="logo" className='w-36 md:w-44 p-1 mt-2 md:p-2 md:py-8 ' /></div>
                     
                     <div className='py-4'>
-                        <h1 className='font-bold py-2'>Donate</h1>
+                        <h1 className='font-bold font-monserrat py-2'>Donate</h1>
                         <div className='flex flex-col md:flex-row gap-0 md:gap-2 text-white '>
                             <Link to="home"><h3>Home</h3></Link>
                             <Link to="transaction"><h3>Transactions</h3></Link>
@@ -58,7 +58,7 @@ const Footer = () => {
                     </div>
                     
                     <div className='py-4'>
-                        <h1 className='font-bold py-2'>Help</h1>
+                        <h1 className='font-bold py-2 font-monserrat'>Help</h1>
                         <div className='flex flex-col md:flex-row gap-0 md:gap-2 text-white'>
                             <h3>FAQ</h3>
                             <h3>Privacy policy</h3>
@@ -70,7 +70,7 @@ const Footer = () => {
                     </div>
                     
                     <div className='py-4'>
-                        <h1 className='font-bold py-2'>Trust</h1>
+                        <h1 className='font-bold py-2 font-monserrat'>Trust</h1>
                         <div className='flex flex-col md:flex-row gap-0 md:gap-2 text-white'>
                             <h3>About US</h3>
                             <h3>Careers</h3>

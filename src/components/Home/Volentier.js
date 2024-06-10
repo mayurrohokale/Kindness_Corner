@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Volentier() {
     return (
       <div className="bg-[#BBDEFB] " id="voulunteers">
-        <p className="mt-8 font-bold text-[20px] md:text-[45px] font-sans mb-3">
+        <p className="mt-8 font-bold text-[20px] md:text-[45px] font-monserrat mb-3">
           Together We can Make Difference
         </p>
         <hr className="border border-black" />
@@ -66,7 +66,7 @@ export default function Volentier() {
           </div>
         </div>
         <div className="flex justify-center md:justify-end mx-16 mt-8 mb-4 p-2">
-          <Link to="/login">
+          <Link to="/volunteer">
           <button className="bg-[#E91E63]  p-2 text-white font-bold text-[15px] md:text-[25px] flex flex-row font-sans">
             APPLY NOW &ensp;
             <MdArrowOutward className=" items-center" />

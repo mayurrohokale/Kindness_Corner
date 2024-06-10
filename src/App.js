@@ -12,6 +12,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import { ToastContainer } from "react-toastify";
 import { getMe } from "./components/api/user";
+import Volunteerform from "./components/Home/Volunteer/volunteerform";
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/vote" element={<Campaign/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
+            <Route path="/volunteer" element={<Volunteerform/>}/>
 
           </Routes>
         {/* </Layout>
