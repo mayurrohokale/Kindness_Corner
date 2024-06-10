@@ -21,7 +21,7 @@ export default function Worksform() {
     ];
   
     return (
-      <div className="flex flex-col lg:flex-row justify-center py-2 w-full gap-4">
+      <div className="flex flex-col lg:flex-row justify-center py-2 w-full gap-4  text-white">
         {worksData.map((item, index) => (
           <div
             key={item.id}
@@ -34,7 +34,7 @@ export default function Worksform() {
             />
   
             <div className="w-full flex flex-col items-center p-2">
-              <p className="text-start max-w-[300px] text-sm text-black/60">
+              <p className="text-start  text-sm ">
                 {item.text}
               </p>
             </div>
