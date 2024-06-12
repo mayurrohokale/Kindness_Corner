@@ -12,6 +12,9 @@ module.exports = {
         "josiefin":["Josefin Sans", "sans-serif"],
         "Roboto":["Roboto Condensed", "sans-serif"],
         "sans": ['"Source Sans Pro"', 'sans-serif'],
+        "courier" : ["Courier Prime"],
+        
+        
       }
     }
   

@@ -7,6 +7,8 @@ const defaultValue = {
     setPaymentType: () => {},
     user: {},
     setUser: () => {},
+    volunteer: {},
+    setVolunteer: ()=> {},
 
 };
 

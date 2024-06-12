@@ -1,8 +1,15 @@
 import { MdArrowOutward } from "react-icons/md";
+import { useAppState } from "../../../utils/appState";
+import { useState } from "react";
+import { setVolunteer } from "../../api/user";
+import { toast, ToastContainer } from "react-toastify";
 
-const Cstbutton = ({ text }) => {
+
+
+
+const Cstbutton = ({ text, type }) => {
   return (
-    <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4  rounded">
+    <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4  rounded" type={type}>
       {text}
     </button>
   );
@@ -27,9 +34,31 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
 };
 
 export default function VolunteerForm() {
+
+  const [phone, setPhone] = useState();
+  const [address, setAddress]  = useState();
   
+  // const { volunteer, setVolunteer } = useAppState();
+  const {user, setUser}= useAppState();
 
 
+  async function handleVolunteer(e){
+    e?.preventDefault();
+    try {
+       const data = {phone, address};
+       const res = await setVolunteer(data);
+       console.log(res);
+      //  if(res?.message){
+        toast.success(res?.message || "You are Now a Volunteer",{position: "top-center"});
+      //  }
+       setUser((prev)=> ({
+        ...prev,is_volunteer: true
+       }))
+    } catch (error) {
+      toast.error("something went wrong", {position: "top-center"});
+    }
+  }
+  console.log(user);
 
   return (
     <div>
@@ -53,25 +82,58 @@ export default function VolunteerForm() {
       </div>
       <div className="pt-8">
         <div className="p-8 flex flex-col gap-4 justify-center items-center ">
-            <h1 className="text-[20px] md:text-[36px] font-bold font-monserrat">Why Volunteer With <span className="text-[#F70059]"> Kindness Corner</span></h1>
-            <h2 className=" font-monserrat text-[8px] md:text-[16px]">"Join us in making a difference through Kindness Corner, where every volunteer<br/> effort amplifies our impact and spreads compassion. Together, we can transform lives and build a stronger,<br/> more caring community."</h2>
+          <h1 className="text-[20px] md:text-[36px] font-bold font-monserrat">
+            Why Volunteer With{" "}
+            <span className="text-[#F70059]"> Kindness Corner</span>
+          </h1>
+          <h2 className=" font-monserrat text-[8px] md:text-[16px]">
+            "Join us in making a difference through Kindness Corner, where every
+            volunteer
+            <br /> effort amplifies our impact and spreads compassion. Together,
+            we can transform lives and build a stronger,
+            <br /> more caring community."
+          </h2>
         </div>
         <div>
-            <div></div>
-            <div></div>
-            <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center m-4 p-6">
-        <h1 className=" font-monserrat font-bold text-[20px] md:text-[36px]">Register For the Volunteer </h1>
-        <div className="flex flex-col gap-2">
-            <CustomInput label="name" type="text" placeholder={"Enter Your Full Name"} />
-            <CustomInput label="email" type="email" placeholder={"Enter Your Email"} />
-            <CustomInput label="phone" type="phone" placeholder={"Enter Your Phone Number"} />
-            <CustomInput label="address" type="textarea" placeholder={"Enter Your Address"} />
-            <Cstbutton text="submit" />
-        </div>
-      </div>
+      
+        {user?.is_volunteer ?(<div className=" m-4 pb-8">
+            <span class="inline-block font-courier border-4 border-green-600 transform rotate-[-8deg] text-green-600 font-bold uppercase tracking-wide px-4 py-2 rounded-lg text-[11px] md:text-2xl">Aleready Volunteer!</span>
+
+        </div>) : (
+   
+
+      
+    
+        <div className="flex flex-col justify-center items-center m-4 p-6">
+          <h1 className=" font-monserrat font-bold text-[20px] md:text-[36px]">
+            Register For the Volunteer{" "}
+          </h1>
+    
+          <form className="flex flex-col gap-2" onSubmit={handleVolunteer}>
+
+            <CustomInput
+              label="phone"
+              type="phone"
+              placeholder={"Enter Your Phone Number"}
+              value={phone}
+              onChange={(e)=> setPhone(e.target.value)}
+            />
+            <CustomInput
+              label="address"
+              type="textarea"
+              value={address}
+              placeholder={"Enter Your Address"}
+              onChange={(e)=> setAddress(e.target.value)}
+            />
+            <Cstbutton text="submit" type="submit" />
+          </form>
+        </div>)}
+            <ToastContainer/>
     </div>
   );
 }
