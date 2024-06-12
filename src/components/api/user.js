@@ -30,3 +30,18 @@ export async function getMe(){
   );
   return response?.data
 }
+
+export async function setVolunteer(data){
+    const headers = getHeaders();
+    console.log(headers);
+    if (!headers?.Authorization) {
+        return null;
+    }
+    const response = await Axios.post(`${BASE_URL}/volunteer`, 
+        data,
+        { headers: headers }
+    );
+  return response?.data
+}
+
+

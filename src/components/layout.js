@@ -28,6 +28,9 @@ export default function Layout({ children }) {
     if(user && location.pathname === '/login'){
       navigate('/');
     }
+    // if(user && location.pathname === '/profile'){
+    //   navigate('/');
+    // }
   }, [user,location, navigate])
 
 

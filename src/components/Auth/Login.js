@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { getMe } from "../api/user";
+import { useAppState } from "../../utils/appState";
 import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = process.env.REACT_APP_API_KEY || "http://localhost:8000";
@@ -38,6 +40,7 @@ export default function Login() {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {user, setUser}= useAppState();
 
   const navigate = useNavigate();
 
@@ -70,11 +73,11 @@ export default function Login() {
       // localStorage.setItem("userEmail", email);
       // localStorage.setItem("userName", name);
       
-
-      setTimeout(() => {
+      await fetchProfile();
+      // setTimeout(() => {
         navigate("/home");
-      }, 2000);
-      window.location.reload();
+      // }, );
+      // window.location.reload();
     } catch (error) {
       const data = error?.response?.data
       
@@ -86,7 +89,15 @@ export default function Login() {
         }
       );
     }
-  };
+  }
+
+  async function fetchProfile(){
+    
+    const data = await getMe()
+    if (data) {
+      setUser(data?.user);
+    }
+  }
 
   return (
     <div className="flex justify-center items-center md:h-screen p-4">
