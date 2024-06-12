@@ -23,7 +23,7 @@ export const DropdownMenu = ({ user, handleLogout }) => {
         {user ? (
           <>
             <div className="px-4 py-2 cursor-pointer hover:bg-gray-100 hover:text-[#F70059] hover:underline">
-              Profile
+              <Link to="/profile" >Profile</Link>
             </div>
             <div
               className="px-4 py-2 cursor-pointer hover:bg-gray-100 hover:text-[#F70059] hover:underline"

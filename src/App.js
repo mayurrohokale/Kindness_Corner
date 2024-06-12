@@ -13,6 +13,7 @@ import Register from "./components/Auth/Register";
 import { ToastContainer } from "react-toastify";
 import { getMe } from "./components/api/user";
 import Volunteerform from "./components/Home/Volunteer/volunteerform";
+import Profile from "./components/Home/Profile/Profile";
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/volunteer" element={<Volunteerform/>}/>
+            <Route path="/profile" element={<Profile/>}/>
 
           </Routes>
         {/* </Layout>

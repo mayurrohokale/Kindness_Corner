@@ -33,14 +33,14 @@ export default function VolunteerForm() {
 
   return (
     <div>
-      <div className="relative max-w-[1536px] h-[40vh] lg:h-[56vh]">
+      <div className="relative max-w-[1536px] h-[460px] lg:h-[56vh]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('./images/img2.jpg')" }}
         >
           <div className="absolute inset-0 bg-black opacity-80"></div>
-          <div className="relative flex flex-col justify-center items-center pt-36 text-white font-bold text-[30px] md:text-[52px] gap-6 font-monserrat">
-            <h1>
+          <div className="relative flex flex-col justify-center items-center  text-white font-bold text-[30px] md:text-[52px] gap-6 font-monserrat h-full">
+            <h1 className="text-center">
               Add Purpose To Your
               <br /> Weekends
             </h1>
