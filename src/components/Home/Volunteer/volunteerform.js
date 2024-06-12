@@ -3,13 +3,11 @@ import { useAppState } from "../../../utils/appState";
 import { useState } from "react";
 import { setVolunteer } from "../../api/user";
 import { toast, ToastContainer } from "react-toastify";
-
-
-
+import { Link, useNavigate} from "react-router-dom";
 
 const Cstbutton = ({ text, type }) => {
   return (
-    <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4  rounded" type={type}>
+    <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4 rounded" type={type}>
       {text}
     </button>
   );
@@ -22,7 +20,7 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
         <label className="">{label}</label>
         <br />
         <input
-          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg   w-[240px]  lg:w-[390px] max:w-[1536px]  px-5 py-3"
+          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg w-[240px] lg:w-[390px] max:w-[1536px] px-5 py-3"
           type={type}
           placeholder={placeholder}
           value={value}
@@ -34,30 +32,33 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
 };
 
 export default function VolunteerForm() {
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const { user, setUser } = useAppState();
 
-  const [phone, setPhone] = useState();
-  const [address, setAddress]  = useState();
-  
-  // const { volunteer, setVolunteer } = useAppState();
-  const {user, setUser}= useAppState();
+  const navigate = useNavigate();
 
-
-  async function handleVolunteer(e){
-    e?.preventDefault();
+  async function handleVolunteer(e) {
+    e.preventDefault();
     try {
-       const data = {phone, address};
-       const res = await setVolunteer(data);
-       console.log(res);
-      //  if(res?.message){
-        toast.success(res?.message || "You are Now a Volunteer",{position: "top-center"});
-      //  }
-       setUser((prev)=> ({
-        ...prev,is_volunteer: true
-       }))
+      const data = { phone, address };
+      const res = await setVolunteer(data);
+      console.log(res);
+      toast.success("You are now a volunteer" || res?.message , { position: "top-center" });
+      setUser((prev) => ({
+        ...prev,
+        is_volunteer: true
+      }));
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
     } catch (error) {
-      toast.error("something went wrong", {position: "top-center"});
+      toast.error("Something went wrong", { position: "top-center" });
     }
   }
+
+ 
+
   console.log(user);
 
   return (
@@ -68,7 +69,7 @@ export default function VolunteerForm() {
           style={{ backgroundImage: "url('./images/img2.jpg')" }}
         >
           <div className="absolute inset-0 bg-black opacity-80"></div>
-          <div className="relative flex flex-col justify-center items-center  text-white font-bold text-[30px] md:text-[52px] gap-6 font-monserrat h-full">
+          <div className="relative flex flex-col justify-center items-center text-white font-bold text-[30px] md:text-[52px] gap-6 font-monserrat h-full">
             <h1 className="text-center">
               Add Purpose To Your
               <br /> Weekends
@@ -81,14 +82,13 @@ export default function VolunteerForm() {
         </div>
       </div>
       <div className="pt-8">
-        <div className="p-8 flex flex-col gap-4 justify-center items-center ">
+        <div className="p-8 flex flex-col gap-4 justify-center items-center">
           <h1 className="text-[20px] md:text-[36px] font-bold font-monserrat">
             Why Volunteer With{" "}
             <span className="text-[#F70059]"> Kindness Corner</span>
           </h1>
-          <h2 className=" font-monserrat text-[8px] md:text-[16px]">
-            "Join us in making a difference through Kindness Corner, where every
-            volunteer
+          <h2 className="font-monserrat text-[8px] md:text-[16px]">
+            "Join us in making a difference through Kindness Corner, where every volunteer
             <br /> effort amplifies our impact and spreads compassion. Together,
             we can transform lives and build a stronger,
             <br /> more caring community."
@@ -100,40 +100,45 @@ export default function VolunteerForm() {
           <div></div>
         </div>
       </div>
-      
-        {user?.is_volunteer ?(<div className=" m-4 pb-8">
-            <span class="inline-block font-courier border-4 border-green-600 transform rotate-[-8deg] text-green-600 font-bold uppercase tracking-wide px-4 py-2 rounded-lg text-[11px] md:text-2xl">Aleready Volunteer!</span>
 
-        </div>) : (
-   
-
-      
-    
+      {!user ? (
+        <div>
+          <h1>Join Here!</h1>
+          <Link to="/register">
+          <Cstbutton text="Register Here!"  /></Link>
+          
+        </div>
+      ) : user?.is_volunteer ? (
+        <div className="m-4 pb-8">
+          <span className="inline-block font-courier border-4 border-green-600 transform rotate-[-8deg] text-green-600 font-bold uppercase tracking-wide px-4 py-2 rounded-lg text-[11px] md:text-2xl">
+            Already Volunteer!
+          </span>
+        </div>
+      ) : (
         <div className="flex flex-col justify-center items-center m-4 p-6">
-          <h1 className=" font-monserrat font-bold text-[20px] md:text-[36px]">
-            Register For the Volunteer{" "}
+          <h1 className="font-monserrat font-bold text-[20px] md:text-[36px]">
+            Register For the Volunteer
           </h1>
-    
           <form className="flex flex-col gap-2" onSubmit={handleVolunteer}>
-
             <CustomInput
-              label="phone"
+              label="Phone"
               type="phone"
-              placeholder={"Enter Your Phone Number"}
+              placeholder="Enter Your Phone Number"
               value={phone}
-              onChange={(e)=> setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
             <CustomInput
-              label="address"
+              label="Address"
               type="textarea"
               value={address}
-              placeholder={"Enter Your Address"}
-              onChange={(e)=> setAddress(e.target.value)}
+              placeholder="Enter Your Address"
+              onChange={(e) => setAddress(e.target.value)}
             />
-            <Cstbutton text="submit" type="submit" />
+            <Cstbutton text="Submit" type="submit" />
           </form>
-        </div>)}
-            <ToastContainer/>
+        </div>
+      )}
+      <ToastContainer />
     </div>
   );
 }
