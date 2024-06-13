@@ -22,7 +22,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="faq text-white  ">
+        <div className="faq ">
            
             <div className='pt-8 pb-8' >
                 <h1 className='font-bold pb-4 text-[26px] md:text-[35px]'>Frequently Asked Questions ?</h1>
