@@ -44,6 +44,30 @@ export async function setVolunteer(data){
   return response?.data
 }
 
+
+export async function getVolunteers(){
+    const headers = getHeaders();
+    console.log(headers);
+    if (!headers?.Authorization) {
+        return null;
+    }
+
+    try {
+        const response = await Axios.get(`${BASE_URL}/volunteers`, {
+            headers
+        });
+
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error("Failed to fetch volunteers");
+        }
+    } catch (error) {
+        console.error("Error fetching volunteers:", error);
+        return null;
+    }
+}
+
 export async function getVolunteersCount(){
     const headers = getHeaders();
     if (!headers?.Authorization) {
