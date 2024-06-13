@@ -30,11 +30,12 @@ export default function Volentier() {
         <div>To Go</div>
         <div className="flex flex-col gap-2 text-3xl font-bold font-monserrat">
           {" "}
-          <h1>
+          <Link to="/allvolunteers"><h1>
             Volunteers{" "}
             
           </h1>
-          <h1>{setvolcount !== null ? setvolcount : "Loading..."}</h1>
+          <h1>{setvolcount !== null ? setvolcount : "Loading..."}</h1></Link>
+          
           <div></div>
         </div>
       </div>

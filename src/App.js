@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import { getMe } from "./components/api/user";
 import Volunteerform from "./components/Home/Volunteer/volunteerform";
 import Profile from "./components/Home/Profile/Profile";
+import AllVolunteers from "./components/Home/Volunteer/allvolunteers";
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
             <Route path="/register" element={<Register/>}/>
             <Route path="/volunteer" element={<Volunteerform/>}/>
             <Route path="/profile" element={<Profile/>}/>
+            <Route path="/allvolunteers" element={<AllVolunteers/>}/>
 
           </Routes>
         {/* </Layout>
