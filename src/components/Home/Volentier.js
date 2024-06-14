@@ -42,11 +42,11 @@ export default function Volentier() {
           <h1 className="text-5xl">0</h1>
         </div>
         <GoArrowUpRight className="text-6xl text-[#E91E63]" />
-        <div className="flex flex-col  font-bold font-monserrat text-white">
+        <div className="flex flex-col gap-2 font-bold font-monserrat text-white">
           {" "}
           <Link to="/allvolunteers">
             <h1 className=" text-xl lg:text-2xl ">Volunteers </h1>
-            <h1 className="inline-block text-5xl">
+            <h1 className="text-5xl">
               {setvolcount !== null ? setvolcount : "Loading..."}
              
             </h1>

@@ -15,7 +15,7 @@ import { getMe } from "./components/api/user";
 import Volunteerform from "./components/Home/Volunteer/volunteerform";
 import Profile from "./components/Home/Profile/Profile";
 import AllVolunteers from "./components/Home/Volunteer/allvolunteers";
-import Testdonation from "./components/Donate/testDonation";
+import Transactions from "./components/Donate/Transactions";
 
 function App() {
 
@@ -55,7 +55,6 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/home" element={<Main />} />
             <Route path="/donate" element={<Donation />} />
-            <Route path="/transaction" element={<Volentier/>}/>
             <Route path="/works" element={<Completedworks/>}/>
             <Route path="/vote" element={<Campaign/>}/>
             <Route path="/login" element={<Login/>}/>
@@ -63,7 +62,7 @@ function App() {
             <Route path="/volunteer" element={<Volunteerform/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/allvolunteers" element={<AllVolunteers/>}/>
-            <Route path="/testdonation" element={<Testdonation/>}/>
+            <Route path="/transaction" element={<Transactions/>}/>
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}

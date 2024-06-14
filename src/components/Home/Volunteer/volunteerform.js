@@ -102,8 +102,8 @@ export default function VolunteerForm() {
       </div>
 
       {!user ? (
-        <div>
-          <h1>Join Here!</h1>
+        <div className="m-4">
+          
           <Link to="/register">
           <Cstbutton text="Register Here!"  /></Link>
           
