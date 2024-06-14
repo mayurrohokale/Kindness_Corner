@@ -30,23 +30,23 @@ const Cstbutton = ({ text }) => {
 
 const CustomInput = ({ label, type, placeholder, value, onChange }) => {
   return (
-//     <div>
-//       <div className="">
-//         <label className="">{label}</label>
-//         <br />
-//         <input
-//           className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg   w-[240px]  lg:w-[390px] max:w-[1536px]  px-5 py-3"
-//           type={type}
-//           placeholder={placeholder}
-//           value={value}
-//           onChange={onChange}
-//         />
-//       </div>
-//     </div>
-//   );
-// };
+    <div>
+      <div className="">
+        <label className="">{label}</label>
+        <br />
+        <input
+          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg   w-[240px]  lg:w-[390px] max:w-[1536px]  px-5 py-3"
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+    </div>
+  );
+};
 
-// export default function Donation() {
+export default function Donation() {
 //   const [isNamedDonation, setIsNamedDonation] = useState(true);
 //   // const [isButtonClick, setButtonClick] = useState(true);
 //   const { amount, setAmount, payment_type, setPaymentType } = useAppState();
@@ -248,4 +248,4 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
 
 
   
-)}
+}
