@@ -46,16 +46,10 @@ export async function setVolunteer(data){
 
 
 export async function getVolunteers(){
-    const headers = getHeaders();
-    console.log(headers);
-    if (!headers?.Authorization) {
-        return null;
-    }
+    
 
     try {
-        const response = await Axios.get(`${BASE_URL}/volunteers`, {
-            headers
-        });
+        const response = await Axios.get(`${BASE_URL}/volunteers`);
 
         if (response.status === 200) {
             return response.data;
@@ -69,16 +63,10 @@ export async function getVolunteers(){
 }
 
 export async function getVolunteersCount(){
-    const headers = getHeaders();
-    if (!headers?.Authorization) {
-        return null;
-    }
-
+  
     try {
-        const response = await Axios.get(`${BASE_URL}/volunteers/count`, {
-            headers
-        });
-
+        const response = await Axios.get(`${BASE_URL}/volunteers/count`);
+          
         if (response.status === 200) {
             return response.data.count; // Return only the count
         } else {
@@ -91,3 +79,37 @@ export async function getVolunteersCount(){
     }
 }
 
+
+// Create Order
+export async function createOrder(data){
+    try {
+        const response = await Axios.post(`${BASE_URL}/createorder`, data, {
+            headers: { "Content-Type": "application/json" }
+        });
+        if (response.status === 200) {
+            return response.data.orderId;
+        } else {
+            throw new Error("Failed to create order");
+        }
+    } catch (error) {
+        console.error("Error creating order:", error);
+        return null;
+    }
+}
+
+// Verify Payment
+export async function verifyPayment(data){
+    try {
+        const response = await Axios.post(`${BASE_URL}/verifypayment`, data, {
+            headers: { "Content-Type": "application/json" }
+        });
+        if (response.status === 200) {
+            return response.data.status;
+        } else {
+            throw new Error("Failed to verify payment");
+        }
+    } catch (error) {
+        console.error("Error verifying payment:", error);
+        return null;
+    }
+}

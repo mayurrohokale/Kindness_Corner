@@ -63,6 +63,7 @@ const PAYMENT_OPTIONS = [
 export default function Donateform() {
 
   const { amount, setAmount, payment_type, setPaymentType } = useAppState();
+  
 
   const handleAmountChange = (e) => {
     if (e.target.value === "") {
@@ -76,6 +77,8 @@ export default function Donateform() {
   const handlePaymentTypeChange = (e) => {
     setPaymentType(e.target.value);
   }
+
+
 
   return (
     <div className="bg-[#F6F2F2] flex flex-col sm:w-[493px] max-w-full sm:max-w-[493px]  rounded-[25px] border border-black lg:border-none shadow-lg py-5 md:py-8  gap-2">
@@ -94,7 +97,7 @@ export default function Donateform() {
           ))
         }
       </div>
-      <p className="flex justify-start px-10 py-2 text-[10px] md:text-[12px] text-[#E91E63] font-itim">
+      <p className="flex justify-start px-10 py-2 text-[10px] md:text-[12px] text-[#F70059] font-itim">
         Monthly gifts help save lives all years long
         <img
           src="./images/arrow.png"
@@ -139,7 +142,7 @@ export default function Donateform() {
           {amount === 0 ? "Please enter an amount" : `You are donating ₹ ${amount}`}
         </p>
 
-        <button className=" w-[150px] h-[48px] md:w-[260px] md:h-[70px] items-center  bg-[#E91E63] text-white text-[15px] md:text-[25px] font-bold  shadow-lg font-sans hover:scale-110">
+        <button className=" w-[150px] h-[48px] md:w-[260px] md:h-[70px] items-center  bg-[#F70059] text-white text-[15px] md:text-[25px] font-bold  shadow-lg font-sans hover:scale-110">
          <Link to="/donate">DONATE NOW</Link>
         </button>
       </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { GoArrowUpRight } from "react-icons/go";
 import { MdArrowOutward } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { getVolunteersCount } from "../api/user";
@@ -7,16 +8,14 @@ export default function Volentier() {
 
   useEffect(() => {
     const fetchVolunteersCount = async () => {
-        const data = await getVolunteersCount();
-        if (data) {
-            setVolcount(data);
-        }
+      const data = await getVolunteersCount();
+      if (data) {
+        setVolcount(data);
+      }
     };
 
     fetchVolunteersCount();
-}, []);
-
-
+  }, []);
 
   return (
     <div className="bg-[#BBDEFB] " id="voulunteers">
@@ -24,20 +23,40 @@ export default function Volentier() {
         Together We can Make Difference
       </p>
       <hr className="border border-black" />
-      <div className="flex flex-col md:flex-row gap-4 text-center items-center justify-center bg-gradient-to-r from-[#B7D8F4] to-[#2196F3] w-screen h-[932px] md:w-full md:h-40 mt-4">
-        <div>Transactions</div>
-        <div>Total Money</div>
-        <div>To Go</div>
-        <div className="flex flex-col gap-2 text-3xl font-bold font-monserrat">
-          {" "}
-          <Link to="/allvolunteers"><h1>
-            Volunteers{" "}
-            
-          </h1>
-          <h1>{setvolcount !== null ? setvolcount : "Loading..."}</h1></Link>
-          
-          <div></div>
+      <div className="flex flex-col gap-2 lg:gap-4 md:flex-row text-center items-center justify-between  p-8  bg-gradient-to-r from-[#B7D8F4] to-[#2196F3] w-screen h-[935px] md:w-full md:h-40 mt-4">
+      <GoArrowUpRight className="text-6xl text-white" />
+        <div className="flex flex-col gap-2  font-bold font-monserrat text-[#E91E63]">
+          <h1 className="text-xl lg:text-2xl">Transactions</h1>
+          <h1 className="text-5xl">0</h1>
         </div>
+        <GoArrowUpRight className="text-6xl text-[#E91E63]"  />
+        <div className="flex flex-col gap-2  font-bold font-monserrat text-white">
+          {" "}
+          <h1 className="text-xl lg:text-2xl">Total Money</h1>
+          <h1 className="text-5xl">0</h1>
+        </div>
+        <GoArrowUpRight className="text-6xl text-white" />
+        <div className="flex flex-col gap-2 font-bold font-monserrat text-[#E91E63]">
+          {" "}
+          <h1 className=" text-xl lg:text-2xl ">To Go</h1>
+          <h1 className="text-5xl">0</h1>
+        </div>
+        <GoArrowUpRight className="text-6xl text-[#E91E63]" />
+        <div className="flex flex-col  font-bold font-monserrat text-white">
+          {" "}
+          <Link to="/allvolunteers">
+            <h1 className=" text-xl lg:text-2xl ">Volunteers </h1>
+            <h1 className="inline-block text-5xl">
+              {setvolcount !== null ? setvolcount : "Loading..."}
+             
+            </h1>
+          </Link>
+          <div>
+            
+          </div>
+          
+        </div>
+        <GoArrowUpRight className="text-6xl text-white" />
       </div>
 
       <p className="font-bold font-sans text-[20px] md:text-[40px] mt-8 text-start mx-8">

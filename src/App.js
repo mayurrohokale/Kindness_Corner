@@ -15,6 +15,7 @@ import { getMe } from "./components/api/user";
 import Volunteerform from "./components/Home/Volunteer/volunteerform";
 import Profile from "./components/Home/Profile/Profile";
 import AllVolunteers from "./components/Home/Volunteer/allvolunteers";
+import Testdonation from "./components/Donate/testDonation";
 
 function App() {
 
@@ -62,7 +63,7 @@ function App() {
             <Route path="/volunteer" element={<Volunteerform/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/allvolunteers" element={<AllVolunteers/>}/>
-
+            <Route path="/testdonation" element={<Testdonation/>}/>
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}

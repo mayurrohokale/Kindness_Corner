@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAppState } from "../../utils/appState";
+import { createOrder, verifyPayment } from "../api/user";
 import { SiPhonepe } from "react-icons/si";
 import { FaGooglePay } from "react-icons/fa";
 import { FaPaypal } from "react-icons/fa"
@@ -48,8 +49,12 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
 export default function Donation() {
   const [isNamedDonation, setIsNamedDonation] = useState(true);
   // const [isButtonClick, setButtonClick] = useState(true);
-
   const { amount, setAmount, payment_type, setPaymentType } = useAppState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
 
   // const handleOneTime = () => {
   //   setButtonClick(true);
@@ -78,6 +83,25 @@ export default function Donation() {
     }
     setAmount(parseInt(e.target.value)>0 ? parseInt(e.target.value) : 0);
   }
+
+  const handlePayment = () => {
+    createOrder({
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      amount,
+      paymentType: payment_type
+    }).then((orderId) => {
+      // Redirect to payment gateway or show a success message
+      console.log("Order created with ID:", orderId);
+    }).catch((error) => {
+      console.error("Error creating order:", error);
+      // Handle error
+    });
+  }
+
   return (
     <div>
     <div className=" container  p-4">
@@ -107,23 +131,23 @@ export default function Donation() {
         </button>
       </div>
       {isNamedDonation ? (
-        <form>
+        <form onSubmit={handlePayment}>
           {/* Form for named donation */}
           <p className="pt-4 text-gray-400  text-[8px] lg:text-[12px]">
             *In a named donation, your details are proudly displayed, making you
             a recognized hero! It's like getting the applause you deserve!
           </p>
           <div className="flex flex-col lg:flex-row justify-center mt-4 gap-2">
-            <CustomInput label="First Name" type="text" placeholder={"John"} />
-            <CustomInput label="Last Name" type="text" placeholder={"Doe"} />
+            <CustomInput label="First Name" type="text" placeholder={"John"} value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <CustomInput label="Last Name" type="text" placeholder={"Doe"} value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </div>
           <div className="flex flex-col lg:flex-row justify-center mt-4 gap-2">
-            <CustomInput label="Email" type="email" required placeholder={"xyz@gmail.com"} />
-            <CustomInput label="Phone/Mobile" type="phone" required placeholder={"0000000000"}/>
+            <CustomInput label="Email" type="email" required placeholder={"xyz@gmail.com"} value={email} onChange={(e) => setEmail(e.target.value)} />
+            <CustomInput label="Phone/Mobile" type="phone" required placeholder={"0000000000"} value={phone} onChange={(e) => setPhone(e.target.value)}/>
           </div>
           <div className="mt-4">
             
-            <CustomInput label="Address" type="text" required placeholder={"23 F, New Yotk Street , USA"} />
+            <CustomInput label="Address" type="text" required placeholder={"23 F, New Yotk Street , USA"} value={address} onChange={(e) => setAddress(e.target.value)} />
             <div className="mt-4">
 
               {
@@ -153,26 +177,7 @@ export default function Donation() {
               onChange={handleAmountChange}
             />
           </div>
-          
-          
-         
-          {/* <div>
-            <h1>Payment Options</h1>
-            <div className="flex flex-col justify-start">
-              <div>
-                <input type="radio" name="" value="" />
-                <label>UPI</label>
-              </div>
-              <div>
-                <input type="radio" name="" value="" />
-                <label>Credit Card</label>
-              </div>
-              <div>
-                <input type="radio" name="" value="" />
-                <label>Net Banking</label>
-              </div>
-            </div>
-          </div> */}
+       
           <Cstbutton text="Donate" />
         </form>
       ) : (
@@ -219,25 +224,6 @@ export default function Donation() {
             />
           </div>
           
-          
-         
-          {/* <div>
-            <h1>Payment Options</h1>
-            <div className="flex flex-col justify-start">
-              <div>
-                <input type="radio" name="" value="" />
-                <label>UPI</label>
-              </div>
-              <div>
-                <input type="radio" name="" value="" />
-                <label>Credit Card</label>
-              </div>
-              <div>
-                <input type="radio" name="" value="" />
-                <label>Net Banking</label>
-              </div>
-            </div>
-          </div> */}
           <Cstbutton text="Donate" />
         </form>
       )}
