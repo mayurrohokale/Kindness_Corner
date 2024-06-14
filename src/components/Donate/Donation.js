@@ -79,7 +79,7 @@ export default function Donation() {
         style={{ backgroundImage: "url('./images/img10.jpg')" }}
       ></div>
       <div className="relative flex flex-col gap-4 z-10">
-        <h1 className="font-bold text-[18px] md:text-2xl font-montserrat text-center text-[#013159]  bg-white bg-opacity-75 p-4 rounded">
+        <h1 className="font-bold text-[18px] md:text-2xl font-montserrat text-center text-[#013159] bg-opacity-75 p-4">
           Support Our Mission to <span className="text-[#F70059]">Help</span> Those in Need
         </h1>
         <div className="flex items-center justify-center gap-2">
