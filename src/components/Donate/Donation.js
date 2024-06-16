@@ -125,7 +125,7 @@ export default function Donation() {
             class="mt-px font-monserrat text-[10px] md:text-[16px] text-black cursor-pointer select-none"
             htmlFor="check"
           >
-            Donate Anonymously!
+            Donate Anonymously! 
           </label>
         </div>
       </div>
