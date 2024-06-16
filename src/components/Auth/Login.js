@@ -1,99 +1,125 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { getMe } from "../api/user";
 import { useAppState } from "../../utils/appState";
 import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = process.env.REACT_APP_API_KEY || "http://localhost:8000";
 
-const Cstbutton = ({ text }) => {
+const Cstbutton = ({ text, disabled }) => {
   return (
     <button
       type="submit"
-      className="hover:shadow-xl bg-[#2196F3] mt-4 text-white font-bold py-2 px-6 rounded text-xl"
+      className={`hover:shadow-xl mt-4 text-white font-bold py-2 px-6 rounded text-xl ${disabled ? 'bg-gray-400' : 'bg-[#2196F3]'}`}
+      disabled={disabled}
     >
       {text}
     </button>
   );
 };
 
-const CustomInput = ({ label, type, placeholder, value, onChange }) => {
+const CustomInput = ({ label, type, placeholder, value, onChange, error, toggleVisibility, isPassword }) => {
   return (
-    <div>
+    <div className="relative">
       <label className="flex flex-col gap-1">{label}</label>
       <input
-        className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-10 py-3"
+        className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-10 py-3 w-full"
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
+      {error && <p className="text-red-500">{error}</p>}
+      {isPassword && (
+        <span 
+          className="absolute right-4 top-10 cursor-pointer"
+          onClick={toggleVisibility}
+        >
+          {type === 'password' ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      )}
     </div>
   );
 };
 
 export default function Login() {
-
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {user, setUser}= useAppState();
-
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const { user, setUser } = useAppState();
   const navigate = useNavigate();
 
-  useEffect(()=> {
+  useEffect(() => {
+    const isFormValid = validateEmail(email) && password.length > 0;
+    setIsFormValid(isFormValid);
+  }, [email, password]);
 
-  }, [])
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleEmailChange = (e) => {
+    const { value } = e.target;
+    setEmail(value);
+    if (!validateEmail(value)) {
+      setEmailError("Invalid email format");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const { value } = e.target;
+    setPassword(value);
+    if (value.length === 0) {
+      setPasswordError("Password cannot be empty");
+    } else {
+      setPasswordError("");
+    }
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
-
+    if (!isFormValid) {
+      toast.error("Please fill out the form correctly", {
+        position: "top-center",
+      });
+      return;
+    }
     try {
       const response = await Axios.post(`${BASE_URL}/login`, {
         email,
         password,
       });
-
-
-      const data = response?.data
-
+      const data = response?.data;
       if (data?.token) {
         localStorage.setItem("token", data?.token);
       }
-     
-      
       toast.success("Login Successfully", {
         position: "top-center",
-      })
-     
-      
-      
-      // localStorage.setItem("userEmail", email);
-      // localStorage.setItem("userName", name);
-      
+      });
       await fetchProfile();
-      // setTimeout(() => {
-        navigate("/home");
-      // }, );
-      // window.location.reload();
+      navigate("/home");
     } catch (error) {
-      const data = error?.response?.data
-      
+      const data = error?.response?.data;
       toast.error(
-        data?.message ||
-          "Something went wrong",
+        data?.message || "Something went wrong",
         {
           position: "top-center",
         }
       );
     }
-  }
+  };
 
-  async function fetchProfile(){
-    
-    const data = await getMe()
+  async function fetchProfile() {
+    const data = await getMe();
     if (data) {
       setUser(data?.user);
     }
@@ -111,19 +137,22 @@ export default function Login() {
                 type="text"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange}
+                error={emailError}
               />
               <CustomInput
                 label="Password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange}
+                error={passwordError}
+                toggleVisibility={() => setShowPassword(!showPassword)}
+                isPassword={true}
               />
             </div>
-            <Cstbutton text={"Sign In"} />
+            <Cstbutton text="Sign In" disabled={!isFormValid} />
           </form>
-         
           <p className="py-4">
             Not Registered? <Link to="/register">Register Now!</Link>
           </p>
@@ -136,7 +165,7 @@ export default function Login() {
           />
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }
