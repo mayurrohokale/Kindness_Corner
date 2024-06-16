@@ -18,7 +18,7 @@ const MENU_ITEMS = [
 
 export const DropdownMenu = ({ user, handleLogout }) => {
   return (
-    <div className="absolute top-full right-0 mt-2 w-30 text-[#013159]  bg-white border border-gray-200 rounded-md shadow-lg z-10 ">
+    <div className="absolute top-full  right-0 mt-2 w-30 text-[#013159]  bg-white border border-gray-200 rounded-md shadow-lg z-10 ">
       <div className="py-2">
         {user ? (
           <>
@@ -128,7 +128,7 @@ export default function Header() {
           </div>
         </header>
       </div>
-      <div className="absolute top-17 right-3 sm:right-5 z-30">
+      <div className="absolute top-12 right-3 sm:right-5 z-30">
         {menuOpen && (
           <nav className="lg:hidden flex flex-col items-start bg-white border shadow-lg p-3 w-32">
              <ul className="flex flex-col gap-3 items-start text-sm font-semibold">

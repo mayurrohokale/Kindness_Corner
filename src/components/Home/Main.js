@@ -43,7 +43,7 @@ const Main = () => {
             <img
               src={slideImages[currentImageIndex].url}
               alt={slideImages[currentImageIndex].caption}
-              className="w-full object-cover shadow-md lg:h-screen xl:h-[88vh]  "
+              className="w-full object-cover shadow-md h-[30vh] lg:h-screen xl:h-[88vh]  "
             />
             <div className="absolute bottom-4 md:bottom-16 left-0 right-0 bg-black bg-opacity-10 text-white text-start py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin ">
               {slideImages[currentImageIndex].caption}
