@@ -73,7 +73,7 @@ export default function Donation() {
   }, [isScriptLoaded]);
 
   return (
-    <div className="relative pt-8 min-h-screen">
+    <div className="relative pt-8 h-[93vh] md:h-[89vh]">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{ backgroundImage: "url('./images/img10.jpg')" }}
