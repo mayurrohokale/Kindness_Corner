@@ -47,7 +47,7 @@ export default function Layout({ children }) {
     <div className=" max-w-[1536px] flex justify-center flex-col mx-auto">
       <AppStateContext.Provider value={value}>
         <Header />
-        <div>{children}</div>
+        <div className="pt-12 md:pt-16">{children}</div>
       </AppStateContext.Provider>
     </div>
   );

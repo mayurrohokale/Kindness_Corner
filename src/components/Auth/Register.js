@@ -28,6 +28,7 @@ const CustomInput = ({ label, type, placeholder, value, onChange, toggleVisibili
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+  
       />
       {isPassword && (
         <span 
@@ -48,7 +49,7 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
   const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [passwordErrors, setPasswordErrors] = useState([]);
   const [passwordMismatchError, setPasswordMismatchError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -60,12 +61,26 @@ export default function Register() {
   };
 
   const validatePassword = (password) => {
-    const re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-    return re.test(String(password));
+    const errors = [];
+  
+    if (!/[0-9]/.test(password)) {
+      errors.push("Password must contain at least one number.");
+    }
+    if (!/[!@#$%^&*]/.test(password)) {
+      errors.push("Password must contain at lease one (!@#$%^&*).");
+    }
+    if (!/[a-zA-Z]/.test(password)) {
+      errors.push("Password must contain at least one letter.");
+    }
+    if (password.length < 8) {
+      errors.push("Password must be at least 8 characters long.");
+    }
+  
+    return errors;
   };
 
   useEffect(() => {
-    const isFormValid = name && validateEmail(email) && validatePassword(password) && (password === confirmPassword);
+    const isFormValid = name && validateEmail(email) && validatePassword(password).length === 0 && (password === confirmPassword);
     setIsFormValid(isFormValid);
     if (password !== confirmPassword) {
       setPasswordMismatchError("Passwords do not match");
@@ -76,7 +91,6 @@ export default function Register() {
 
   const handleEmailChange = (e) => {
     const { value } = e.target;
-
     setEmail(value);
     if (!validateEmail(value)) {
       setEmailError("Invalid email format");
@@ -87,12 +101,12 @@ export default function Register() {
 
   const handlePasswordChange = (e) => {
     const { value } = e.target;
-
     setPassword(value);
-    if (!validatePassword(value)) {
-      setPasswordError("Password must be at least 8 characters long, contain at least one number and one special character");
+    const errors = validatePassword(value);
+    if (errors.length > 0) {
+      setPasswordErrors(errors);
     } else {
-      setPasswordError("");
+      setPasswordErrors([]);
     }
   };
 
@@ -151,6 +165,7 @@ export default function Register() {
                 placeholder="John Doe"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                
               />
               <CustomInput
                 label="Email"
@@ -169,7 +184,13 @@ export default function Register() {
                 toggleVisibility={() => setShowPassword(!showPassword)}
                 isPassword={true}
               />
-              {passwordError && <p className="text-red-500">{passwordError}</p>}
+              {passwordErrors.length > 0 && (
+                <div className="text-red-500 text-[12px] md:text-[15px]">
+                  {passwordErrors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                  ))}
+                </div>
+              )}
               <CustomInput
                 label="Confirm Password"
                 type={showConfirmPassword ? "text" : "password"}
