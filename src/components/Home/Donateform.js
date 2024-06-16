@@ -142,7 +142,7 @@ export default function Donateform() {
           {amount === 0 ? "Please enter an amount" : `You are donating ₹ ${amount}`}
         </p>
 
-        <button className=" w-[150px] h-[48px] md:w-[260px] md:h-[70px] items-center  bg-[#F70059] text-white text-[15px] md:text-[25px] font-bold  shadow-lg font-sans hover:scale-110">
+        <button className=" w-[150px] h-[48px] md:w-[220px] md:h-[70px] items-center  bg-[#F70059] text-white text-[15px] md:text-[25px] font-bold  shadow-lg font-sans hover:scale-110">
          <Link to="/donate">DONATE NOW</Link>
         </button>
       </div>
