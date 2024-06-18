@@ -76,9 +76,9 @@ export default function Header() {
       );
 
   return (
-    <div className="bg-white">
+    <div className="bg-white ">
       <div className="relative bg-white">
-        <header className="fixed top-0 left-0 right-0 md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-50  border-x-2 font-medium" id="home">
+        <header className="bg-white fixed top-0 left-0 right-0 md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-50  border-x-2 font-medium" id="home">
           <div className="flex flex-row justify-between w-full items-center">
             <div className="logo text-lg md:text-2xl font-bold">
               <Link to="/" className="cursor-pointer">
@@ -128,9 +128,9 @@ export default function Header() {
           </div>
         </header>
       </div>
-      <div className="absolute top-12 right-3 sm:right-5 z-30">
+      <div className="fixed top-12 right-0  z-30">
         {menuOpen && (
-          <nav className="lg:hidden flex flex-col items-start bg-white border shadow-lg p-3 w-32">
+          <nav className=" lg:hidden flex flex-col items-start bg-white border shadow-lg p-3 w-32">
              <ul className="flex flex-col gap-3 items-start text-sm font-semibold">
               {filteredMenuItems.map(({ path, title }) => (
                 <li

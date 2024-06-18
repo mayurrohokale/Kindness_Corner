@@ -73,9 +73,9 @@ export default function Donation() {
   }, [isScriptLoaded]);
 
   return (
-    <div className="relative pt-8 h-[93vh] md:h-[89vh]">
+    <div className="relative  pt-8 h-[93vh] md:h-[89vh]">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        className="absolute inset-0 bg-cover bg-center h-[93vh] sm:h-[89vh] w-[100vw] z-0"
         style={{ backgroundImage: "url('./images/img10.jpg')" }}
       ></div>
       <div className="relative flex flex-col gap-4 z-10">

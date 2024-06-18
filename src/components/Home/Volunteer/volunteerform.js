@@ -7,7 +7,7 @@ import { Link, useNavigate} from "react-router-dom";
 
 const Cstbutton = ({ text, type }) => {
   return (
-    <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4 rounded" type={type}>
+    <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4 rounded" type={type} >
       {text}
     </button>
   );
@@ -20,7 +20,7 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
         <label className="">{label}</label>
         <br />
         <input
-          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg w-[240px] lg:w-[390px] max:w-[1536px] px-5 py-3"
+          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg w-[240px] lg:w-[390px] px-5 py-3"
           type={type}
           placeholder={placeholder}
           value={value}
@@ -35,16 +35,30 @@ export default function VolunteerForm() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const { user, setUser } = useAppState();
+  const [phoneError, setPhoneError] = useState("");
+  const [isPhoneValid, setisPhoneValid] = useState(false);
 
   const navigate = useNavigate();
 
+
+  const handlePhoneChange = (value) => {
+    setPhone(value);
+    const regex = /^[0-9]{10}$/;
+    setisPhoneValid(regex.test(value));
+    setPhoneError(regex.test(value) ? "" : "Please enter a valid 10-digit phone number.");
+  }
+
   async function handleVolunteer(e) {
     e.preventDefault();
+    if (!isPhoneValid) {
+      setPhoneError("Please enter a valid 10-digit phone number.");
+      return;
+    }
     try {
       const data = { phone, address };
       const res = await setVolunteer(data);
       console.log(res);
-      toast.success("You are now a volunteer" || res?.message , { position: "top-center" });
+      toast.success("You are now a volunteer" || res?.message, { position: "top-center" });
       setUser((prev) => ({
         ...prev,
         is_volunteer: true
@@ -57,13 +71,9 @@ export default function VolunteerForm() {
     }
   }
 
- 
-
-  console.log(user);
-
   return (
     <div>
-      <div className="relative max-w-[1536px] h-[460px] lg:h-[56vh]">
+      <div className="relative h-[460px] lg:h-[56vh]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('./images/img2.jpg')" }}
@@ -125,8 +135,9 @@ export default function VolunteerForm() {
               type="phone"
               placeholder="Enter Your Phone Number"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => handlePhoneChange(e.target.value)}
             />
+            {phoneError && <p className="text-red-500">{phoneError}</p>}
             <CustomInput
               label="Address"
               type="textarea"

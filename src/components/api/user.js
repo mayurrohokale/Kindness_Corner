@@ -6,51 +6,38 @@ function getAuthToken() {
     return localStorage.getItem("token");
 }
 
-
 function getHeaders() {
-
     const token = getAuthToken();
-
     let data = {
         "Content-Type": "application/json",
     }
-
     if (token) {
         data['Authorization'] = `Bearer ${token}`;
     }
-    return data
+    return data;
 }
-export async function getMe(){
+
+export async function getMe() {
     const headers = getHeaders();
     if (!headers?.Authorization) {
         return null;
     }
-  const response = await Axios.get(`${BASE_URL}/me`, 
-    {headers:headers }
-  );
-  return response?.data
+    const response = await Axios.get(`${BASE_URL}/me`, { headers });
+    return response?.data;
 }
 
-export async function setVolunteer(data){
+export async function setVolunteer(data) {
     const headers = getHeaders();
-    console.log(headers);
     if (!headers?.Authorization) {
         return null;
     }
-    const response = await Axios.post(`${BASE_URL}/volunteer`, 
-        data,
-        { headers: headers }
-    );
-  return response?.data
+    const response = await Axios.post(`${BASE_URL}/volunteer`, data, { headers });
+    return response?.data;
 }
 
-
-export async function getVolunteers(){
-    
-
+export async function getVolunteers() {
     try {
         const response = await Axios.get(`${BASE_URL}/volunteers`);
-
         if (response.status === 200) {
             return response.data;
         } else {
@@ -62,54 +49,51 @@ export async function getVolunteers(){
     }
 }
 
-export async function getVolunteersCount(){
-  
+export async function getVolunteersCount() {
     try {
         const response = await Axios.get(`${BASE_URL}/volunteers/count`);
-          
         if (response.status === 200) {
             return response.data.count; // Return only the count
         } else {
             throw new Error("Failed to fetch volunteers count");
         }
-       
     } catch (error) {
         console.error("Error fetching volunteers count:", error);
         return null;
     }
 }
 
-
-// Create Order
-export async function createOrder(data){
+export async function castVote(voteFormId, vote) {
     try {
-        const response = await Axios.post(`${BASE_URL}/createorder`, data, {
-            headers: { "Content-Type": "application/json" }
-        });
-        if (response.status === 200) {
-            return response.data.orderId;
-        } else {
-            throw new Error("Failed to create order");
-        }
+        const headers = getHeaders();
+        const response = await Axios.post(`${BASE_URL}/vote`, { voteFormId, vote }, { headers });
+        return response.data;
     } catch (error) {
-        console.error("Error creating order:", error);
+        console.error("Error casting vote:", error);
         return null;
     }
 }
 
-// Verify Payment
-export async function verifyPayment(data){
+export async function hasVoted(voteFormId) {
     try {
-        const response = await Axios.post(`${BASE_URL}/verifypayment`, data, {
-            headers: { "Content-Type": "application/json" }
-        });
-        if (response.status === 200) {
-            return response.data.status;
-        } else {
-            throw new Error("Failed to verify payment");
-        }
+        const headers = getHeaders();
+        const response = await Axios.get(`${BASE_URL}/hasvoted/${voteFormId}`, { headers });
+        return response.data;
     } catch (error) {
-        console.error("Error verifying payment:", error);
+        console.error("Error checking vote status:", error);
         return null;
     }
 }
+
+export async function getCurrentVotes (voteFormId) {
+    try {
+      const response = await Axios.get(`${BASE_URL}/countvotes/${voteFormId}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching current votes:", error);
+      return { yes: 0, no: 0, total: 0 };
+    }
+  };
+
+
+  
