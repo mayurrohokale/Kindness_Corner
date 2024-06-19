@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdArrowOutward } from "react-icons/md";
 import { useAppState } from "../../../utils/appState";
 import { setVolunteer } from "../../api/user";
@@ -6,9 +6,9 @@ import { toast, ToastContainer } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { states, cities } from './Addressdata';
 
-const Cstbutton = ({ text, type }) => {
+const Cstbutton = ({ text, type, disabled }) => {
   return (
-    <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4 rounded" type={type} >
+    <button className={`bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4 rounded ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`} type={type} disabled={disabled} >
       {text}
     </button>
   );
@@ -54,9 +54,22 @@ export default function VolunteerForm() {
   const { user, setUser } = useAppState();
   const [phoneError, setPhoneError] = useState("");
   const [isPhoneValid, setisPhoneValid] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
   const [pincodeError, setPinCodeError] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsFormValid(
+      isPhoneValid &&
+      address.length > 0 &&
+      state.length > 0 &&
+      city.length > 0 &&
+      pincode.length > 0 &&
+      !pincodeError
+    );
+  }, [isPhoneValid, address, state, city, pincode, pincodeError]);
+
   
   const handlePhoneChange = (value) => {
     setPhone(value);
@@ -201,7 +214,7 @@ export default function VolunteerForm() {
               onChange={(e) => handlePincodeChange(e.target.value)}
             />
             {pincodeError && <p className="text-red-500">{pincodeError}</p>}
-            <Cstbutton text="Submit" type="submit" />
+            <Cstbutton text="Submit" type="submit" disabled={!isFormValid} />
           </form>
         </div>
       )}

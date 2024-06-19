@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { castVote, hasVoted, getCurrentVotes } from "../../api/user"; // Adjust the path as necessary
+import { castVote, hasVoted, getCurrentVotes } from "../../api/user";
+import { Link } from "react-router-dom";
+
 
 export default function Votingform() {
   return (
     <div className="flex flex-col md:flex-row justify-center py-2 w-full hover:shadow-lg">
       <div className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3">
         <img
-          src="./images/img1.jpg"
+          src="./images/camp.jpg"
           alt="ngoimage"
           className="object-contain w-full max-h-[200px]"
         />
@@ -132,7 +134,7 @@ const Poll = ({ voteFormId }) => {
             <p className="text-[16px] text-green-500">You have already voted!</p>
           )
         ) : (
-          <p className="text-[16px] text-red-500">Please log in to vote</p>
+          <p className="text-[16px] text-red-500">Please <Link to="/login" className="underline">Log In</Link> to vote</p>
         )}
       </div>
     </div>
