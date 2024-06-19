@@ -1,9 +1,10 @@
+import React, { useState } from 'react';
 import { MdArrowOutward } from "react-icons/md";
 import { useAppState } from "../../../utils/appState";
-import { useState } from "react";
 import { setVolunteer } from "../../api/user";
 import { toast, ToastContainer } from "react-toastify";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { states, cities } from './Addressdata';
 
 const Cstbutton = ({ text, type }) => {
   return (
@@ -13,20 +14,33 @@ const Cstbutton = ({ text, type }) => {
   );
 };
 
-const CustomInput = ({ label, type, placeholder, value, onChange }) => {
+const CustomInput = ({ label, type, placeholder, value, onChange, options }) => {
+  if (type === 'select') {
+    return (
+      <div>
+        <label>{label}</label>
+        <br />
+        <select className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg w-[240px] lg:w-[390px] px-5 py-3" value={value} onChange={onChange}>
+          <option value="">Select {label}</option>
+          {options.map((option, index) => (
+            <option key={index} value={option}>{option}</option>
+          ))}
+        </select>
+      </div>
+    );
+  }
+  
   return (
     <div>
-      <div className="">
-        <label className="">{label}</label>
-        <br />
-        <input
-          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg w-[240px] lg:w-[390px] px-5 py-3"
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-      </div>
+      <label>{label}</label>
+      <br />
+      <input
+        className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg w-[240px] lg:w-[390px] px-5 py-3"
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };
@@ -34,19 +48,40 @@ const CustomInput = ({ label, type, placeholder, value, onChange }) => {
 export default function VolunteerForm() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [pincode, setPincode] = useState("");
   const { user, setUser } = useAppState();
   const [phoneError, setPhoneError] = useState("");
   const [isPhoneValid, setisPhoneValid] = useState(false);
+  const [pincodeError, setPinCodeError] = useState("");
 
   const navigate = useNavigate();
-
-
+  
   const handlePhoneChange = (value) => {
     setPhone(value);
     const regex = /^[0-9]{10}$/;
     setisPhoneValid(regex.test(value));
     setPhoneError(regex.test(value) ? "" : "Please enter a valid 10-digit phone number.");
   }
+
+  const handlePincodeChange = (value) => {
+    setPincode(value);
+    const pincodePattern = /^[1-9][0-9]{5}$/; // Indian pincode pattern
+    if (pincodePattern.test(value)) {
+      setPinCodeError('');
+      return true;
+    } else {
+      setPinCodeError('Invalid pincode! Pincode should be a 6-digit number.');
+      return false;
+    }
+  }
+
+  const handleStateChange = (e) => {
+    setState(e.target.value);
+    setCity(''); // Reset city when state changes
+  }
+
 
   async function handleVolunteer(e) {
     e.preventDefault();
@@ -55,7 +90,7 @@ export default function VolunteerForm() {
       return;
     }
     try {
-      const data = { phone, address };
+      const data = { phone, address, state, city, pincode };
       const res = await setVolunteer(data);
       console.log(res);
       toast.success("You are now a volunteer" || res?.message, { position: "top-center" });
@@ -113,10 +148,9 @@ export default function VolunteerForm() {
 
       {!user ? (
         <div className="m-4">
-          
           <Link to="/register">
-          <Cstbutton text="Register Here!"  /></Link>
-          
+            <Cstbutton text="Register Here!" />
+          </Link>
         </div>
       ) : user?.is_volunteer ? (
         <div className="m-4 pb-8">
@@ -145,6 +179,28 @@ export default function VolunteerForm() {
               placeholder="Enter Your Address"
               onChange={(e) => setAddress(e.target.value)}
             />
+            <CustomInput
+              label="State"
+              type="select"
+              value={state}
+              onChange={handleStateChange}
+              options={states}
+            />
+            <CustomInput
+              label="City"
+              type="select"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              options={state ? cities[state] : []}
+            />
+            <CustomInput
+              label="Pincode"
+              type="number"
+              placeholder="Enter Your Pincode"
+              value={pincode}
+              onChange={(e) => handlePincodeChange(e.target.value)}
+            />
+            {pincodeError && <p className="text-red-500">{pincodeError}</p>}
             <Cstbutton text="Submit" type="submit" />
           </form>
         </div>

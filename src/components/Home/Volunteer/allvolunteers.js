@@ -27,7 +27,7 @@ export default function Allvolunteers() {
         volunteer.name.toLowerCase().includes(search.toLowerCase()) ||
         volunteer.email.toLowerCase().includes(search.toLowerCase()) ||
         volunteer.phone.toLowerCase().includes(search.toLowerCase()) ||
-        volunteer.address.toLowerCase().includes(search.toLowerCase())
+        volunteer.city.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
@@ -65,7 +65,7 @@ export default function Allvolunteers() {
                                         <td className="py-2 px-4 border-b">{volunteer.name}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.email}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.phone}</td>
-                                        <td className="py-2 px-4 border-b">{volunteer.address}</td>
+                                        <td className="py-2 px-4 border-b">{volunteer.city}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.status}</td>
                                     </tr>
                                 ))}
