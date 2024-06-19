@@ -1,9 +1,9 @@
 import React from 'react';
 
 const WorksItem = ({ image, title, description }) => (
-  <div className="w-[280px] sm:w-[350px] hover:shadow-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+  <div className="w-[280px] sm:w-[350px] hover:scale-105 hover:shadow-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
     <div className="relative h-64 overflow-hidden">
-      <img className="object-cover w-full h-full" src={image} alt="" />
+      <img className="object-cover w-full h-full rounded-md" src={image} alt="" />
     </div>
     <div className="p-5 flex flex-col flex-grow">
       <div>

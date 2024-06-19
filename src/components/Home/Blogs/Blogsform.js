@@ -53,7 +53,7 @@ export default function Blogsform() {
             </article>
           ))}
         </div>
-        <div className='pt-8'><button className='border font-semibold border-gray-300 rounded-[50px] text-[13px] md:text-xl px-8 md:px-14 p-4 hover:shadow-lg'>View All</button></div>
+        <div className='pt-12 pb-8'><button className='border font-semibold border-gray-300 rounded-[50px] text-[13px] md:text-xl px-8 md:px-14 p-4 hover:shadow-lg'>View All</button></div>
       </div>
     </section>
   );

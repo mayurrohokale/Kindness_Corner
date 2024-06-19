@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Votingform() {
   return (
-    <div className="flex flex-col md:flex-row justify-center py-2 w-full hover:shadow-lg">
+    <div className="flex mb-8 flex-col md:flex-row justify-center py-2 w-full hover:shadow-lg hover:scale-105">
       <div className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3">
         <img
           src="./images/camp.jpg"
@@ -82,7 +82,7 @@ const Poll = ({ voteFormId }) => {
   const noPercentage = totalVotes === 0 ? 0 : ((noVotes / totalVotes) * 100).toFixed(2);
 
   return (
-    <div>
+    <div className="">
       <div className="justify-center">
         <p className="text-start font-bold">Total votes: {totalVotes}</p>
         <div className="flex flex-row justify-between">
