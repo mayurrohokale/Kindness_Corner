@@ -51,6 +51,7 @@ function App() {
     <div className="App">
       {/* <BrowserRouter>
         <Layout> */}
+        
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/home" element={<Main />} />
