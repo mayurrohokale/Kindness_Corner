@@ -1,17 +1,10 @@
+
 import React, { useState, useEffect } from "react";
-import { castVote, hasVoted, getCurrentVotes, getDonationForm } from "../../api/user";
+import {hasVoted, hasVotedStatus, castVote, getCurrentVotes, getDonationForm } from "../../api/user";
 import { Link } from "react-router-dom";
-import { FaCalendarAlt } from "react-icons/fa";
-import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB'); // Format as "dd/mm/yyyy"
-};
-
-export default function Votingform() {
+export default function AllCampaigns() {
   const [donationData, setDonationData] = useState([]);
-  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,41 +14,32 @@ export default function Votingform() {
     }
     fetchData();
   }, []);
-  
+
   if (!donationData || donationData.length === 0) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="flex mb-8 flex-col md:flex-row gap-4 h-auto justify-center py-2 w-full ">
-      {donationData.slice(0, showAll ? donationData.length : 3).map((donation) => (
+      {donationData.map((donation) => (
         <div key={donation._id} className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg">
           <img
             src="./images/camp.jpg"
             alt="ngoimage"
             className="object-contain w-full max-h-[200px]"
           />
-          <h1 className="font-monserrat text-start font-bold">{donation.title}</h1>
-          <div className="w-full flex flex-col items-start">
-            <p className="text-start max-w-[300px] text-black/60">
+          <h1 className="font-monserrat text-center font-bold">{donation.title}</h1>
+          <div className="w-full flex flex-col items-center">
+            <p className="text-center max-w-[300px] text-black/60">
               {donation.description}
             </p>
           </div>
-          <h2 className="flex flex-row gap-1"> <FaCalendarAlt className="mt-1 text-[#E91E63]"/>{formatDate(donation.eventFromDate)} to {formatDate(donation.eventToDate)}</h2>
-          <h1 className="flex flex-row gap-1 font-bold text-xl text-start"> <RiMoneyRupeeCircleFill className="mt-1 text-[#E91E63]" />  {donation.amount}</h1>
+          <h1 className="font-bold text-xl text-center">{donation.amount}</h1>
           <div>
             <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
           </div>
         </div>
       ))}
-      {/* {!showAll && (
-        <button 
-          className="bg-blue-500 text-white p-2 rounded mt-4"
-          onClick={() => setShowAll(true)}
-        >
-          View All Campaigns
-        </button>
-      )} */}
     </div>
   );
 }
