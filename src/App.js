@@ -17,7 +17,7 @@ import Profile from "./components/Home/Profile/Profile";
 import AllVolunteers from "./components/Home/Volunteer/allvolunteers";
 import Transactions from "./components/Donate/Transactions";
 import AllCampaign from "./components/Home/Campaign/allCampaign";
-
+import DonationDetail from "./components/Home/Campaign/donationDetail";
 function App() {
 
   // const [user, setUser] = useState(null);
@@ -66,6 +66,8 @@ function App() {
             <Route path="/allvolunteers" element={<AllVolunteers/>}/>
             <Route path="/transaction" element={<Transactions/>}/>
             <Route path="/allcampaign" element={<AllCampaign/>}/>
+            <Route path="/donationdetail/:id" element={<DonationDetail/>} />
+
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}

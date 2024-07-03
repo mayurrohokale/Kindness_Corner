@@ -1,61 +1,80 @@
 import React, { useState, useEffect } from "react";
-import { castVote, hasVoted, getCurrentVotes, getDonationForm } from "../../api/user";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import {
+  getDonationFormById,
+  hasVoted,
+  getCurrentVotes,
+  castVote,
+} from "../../api/user";
 import { FaCalendarAlt } from "react-icons/fa";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB'); // Format as "dd/mm/yyyy"
+  return date.toLocaleDateString("en-GB"); // Format as "dd/mm/yyyy"
 };
 
-export default function Votingform() {
-  const [donationData, setDonationData] = useState([]);
-  const [showAll, setShowAll] = useState(false);
+export default function DonationDetail() {
+  const { id } = useParams();
+  const [donation, setDonation] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getDonationForm();
-      setDonationData(data);
-      console.log(data);
+      try {
+        const data = await getDonationFormById(id);
+        setDonation(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching donation form by ID", error);
+      }
     }
     fetchData();
-  }, []);
-  
-  if (!donationData || donationData.length === 0) {
+  }, [id]);
+
+  if (!donation) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="flex mb-8 flex-col md:flex-row gap-4 h-auto justify-center py-2 w-full ">
-    {donationData.slice(0, showAll ? donationData.length : 3).map((donation) => (
-      <div key={donation._id} className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg">
-        <img
-          src="./images/camp.jpg"
-          alt="ngoimage"
-          className="object-contain w-full max-h-[200px]"
-        />
-     
-        <h1 className="font-monserrat text-start font-bold">{donation.title}</h1>
-        <div className="w-full flex flex-col items-start  text-black/60">
-          <p className="text-start max-w-[300px]">
-            {donation.description}
-          </p>
-          <h1>{donation.contact}</h1>
+    <div className="flex flex-col-2 justify-center items-center py-4">
+      <div className="flex flex-row  w-full max-w-[800px] ">
+        <div className="w-1/2 p-4">
+          <img
+            src="/images/img3.jpg"
+            alt="ngoimage"
+            className="object-contain w-full max-h-[200px]"
+          />
+          <div className="pt-8">
+            <p className="text-start">{donation.description}</p>
+          </div>
         </div>
-        <h2 className="flex flex-row gap-2"> <FaCalendarAlt className="mt-1 text-[#E91E63]"/>{formatDate(donation.eventFromDate)} to {formatDate(donation.eventToDate)}</h2>
-        <h1 className="flex flex-row gap-1 font-bold text-xl text-start"> <RiMoneyRupeeCircleFill className="mt-1 text-[#E91E63]" />  {donation.amount}</h1>
-        
+        <div className="w-1/2 p-4">
+          <h1 className="font-monserrat text-start font-bold">
+            {donation.title}
+          </h1>
+          <h2 className="text-start pt-4">{donation.contact}</h2>
+          <h2 className="flex items-center gap-2">
+            <FaCalendarAlt className="mt-1 text-[#E91E63]" />
+            {formatDate(donation.eventFromDate)} to{" "}
+            {formatDate(donation.eventToDate)}
+          </h2>
+          <h1 className="flex items-center gap-1 font-bold text-xl text-start pt-2">
+            <RiMoneyRupeeCircleFill className="mt-1 text-[#E91E63]" />
+            {donation.amount}
+          </h1>
+          <div>
+            <Poll voteFormId={donation._id} />{" "}
+            {/* Pass the appropriate voteFormId */}
+          </div>
+          <hr />
+        </div>
         <div>
-          <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
+          
         </div>
-        <Link to={`/donationdetail/${donation._id}`} className="text-blue-500 underline">
-          View Details
-        </Link>
+        
       </div>
-    ))}
- 
-  </div>
+    </div>
   );
 }
 
@@ -64,7 +83,7 @@ const Poll = ({ voteFormId }) => {
   const [noVotes, setNoVotes] = useState(0);
   const [hasVotedStatus, setHasVotedStatus] = useState(false);
   const [userVote, setUserVote] = useState(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("token");
 
@@ -110,8 +129,10 @@ const Poll = ({ voteFormId }) => {
   };
 
   const totalVotes = yesVotes + noVotes;
-  const yesPercentage = totalVotes === 0 ? 0 : ((yesVotes / totalVotes) * 100).toFixed(2);
-  const noPercentage = totalVotes === 0 ? 0 : ((noVotes / totalVotes) * 100).toFixed(2);
+  const yesPercentage =
+    totalVotes === 0 ? 0 : ((yesVotes / totalVotes) * 100).toFixed(2);
+  const noPercentage =
+    totalVotes === 0 ? 0 : ((noVotes / totalVotes) * 100).toFixed(2);
 
   return (
     <div className="">
@@ -163,10 +184,18 @@ const Poll = ({ voteFormId }) => {
               </button>
             </>
           ) : (
-            <p className="text-[16px] pt-3 text-green-500">You have already voted!</p>
+            <p className="text-[16px] pt-3 text-green-500">
+              You have already voted!
+            </p>
           )
         ) : (
-          <p className="text-[16px] text-red-500">Please <Link to="/login" className="underline">Log In</Link> to vote</p>
+          <p className="text-[16px] text-red-500">
+            Please{" "}
+            <Link to="/login" className="underline">
+              Log In
+            </Link>{" "}
+            to vote
+          </p>
         )}
       </div>
     </div>

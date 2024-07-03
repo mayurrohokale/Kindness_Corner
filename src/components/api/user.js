@@ -115,3 +115,13 @@ export async function getDonationForm() {
   }
 }
 
+export const getDonationFormById = async (id) => {
+  try {
+    const response = await Axios.get(`${BASE_URL}/donation-form/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching donation form by ID", error);
+    throw error;
+  }
+};
+
