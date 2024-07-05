@@ -18,6 +18,8 @@ import AllVolunteers from "./components/Home/Volunteer/allvolunteers";
 import Transactions from "./components/Donate/Transactions";
 import AllCampaign from "./components/Home/Campaign/allCampaign";
 import DonationDetail from "./components/Home/Campaign/donationDetail";
+import AboutUS from './components/Home/About/AboutUs';
+
 function App() {
 
   // const [user, setUser] = useState(null);
@@ -67,7 +69,7 @@ function App() {
             <Route path="/transaction" element={<Transactions/>}/>
             <Route path="/allcampaign" element={<AllCampaign/>}/>
             <Route path="/donationdetail/:id" element={<DonationDetail/>} />
-
+            <Route path="/aboutus" element={<AboutUS/>} />
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}
