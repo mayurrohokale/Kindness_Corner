@@ -76,7 +76,7 @@ export default function Header() {
       );
 
   return (
-    <div className="bg-white ">
+    <div className="bg-transparent ">
       <div className="relative bg-white">
         <header className="bg-white fixed top-0 left-0 right-0 md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-50  border-x-2 font-medium" id="home">
           <div className="flex flex-row justify-between w-full items-center">

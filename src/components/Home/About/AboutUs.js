@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Map from "./Map";
-
+import MapChart from "./MapChart";
 export default function AboutUs() {
   return (
     <div className="bg-white" id="about-us">
@@ -60,13 +60,14 @@ export default function AboutUs() {
       </div>
 
       {/* Map Section */}
-      <div className="flex justify-center my-8 ">
+      <div className="flex justify-center my-8  ">
         {/* <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1920px-World_map_-_low_resolution.svg.png"
           alt="World Map"
           className="w-11/12 md:w-2/3 lg:w-1/2"
         /> */}
         <Map/>
+          {/* <MapChart/> */}
       </div>
 
       {/* GoFundMe Difference Section */}

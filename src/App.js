@@ -19,6 +19,7 @@ import Transactions from "./components/Donate/Transactions";
 import AllCampaign from "./components/Home/Campaign/allCampaign";
 import DonationDetail from "./components/Home/Campaign/donationDetail";
 import AboutUS from './components/Home/About/AboutUs';
+import AddBlog from './components/Home/Blogs/AddBlog';
 
 function App() {
 
@@ -70,6 +71,7 @@ function App() {
             <Route path="/allcampaign" element={<AllCampaign/>}/>
             <Route path="/donationdetail/:id" element={<DonationDetail/>} />
             <Route path="/aboutus" element={<AboutUS/>} />
+            <Route path="/addblog" element={<AddBlog/>} />
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}

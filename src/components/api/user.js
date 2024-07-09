@@ -125,3 +125,40 @@ export const getDonationFormById = async (id) => {
   }
 };
 
+export async function postBlog(blogData){
+  debugger
+  try {
+    const headers = getHeaders();
+    const response = await Axios.post(`${BASE_URL}/add-blog`, blogData , {headers} );
+    debugger
+    return response;
+    } catch (error) {
+      console.error("Error posting blog:", error);
+      throw error;
+      }
+      
+}
+// export async function getApprovedBlogs() {
+//   try {
+//     const response = await Axios.get(`${BASE_URL}/blogs?status=approved`);
+//     if (response.status === 200) {
+//       return response.data.blogs;
+//     } else {
+//       throw new Error("Failed to fetch blogs");
+//     }
+//   } catch (error) {
+//     console.error("Error fetching blogs:", error);
+//     return [];
+//   }
+// }
+export async function getApprovedBlogs() {
+  try {
+    const response = await Axios.get(`${BASE_URL}/approved-blogs`, { headers: getHeaders() });
+    return response.data; // Return the approved blogs
+  } catch (error) {
+    console.error('Error fetching approved blogs:', error);
+    return [];
+  }
+}
+
+
