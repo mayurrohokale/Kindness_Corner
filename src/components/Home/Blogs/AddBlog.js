@@ -1,6 +1,22 @@
 import { useState } from "react";
 import { postBlog } from "../../api/user"; // Ensure the correct path
 
+const CustomInput = ({ label, type, placeholder, value, onChange, error }) => {
+  return (
+    <div className="relative mb-4">
+      <label className="flex flex-col gap-1 font-semibold">{label}</label>
+      <input
+        className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-4 py-2 w-full"
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+    </div>
+  );
+};
+
 export default function AddBlog() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -15,7 +31,7 @@ export default function AddBlog() {
       description,
       author,
     };
-    debugger
+
     try {
       const response = await postBlog(blogData);
       console.log('Blog created successfully:', response);
@@ -30,36 +46,40 @@ export default function AddBlog() {
   };
 
   return (
-    <div>
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+      <h2 className="text-2xl font-bold mb-6 text-center">Write a Blog</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Description</label>
+        <CustomInput
+          label="Title"
+          type="text"
+          placeholder="Enter your title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <div className="relative mb-4">
+          <label className="flex flex-col gap-1 font-semibold">Description</label>
           <textarea
+            className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-4 py-2 w-full"
+            placeholder="Enter your description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Author</label>
-          <input
-            type="text"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Submit</button>
+        <CustomInput
+          label="Author"
+          type="text"
+          placeholder="Enter your name"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        <button
+          type="submit"
+          className="w-full bg-[#2196F3] text-white font-semibold py-2 rounded-lg shadow-lg hover:bg-[#1e88e5] transition duration-300"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

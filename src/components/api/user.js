@@ -126,11 +126,11 @@ export const getDonationFormById = async (id) => {
 };
 
 export async function postBlog(blogData){
-  debugger
+ 
   try {
     const headers = getHeaders();
     const response = await Axios.post(`${BASE_URL}/add-blog`, blogData , {headers} );
-    debugger
+
     return response;
     } catch (error) {
       console.error("Error posting blog:", error);
