@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Blogsform from "./Blogs/Blogsform";
+import { FaPen } from "react-icons/fa";
 
 
 export default function Blogs() {
@@ -10,7 +11,7 @@ export default function Blogs() {
         <p className=" justify-center md:justify-start font-bold text-[40px] md:text-[55px] font-josiefin ">
           Community <span className="bg-[#E91E63] p-3 text-white">Blogs</span>{" "}
         </p>
-        <button><Link to="/addblog">Write A Blog</Link></button>
+        <button className="font-monserrat font-semibold text-xl p-2"><Link to="/addblog" className="flex justify-center text-center items-center gap-2 underline" > <FaPen/> Write A Blog</Link></button>
       </div>
 
       <div className="flex flex-col lg:flex-row justify-center items-center h-full gap-4 md:gap-10 pb-10 ">

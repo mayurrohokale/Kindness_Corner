@@ -154,7 +154,7 @@ export async function postBlog(blogData){
 export async function getApprovedBlogs() {
   try {
     const response = await Axios.get(`${BASE_URL}/approved-blogs`, { headers: getHeaders() });
-    return response.data; // Return the approved blogs
+    return response.data; 
   } catch (error) {
     console.error('Error fetching approved blogs:', error);
     return [];
