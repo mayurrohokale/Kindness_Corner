@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getApprovedBlogs } from '../../api/user'; 
 import dayjs from 'dayjs';
+import { FaPenNib } from "react-icons/fa6";
+
 
 export default function BlogsForm() {
   const [blogs, setBlogs] = useState([]);
@@ -54,8 +56,8 @@ export default function BlogsForm() {
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-4">
                   {/* <img className="w-7 h-7 rounded-full" src="https://via.placeholder.com/150" alt="Author avatar" /> */}
-                  <span className="font-medium text-[14px] md:text-[18px] dark:text-black">
-                    {item.author}
+                  <span className="font-medium flex gap-2 text-[14px] md:text-[18px] dark:text-black">
+                    {item.author} <FaPenNib/>
                   </span>
                 </div>
                 <Link

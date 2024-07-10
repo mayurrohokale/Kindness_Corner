@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { postBlog } from "../../api/user"; // Ensure the correct path
+import { postBlog } from "../../api/user"; 
+import { FaPenNib } from "react-icons/fa6";
 
-const CustomInput = ({ label, type, placeholder, value, onChange, error }) => {
+
+const CustomInput = ({ label, type, placeholder, value, onChange, error, icon }) => {
   return (
     <div className="relative mb-4">
-      <label className="flex flex-col gap-1 font-semibold">{label}</label>
+      <label className="flex flex-row items-center justify-center gap-1 font-semibold">{label} {icon}</label>
       <input
         className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-4 py-2 w-full"
         type={type}
@@ -68,6 +70,7 @@ export default function AddBlog() {
         </div>
         <CustomInput
           label="Author"
+          icon = {<FaPenNib/>}
           type="text"
           placeholder="Enter your name"
           value={author}
