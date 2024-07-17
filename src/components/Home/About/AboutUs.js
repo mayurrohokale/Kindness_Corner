@@ -95,6 +95,7 @@ export default function AboutUs() {
             friends, family, and even strangers to maximize the impact of your
             cause.
           </p>
+          <p>Narendra Kachare</p>
         </div>
       </div>
     </div>
