@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { postBlog } from "../../api/user"; 
 import { FaPenNib } from "react-icons/fa6";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
 
 
 const CustomInput = ({ label, type, placeholder, value, onChange, error, icon }) => {
@@ -36,13 +38,20 @@ export default function AddBlog() {
 
     try {
       const response = await postBlog(blogData);
+      
       console.log('Blog created successfully:', response);
+      toast.success("Blog created, Goes for Approval!", {
+        position: "top-center",
+      });
       setTitle('');
       setDescription('');
       setAuthor('');
       setError('');
     } catch (error) {
       console.error('Error creating blog:', error);
+      toast.error( "Failed to Create Blog!", {
+         position: "top-center",
+      })
       setError('Failed to create blog. Please try again.');
     }
   };
@@ -84,6 +93,7 @@ export default function AddBlog() {
           Submit
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }
