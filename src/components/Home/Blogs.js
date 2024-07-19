@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import Blogsform from "./Blogs/Blogsform";
 import { FaPen } from "react-icons/fa";
-
+import { useAppState } from "../../utils/appState";
 
 export default function Blogs() {
+  const { user, setUser } = useAppState();
+
+
   return (
     <div className="mt-0  max-w-full mx-2">
       <hr className="border border-black mt-2" />
@@ -11,7 +14,14 @@ export default function Blogs() {
         <p className=" justify-center md:justify-start font-bold text-[40px] md:text-[55px] font-josiefin ">
           Community <span className="bg-[#E91E63] p-3 text-white">Blogs</span>{" "}
         </p>
-        <button className="font-monserrat font-semibold text-xl md:text-sm p-2"><Link to="/addblog" className="flex justify-center text-center items-center gap-2 underline" > <FaPen/> Write A Blog</Link></button>
+        {user ?(
+           <button className="font-monserrat font-semibold text-xl md:text-sm p-2"><Link to="/addblog" className="flex justify-center text-center items-center gap-2 underline" > <FaPen/> Write A Blog</Link></button>
+        ):(
+          <p className="font-monserrat font-semibold text-xl md:text-sm p-2 ">You Must have to <Link to="/login" className="text-red-500 underline">Login</Link> to write a blog</p>
+        )
+
+        }
+       
       </div>
 
       <div className="flex flex-col lg:flex-row justify-center items-center h-full gap-4 md:gap-10 pb-10 ">

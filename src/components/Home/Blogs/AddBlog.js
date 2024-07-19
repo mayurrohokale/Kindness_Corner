@@ -4,7 +4,6 @@ import { FaPenNib } from "react-icons/fa6";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 
-
 const CustomInput = ({ label, type, placeholder, value, onChange, error, icon }) => {
   return (
     <div className="relative mb-4">
@@ -25,10 +24,21 @@ export default function AddBlog() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!title) newErrors.title = "Title is required";
+    if (!description) newErrors.description = "Description is required";
+    if (!author) newErrors.author = "Author is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     const blogData = {
       title,
@@ -46,13 +56,13 @@ export default function AddBlog() {
       setTitle('');
       setDescription('');
       setAuthor('');
-      setError('');
+      setErrors({});
     } catch (error) {
       console.error('Error creating blog:', error);
-      toast.error( error?.message || "Please Log in To create Blog!", {
+      toast.error(error?.message || "Please Log in To create Blog!", {
          position: "top-center",
-      })
-      setError('Failed to create blog. Please Log in!');
+      });
+      setErrors({ form: 'Failed to create blog. Please Log in!' });
     }
   };
 
@@ -66,6 +76,7 @@ export default function AddBlog() {
           placeholder="Enter your title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          error={errors.title}
         />
         <div className="relative mb-4">
           <label className="flex flex-col gap-1 font-semibold">Description</label>
@@ -76,16 +87,18 @@ export default function AddBlog() {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
+          {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
         </div>
         <CustomInput
           label="Author"
-          icon = {<FaPenNib/>}
+          icon={<FaPenNib />}
           type="text"
           placeholder="Enter your name"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          error={errors.author}
         />
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {errors.form && <p className="text-red-500 text-center mb-4">{errors.form}</p>}
         <button
           type="submit"
           className="w-full bg-[#2196F3] text-white font-semibold py-2 rounded-lg shadow-lg hover:bg-[#1e88e5] transition duration-300"

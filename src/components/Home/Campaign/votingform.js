@@ -6,7 +6,7 @@ import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB'); // Format as "dd/mm/yyyy"
+  return date.toLocaleDateString('en-GB'); 
 };
 
 export default function Votingform() {
