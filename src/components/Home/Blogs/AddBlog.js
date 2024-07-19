@@ -49,10 +49,10 @@ export default function AddBlog() {
       setError('');
     } catch (error) {
       console.error('Error creating blog:', error);
-      toast.error( "Failed to Create Blog!", {
+      toast.error( error?.message || "Please Log in To create Blog!", {
          position: "top-center",
       })
-      setError('Failed to create blog. Please try again.');
+      setError('Failed to create blog. Please Log in!');
     }
   };
 

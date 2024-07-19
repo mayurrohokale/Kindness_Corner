@@ -49,7 +49,7 @@ const Worksform = () => {
   
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center py-2 w-full gap-12 text-white">
+    <div className="flex flex-col xl:flex-row justify-center py-2 w-full gap-12 text-white">
       {worksData.map((item) => (
         <WorksItem
           key={item.id}

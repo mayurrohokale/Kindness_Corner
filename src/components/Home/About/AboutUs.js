@@ -5,17 +5,9 @@ export default function AboutUs() {
   return (
     <div className="bg-white" id="about-us">
        <h1 className="text-4xl font-bold mb-4">About Kindness Corner</h1>
-      {/* Header Image */}
-      <div className="flex justify-center mt-8">
-     
-        <img
-          src="./images/img19.jpg" // Replace with the path to your header image
-          alt="kindness Team"
-          className="w-full max-h-[500px] object-cover"
-        />
-      </div>
+      
 
-      {/* Introduction Section */}
+     
       <div className="text-center mx-4 my-8">
        
         <p className="text-lg mb-4">
@@ -95,7 +87,7 @@ export default function AboutUs() {
             friends, family, and even strangers to maximize the impact of your
             cause.
           </p>
-          <p>Narendra Kachare</p>
+          
         </div>
       </div>
     </div>
