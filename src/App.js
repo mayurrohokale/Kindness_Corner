@@ -1,17 +1,17 @@
 import "./App.css";
 
 import Main from "./components/Home/Main";
-import Layout from "./components/layout";
-import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import {useEffect, useState } from "react"
+// import Layout from "./components/layout";
+import {  Route, Routes } from "react-router-dom";
+// import {useEffect, useState } from "react"
 import Donation from "./components/Donate/Donation";
-import Volentier from "./components/Home/Volentier";
+// import Volentier from "./components/Home/Volentier";
 import Completedworks from "./components/Home/Completedworks";
 import Campaign from "./components/Home/Campaign/Campaign";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
-import { ToastContainer } from "react-toastify";
-import { getMe } from "./components/api/user";
+// import { ToastContainer } from "react-toastify";
+// import { getMe } from "./components/api/user";
 import Volunteerform from "./components/Home/Volunteer/volunteerform";
 import Profile from "./components/Home/Profile/Profile";
 import AllVolunteers from "./components/Home/Volunteer/allvolunteers";
@@ -76,7 +76,7 @@ function App() {
             <Route path="/aboutus" element={<AboutUS/>} />
             <Route path="/addblog" element={<AddBlog/>} />
             <Route path="/allblog" element={<AllBlog/>} />
-            <Route path="/blog/:id" component={<BlogDetail/>} />
+            <Route path="/blog/:id" element={<BlogDetail/>} />
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}
