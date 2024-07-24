@@ -24,12 +24,12 @@ export default function Volentier() {
       </p>
       <hr className="border border-black" />
       <div className="flex flex-col gap-2 lg:gap-4 md:flex-row text-center items-center justify-between  p-8  bg-gradient-to-r from-[#B7D8F4] to-[#2196F3] w-screen h-[935px] md:w-full md:h-40 mt-4">
-      <GoArrowUpRight className="text-6xl text-white" />
+        <GoArrowUpRight className="text-6xl text-white" />
         <div className="flex flex-col gap-2  font-bold font-monserrat text-[#E91E63]">
           <h1 className="text-xl lg:text-2xl">Transactions</h1>
           <h1 className="text-5xl">0</h1>
         </div>
-        <GoArrowUpRight className="text-6xl text-[#E91E63]"  />
+        <GoArrowUpRight className="text-6xl text-[#E91E63]" />
         <div className="flex flex-col gap-2  font-bold font-monserrat text-white">
           {" "}
           <h1 className="text-xl lg:text-2xl">Total Money</h1>
@@ -48,13 +48,9 @@ export default function Volentier() {
             <h1 className=" text-xl lg:text-2xl ">Volunteers </h1>
             <h1 className="text-5xl">
               {setvolcount !== null ? setvolcount : "Loading..."}
-             
             </h1>
           </Link>
-          <div>
-            
-          </div>
-          
+          <div></div>
         </div>
         <GoArrowUpRight className="text-6xl text-white" />
       </div>
@@ -103,7 +99,9 @@ export default function Volentier() {
               Together, we amplify the impact of your generosity and create
               positive change in the world."
               <br />
-              <span className="font-bold">READ MORE !</span>
+              <Link to="/aboutus">
+                <span className="font-bold">READ MORE !</span>
+              </Link>
             </p>
           </div>
         </div>

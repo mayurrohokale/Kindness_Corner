@@ -46,6 +46,7 @@ const CustomInput = ({ label, type, placeholder, value, onChange, options }) => 
 };
 
 export default function VolunteerForm() {
+  
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [state, setState] = useState("");

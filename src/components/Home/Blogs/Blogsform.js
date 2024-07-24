@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getApprovedBlogs } from '../../api/user';
 import BlogElement from './BlogElement';
+import sortedBlogs from '../../../utils/functions';
 export default function BlogsForm() {
   const [blogs, setBlogs] = useState([]);
 
@@ -9,6 +10,7 @@ export default function BlogsForm() {
     const fetchBlogs = async () => {
       try {
         const fetchedBlogs = await getApprovedBlogs();
+        const sortedBlogs = fetchedBlogs.sort((a, b) => new Date(b.date) - new Date(a.date));
         setBlogs(fetchedBlogs);
       } catch (error) {
         console.error('Error fetching blogs:', error);
