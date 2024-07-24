@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getApprovedBlogs } from '../../api/user'; 
+import { getApprovedBlogs } from '../../api/user';
 import dayjs from 'dayjs';
 import { FaPenNib } from "react-icons/fa6";
-
 
 export default function BlogsForm() {
   const [blogs, setBlogs] = useState([]);
@@ -35,7 +34,6 @@ export default function BlogsForm() {
           <p className="font-monserrat text-black text-sm sm:text-xl dark:text-gray-800">
             "Join us as we share inspiring stories of generosity and the impactful change our community is making through Kindness Corner."
           </p>
-         
         </div>
         <div className="grid m-4 md:m-2 sm:m-0 gap-8 lg:grid-cols-2">
           {blogs.slice(0, 4).map((item) => (
@@ -55,9 +53,8 @@ export default function BlogsForm() {
               <p className="mb-5 text-start font-monserrat text-[10px] md:text-[15px] text-gray-500">{item.description}</p>
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-4">
-                  {/* <img className="w-7 h-7 rounded-full" src="https://via.placeholder.com/150" alt="Author avatar" /> */}
                   <span className="font-medium flex gap-2 text-[14px] md:text-[18px] dark:text-black">
-                    {item.author} <FaPenNib/>
+                    {item.author} <FaPenNib />
                   </span>
                 </div>
                 <Link

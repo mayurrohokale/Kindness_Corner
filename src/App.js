@@ -21,7 +21,7 @@ import DonationDetail from "./components/Home/Campaign/donationDetail";
 import AboutUS from './components/Home/About/AboutUs';
 import AddBlog from './components/Home/Blogs/AddBlog';
 import AllBlog from "./components/Home/Blogs/AllBlogs";
-import BlogDetail from "./components/Home/Blogs/detailBlog";
+import BlogDetail from "./components/Home/Blogs/BlogDetails";
 
 
 function App() {
@@ -77,7 +77,6 @@ function App() {
             <Route path="/addblog" element={<AddBlog/>} />
             <Route path="/allblog" element={<AllBlog/>} />
             <Route path="/blog/:id" component={<BlogDetail/>} />
-          
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}

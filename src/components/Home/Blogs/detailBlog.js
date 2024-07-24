@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getApprovedBlogs } from '../../api/user'; 
+import { getApprovedBlogbyID } from '../../api/user'; 
 
 export default function BlogDetail() {
   const { id } = useParams();
@@ -9,7 +9,7 @@ export default function BlogDetail() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const fetchedBlog = await getApprovedBlogs(id);
+        const fetchedBlog = await getApprovedBlogbyID(id);
         setBlog(fetchedBlog);
       } catch (error) {
         console.error('Error fetching blog:', error);

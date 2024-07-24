@@ -161,4 +161,12 @@ export async function getApprovedBlogs() {
   }
 }
 
-
+export const getApprovedBlogbyID = async (id) => {
+  try {
+    const response = await Axios.get(`${BASE_URL}/approved-blogs/${id}`, { headers: getHeaders() });
+    return response;
+  } catch (error) {
+    console.error('Error fetching approved blog by ID:', error);
+    return null;
+  }
+};

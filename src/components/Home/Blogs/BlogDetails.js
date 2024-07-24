@@ -1,29 +1,40 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getApprovedBlogbyID } from '../../api/user';
 
-const blogs = [
-  { id: 1, title: "Making an Impact:", fullText: "Full content of blog 1..." },
-  { id: 2, title: "NGO Spotlight:", fullText: "Full content of blog 2..." },
-  { id: 3, title: "Tips for Effective Giving:", fullText: "Full content of blog 3..." },
-  { id: 4, title: "Volunteer Stories:", fullText: "Full content of blog 4..." },
-  { id: 5, title: "Fundraising Events:", fullText: "Full content of blog 5..." }
-];
+export default function BlogDetail() {
 
-const BlogDetail = () => {
   const { id } = useParams();
-  const blog = blogs.find(blog => blog.id === parseInt(id));
+
+  const [blog, setBlog] = useState(null);
+
+  console.log(id,"ID");
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const fetchedBlog = await getApprovedBlogbyID(id);
+        setBlog(fetchedBlog);
+        console.log("Response",fetchedBlog);
+      } catch (error) {
+        console.error('Error fetching blog:', error);
+      }
+    };
+
+    fetchBlog();
+  }, [id]);
 
   if (!blog) {
-    return <div>Blog not found</div>;
+    return <p>Loading...</p>;
   }
 
   return (
-    <section className="bg-white p-6 mx-auto max-w-screen-lg">
-      <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
-      <p className="text-lg text-gray-700">{blog.fullText}</p>
-    </section>
+    <div className="blog-detail">
+      <h1>Data ikd </h1>
+      blog
+      <h1 className="text-3xl font-bold">{blog.title}</h1>
+      <p className="text-gray-700">{blog.date}</p>
+      <p className="text-lg">{blog.content}</p>
+      <p className="text-gray-600">Written by: {blog.author}</p>
+    </div>
   );
-};
-
-export default BlogDetail;
+}
