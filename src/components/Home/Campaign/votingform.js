@@ -38,7 +38,7 @@ export default function Votingform() {
      
         <h1 className="font-monserrat text-start font-bold">{donation.title}</h1>
         <div className="w-full flex flex-col items-start  text-black/60">
-          <p className="text-start max-w-[300px]">
+          <p className="text-start max-w-[300px] h-10 truncate">
             {donation.description}
           </p>
           <h1>{donation.contact}</h1>

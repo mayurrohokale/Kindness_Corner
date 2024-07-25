@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <WorldMap
-        color="#E91E63"
+        color="#F70059"
         title="Volunteers"
         value-suffix="volunteers"
         size="xxl"

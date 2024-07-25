@@ -20,8 +20,8 @@ export default function AboutUs() {
       </div>
       <div className="text-center my-4 font-semibold font-itim text-xl">
         <p>
-          ...Life is good when you are happy <br /> but much better when others
-          are Happy!
+          ...Life is good when you are happy, but much better <br/> when others
+          are Happy, because of you!
         </p>
       </div>
       <div className="text-justify my-8">

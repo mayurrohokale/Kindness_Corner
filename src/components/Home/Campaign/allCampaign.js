@@ -8,7 +8,8 @@ export default function AllCampaigns() {
   useEffect(() => {
     async function fetchData() {
       const data = await getDonationForm();
-      setDonationData(data);
+      const sortedData = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setDonationData(sortedData);
       console.log(data);
     }
     fetchData();
@@ -29,7 +30,7 @@ export default function AllCampaigns() {
           />
           <h1 className="font-monserrat text-center font-bold">{donation.title}</h1>
           <div className="w-full flex flex-col items-center">
-            <p className="text-center max-w-[300px] text-black/60">
+            <p className="text-center max-w-[300px] text-black/60 h-10 truncate">
               {donation.description}
             </p>
           </div>
@@ -37,6 +38,9 @@ export default function AllCampaigns() {
           <div>
             <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
           </div>
+          <Link to={`/donationdetail/${donation._id}`} className="text-blue-500 underline">
+          View Details
+        </Link>
         </div>
       ))}
     </div>
