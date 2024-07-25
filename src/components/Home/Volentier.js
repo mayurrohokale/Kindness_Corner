@@ -100,7 +100,7 @@ export default function Volentier() {
               positive change in the world."
               <br />
               <Link to="/aboutus">
-                <span className="font-bold">READ MORE !</span>
+                <span className="font-bold underline text-blue-500">READ MORE !</span>
               </Link>
             </p>
           </div>

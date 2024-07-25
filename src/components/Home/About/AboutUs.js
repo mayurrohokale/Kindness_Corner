@@ -1,15 +1,30 @@
 import { Link } from "react-router-dom";
 import Map from "./Map";
 import MapChart from "./MapChart";
+
 export default function AboutUs() {
   return (
-    <div className="bg-white" id="about-us">
-       <h1 className="text-4xl font-bold mb-4">About Kindness Corner</h1>
-      
-
-     
-      <div className="text-center mx-4 my-8">
-       
+    <div className="bg-white mx-4 md:mx-12 lg:mx-28" id="about-us">
+      <div className="relative h-[250px] md:h-[400px] lg:h-[56vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('./images/img2.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-black opacity-80"></div>
+          <div className="relative flex flex-col justify-center items-center text-white font-bold text-[20px] md:text-[45px] gap-6 font-monserrat h-full">
+            <h1 className="text-center">
+              About <span className="text-[#F70059]">Kindness Corner</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div className="text-center my-4 font-semibold font-itim text-xl">
+        <p>
+          ...Life is good when you are happy <br /> but much better when others
+          are Happy!
+        </p>
+      </div>
+      <div className="text-justify my-8">
         <p className="text-lg mb-4">
           There's a part of every one of us that dreams of a better world. That
           spark of inspiration to help a person, fix something broken, or show
@@ -28,12 +43,10 @@ export default function AboutUs() {
           people give and changing lives — are you ready to join us?
         </p>
       </div>
-
-      {/* Learn More Section */}
       <div className="flex justify-center my-8">
         <div className="bg-gray-100 p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 text-center">
           <img
-            src="./images/logo3.png" // Replace with the path to your logo image
+            src="./images/logo3.png"
             alt="Kindness Corner Logo"
             className="mx-auto mb-4 w-44"
           />
@@ -50,19 +63,9 @@ export default function AboutUs() {
           </Link>
         </div>
       </div>
-
-      {/* Map Section */}
-      <div className="flex justify-center my-8  ">
-        {/* <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1920px-World_map_-_low_resolution.svg.png"
-          alt="World Map"
-          className="w-11/12 md:w-2/3 lg:w-1/2"
-        /> */}
-        <Map/>
-          {/* <MapChart/> */}
+      <div className="flex justify-center min-h-screen max-w-full">
+        <Map />
       </div>
-
-      {/* GoFundMe Difference Section */}
       <div className="flex flex-col md:flex-row justify-around text-center my-8 px-4">
         <div className="bg-white shadow-lg p-6 m-4 rounded-lg flex-1">
           <h2 className="font-bold text-xl mb-4">Trust</h2>
@@ -87,7 +90,6 @@ export default function AboutUs() {
             friends, family, and even strangers to maximize the impact of your
             cause.
           </p>
-          
         </div>
       </div>
     </div>

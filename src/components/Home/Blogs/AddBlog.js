@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { postBlog } from "../../api/user";
 import { FaPenNib } from "react-icons/fa6";
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,10 +29,18 @@ export default function AddBlog() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const descriptionRef = useRef(null);
 
   useEffect(() => {
     setIsSubmitDisabled(!validateForm());
   }, [title, description, author, image]);
+
+  useEffect(() => {
+    if (descriptionRef.current) {
+      descriptionRef.current.style.height = "auto";
+      descriptionRef.current.style.height = `${descriptionRef.current.scrollHeight}px`;
+    }
+  }, [description]);
 
   const handleBlur = (field) => {
     setTouched({
@@ -48,6 +56,7 @@ export default function AddBlog() {
     else if (title.split(" ").length > 25) newErrors.title = "Title should be a Maximum of 25 words";
     if (!description) newErrors.description = "Description is required";
     else if (description.split(" ").length > 3000) newErrors.description = "Description should be a maximum of 3000 words";
+    else if (description.split(" ").length < 100) newErrors.description = "Description should be minimum of 100 words";
     if (!image) newErrors.image = "Image is required!";
     else if (!/^https?:\/\/.+\..+$/.test(image)) newErrors.image = "Image URL must start with http:// or https://";
     if (!author) newErrors.author = "Author is required";
@@ -110,6 +119,7 @@ export default function AddBlog() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             onBlur={() => handleBlur('description')}
+            ref={descriptionRef}
             required
           />
           {touched.description && errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
