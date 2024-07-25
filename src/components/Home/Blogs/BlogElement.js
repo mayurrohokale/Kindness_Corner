@@ -18,7 +18,7 @@ export default function BlogElement(blog) {
               <h2 className="mb-2 text-xl md:text-2xl text-start font-bold font-monserrat tracking-tight text-gray-900 dark:text-black">
                 <p>{blog.title}</p>
               </h2>
-              <p className="mb-5 text-start font-monserrat text-[10px] md:text-[15px] text-gray-500 h-14 w-full truncate">{blog.description}</p>
+              <p className="mb-5 text-start font-monserrat text-[10px] md:text-[15px] text-gray-500 h-14 lg:w-full md:w-[500px] w-[200px] truncate">{blog.description}</p>
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-4">
                   <span className="font-medium flex gap-2 text-[14px] md:text-[18px] dark:text-black">

@@ -11,7 +11,7 @@ export default function BlogsForm() {
       try {
         const fetchedBlogs = await getApprovedBlogs();
         const sortedBlogs = fetchedBlogs.sort((a, b) => new Date(b.date) - new Date(a.date));
-        setBlogs(fetchedBlogs);
+        setBlogs(sortedBlogs);
       } catch (error) {
         console.error('Error fetching blogs:', error);
       }
