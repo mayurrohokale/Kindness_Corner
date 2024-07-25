@@ -44,15 +44,15 @@ const Main = () => {
             <img
               src={slideImages[currentImageIndex].url}
               alt={slideImages[currentImageIndex].caption}
-              className="w-full object-cover shadow-md h-[30vh] lg:h-[50vh] xl:h-[65vh] 2xl:h-[88vh]"
+              className="w-full object-cover shadow-md h-[30vh] lg:h-[50vh] xl:h-[65vh] 2xl:h-[90vh]"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50  text-white text-center py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin">
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60  text-white text-center py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin">
               <div className="flex flex-col justify-center items-center gap-2">
                 <div className="text-[14px] md:text-[30px]">
                 {slideImages[currentImageIndex].caption}
                 </div>
                 
-                <button className=" w-[100px] h-[35px] md:w-[220px] md:h-[70px] bg-[#F70059] text-white text-[10px] md:text-[25px] font-bold  shadow-lg font-monserrat hover:scale-105">
+                <button className=" rounded-md w-[100px] h-[35px] md:w-[220px] md:h-[70px] bg-[#F70059] text-white text-[10px] md:text-[22px] font-bold  shadow-lg font-monserrat hover:scale-105">
                   <Link to="/donate">DONATE NOW</Link>
                 </button>
               </div>
