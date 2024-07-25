@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Donateform from "./Donateform";
 import Campaign from "./Campaign/Campaign";
 import Volentier from "./Volentier";
@@ -43,22 +44,30 @@ const Main = () => {
             <img
               src={slideImages[currentImageIndex].url}
               alt={slideImages[currentImageIndex].caption}
-              className="w-full object-cover shadow-md h-[30vh] lg:h-[50vh] xl:h-[65vh] 2xl:h-[88vh]  "
+              className="w-full object-cover shadow-md h-[30vh] lg:h-[50vh] xl:h-[65vh] 2xl:h-[88vh]"
             />
-            <div className="absolute bottom-4 md:bottom-16 left-0 right-0 bg-black bg-opacity-10 text-white text-start py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin ">
-              {slideImages[currentImageIndex].caption}
-              {/* <p className="text-[10px] md:text-[20px]  text-black underline" >Read More!</p> */}
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50  text-white text-center py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin">
+              <div className="flex flex-col justify-center items-center gap-2">
+                <div className="text-[14px] md:text-[30px]">
+                {slideImages[currentImageIndex].caption}
+                </div>
+                
+                <button className=" w-[100px] h-[35px] md:w-[220px] md:h-[70px] bg-[#F70059] text-white text-[10px] md:text-[25px] font-bold  shadow-lg font-monserrat hover:scale-105">
+                  <Link to="/donate">DONATE NOW</Link>
+                </button>
+              </div>
             </div>
           </div>
-          <div className="absolute top-3 xl:top-8 right-3 sm:right-5">
+
+          {/* <div className="absolute top-3 xl:top-8 right-3 sm:right-5">
             <div className="hidden lg:flex">
               <Donateform />
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="lg:hidden w-full flex flex-col items-center z-10 px-3 py-2 lg:px-3 lg:py-5">
+        {/* <div className="lg:hidden w-full flex flex-col items-center z-10 px-3 py-2 lg:px-3 lg:py-5">
           <Donateform />
-        </div>
+        </div> */}
         <Volentier />
         <div className="mt-8">
           <Campaign />
