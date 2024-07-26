@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { GoArrowUpRight } from "react-icons/go";
-import { MdArrowOutward } from "react-icons/md";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { getVolunteersCount } from "../api/user";
 import CountUp from 'react-countup';
@@ -27,7 +25,6 @@ export default function Volentier() {
       title: "EMPOWERING GRASSROOT",
       color:"#50c878",
     },
-    
     {
       url: "./Volunteer.png",
       title: "VOLUNTEER",
@@ -37,6 +34,9 @@ export default function Volentier() {
 
   const [volCount, setVolCount] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [inView, setInView] = useState(false);
+
+  const impactRef = useRef(null);
 
   useEffect(() => {
     const fetchVolunteersCount = async () => {
@@ -57,6 +57,27 @@ export default function Volentier() {
     return () => clearInterval(intervalId);
   }, [slides.length]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (impactRef.current) {
+      observer.observe(impactRef.current);
+    }
+
+    return () => {
+      if (impactRef.current) {
+        observer.unobserve(impactRef.current);
+      }
+    };
+  }, []);
+
   const getVisibleSlides = () => {
     let visibleSlides = [];
     for (let i = 0; i < 3; i++) {
@@ -67,9 +88,8 @@ export default function Volentier() {
 
   return (
     <div className="" id="voulunteers">
-      <div className="flex text-justify  items-center  font-monserrat font-normal text-[11px] md:text-[15px] mx-4 md:mx-52 mt-8 ">
+      <div className="flex text-justify items-center font-monserrat font-normal text-[11px] md:text-[15px] mx-4 md:mx-52 mt-8 ">
         <p>
-          {" "}
           "At Kindness Corner, we empower you to make a difference. Our platform
           allows you to donate securely and transparently, with real-time
           updates on transactions and total funds raised. You can donate
@@ -99,33 +119,39 @@ export default function Volentier() {
                 alt={slide.title}
                 className="w-[100%] h-[100%] object-cover"
               />
-              <p className="text-xl font-semibold underline font-mono" style={{ color: slide.color }}> {slide.title} </p>
+              <p className="text-xl font-extrabold underline font-mono" style={{ color: slide.color }}> {slide.title} </p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-4" ref={impactRef}>
         <p className="text-[25px] pt-4 md:text-[42px] text-black font-monserrat font-bold">
           Our Impact
         </p>
         <div className="flex flex-col lg:gap-20 md:flex-row text-center items-center justify-between lg:justify-center w-screen h-auto md:w-full md:h-auto mt-4 text-[#F70059]">
           <div className="flex flex-col gap-2 font-bold font-monserrat">
-            <h1 className="text-[60px]"><CountUp end={150} duration={2} />+</h1>
+            <h1 className="text-[60px]">
+              {inView && <CountUp end={150} duration={2} />}+
+            </h1>
             <h1 className="text-xl lg:text-2xl">Transactions</h1>
             <h1 className="text-black font-josiefin font-normal text-[14px]">
               Its a realtime <br /> transactions of <br /> both transactions
             </h1>
           </div>
           <div className="flex flex-col gap-2 font-bold font-monserrat">
-            <h1 className="text-[60px]"><CountUp end={4267} duration={2} />+</h1>
+            <h1 className="text-[60px]">
+              {inView && <CountUp end={4267} duration={2} />}+
+            </h1>
             <h1 className="text-xl lg:text-2xl">Total Money</h1>
             <h1 className="text-black font-josiefin font-normal text-[14px]">
               Its a realtime Record <br /> of How much Money <br /> in Account!
             </h1>
           </div>
           <div className="flex flex-col gap-2 font-bold font-monserrat">
-            <h1 className="text-[60px]"><CountUp end={570} duration={2} />+</h1>
+            <h1 className="text-[60px]">
+              {inView && <CountUp end={570} duration={2} />}+
+            </h1>
             <h1 className="text-xl lg:text-2xl">To Go</h1>
             <h1 className="text-black font-josiefin font-normal text-[14px]">
               Its a realtime Record <br /> of How much Money <br /> Goes to NGOs
@@ -134,15 +160,15 @@ export default function Volentier() {
           <div className="flex flex-col gap-2 font-bold font-monserrat">
             <Link to="/allvolunteers">
               <h1 className="text-[60px]">
-                {volCount !== null ? <CountUp end={volCount} duration={2} /> : "Loading..."}+
+                {volCount !== null ? (inView && <CountUp end={volCount} duration={3} />) : "Loading..."}+
               </h1>
             </Link>
             <Link to="/allvolunteers">
               <h1 className="text-xl lg:text-2xl">Volunteers</h1>
             </Link>
             <h1 className="text-black font-josiefin font-normal text-[14px]">
-              List of Volunteerss <br /> who are par tof this
-              <br /> wonderfull journey
+              List of Volunteerss <br /> who are part of this
+              <br /> wonderful journey
             </h1>
           </div>
         </div>
