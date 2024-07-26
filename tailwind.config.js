@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -15,7 +16,17 @@ module.exports = {
         "courier" : ["Courier Prime"],
         
         
-      }
+      },
+      keyframes: {
+        slide: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-88px)' },
+        },
+      },
+      animation: {
+        slide: 'slide 2s linear infinite',
+      },
+    
     }
   
   },
