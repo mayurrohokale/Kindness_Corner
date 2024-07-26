@@ -139,7 +139,7 @@ const Poll = ({ voteFormId }) => {
             style={{
               width: `${yesPercentage}%`,
               backgroundColor: "#2196F3",
-              height: "20px",
+              height: "6px",
             }}
             className="rounded-lg"
           ></div>

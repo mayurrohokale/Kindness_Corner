@@ -59,6 +59,8 @@ const Main = () => {
             </div>
           </div>
 
+          
+
           {/* <div className="absolute top-3 xl:top-8 right-3 sm:right-5">
             <div className="hidden lg:flex">
               <Donateform />
