@@ -60,7 +60,7 @@ export default function Volentier() {
 
   return (
     <div className="" id="voulunteers">
-      <div className="flex text-center items-center font-monserrat font-normal text-[11px] md:text-[15px] mx-2 md:mx-52 mt-8 ">
+      <div className="flex text-justify  items-center  font-monserrat font-normal text-[11px] md:text-[15px] mx-4 md:mx-52 mt-8 ">
         <p>
           {" "}
           "At Kindness Corner, we empower you to make a difference. Our platform
@@ -71,14 +71,14 @@ export default function Volentier() {
           amplify your generosity and create positive change."
           <br />
           <Link to="/aboutus">
-            <span className="font-bold underline text-blue-500">
+            <span className="font-bold underline text-blue-500 pt-2 text-center items-center justify-center flex">
               READ MORE !
             </span>
           </Link>
         </p>
       </div>
       <div>
-        <p className="mt-8 font-bold text-[16px] md:text-[35px] font-monserrat mb-3">
+        <p className="mt-8 font-bold text-[25px] md:text-[42px] font-monserrat mb-3">
           Our Programmes
         </p>
         <div className="flex flex-col md:flex-row text-center gap-20 my-16 items-center justify-center">
@@ -99,7 +99,7 @@ export default function Volentier() {
       </div>
 
       <div className="mb-4">
-        <p className="text-[16px] pt-4 md:text-[35px] text-black font-monserrat font-bold">
+        <p className="text-[25px] pt-4 md:text-[42px] text-black font-monserrat font-bold">
           Our Impact
         </p>
         <div className="flex flex-col lg:gap-20 md:flex-row text-center items-center justify-between lg:justify-center w-screen h-auto md:w-full md:h-auto mt-4 text-[#F70059]">
