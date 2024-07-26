@@ -27,7 +27,7 @@ export default function Votingform() {
   }
 
   return (
-    <div className="flex mb-8 flex-col md:flex-row gap-4 h-auto justify-center py-2 w-full ">
+    <div className="flex mb-8 flex-col lg:flex-row gap-4 h-auto justify-center py-2 w-full ">
     {donationData.slice(0, showAll ? donationData.length : 3).map((donation) => (
       <div key={donation._id} className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg">
         <img

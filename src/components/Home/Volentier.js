@@ -88,7 +88,7 @@ export default function Volentier() {
 
   return (
     <div className="" id="voulunteers">
-      <div className="flex text-justify items-center font-monserrat font-normal text-[11px] md:text-[15px] mx-4 md:mx-52 mt-8 ">
+      <div className="flex text-justify items-center font-monserrat font-normal text-[11px] md:text-[15px] mx-4 md:mx-12 lg:mx-52 mt-8 ">
         <p>
           "At Kindness Corner, we empower you to make a difference. Our platform
           allows you to donate securely and transparently, with real-time
@@ -129,7 +129,7 @@ export default function Volentier() {
         <p className="text-[25px] pt-4 md:text-[42px] text-black font-monserrat font-bold">
           Our Impact
         </p>
-        <div className="flex flex-col lg:gap-20 md:flex-row text-center items-center justify-between lg:justify-center w-screen h-auto md:w-full md:h-auto mt-4 text-[#F70059]">
+        <div className="flex flex-col lg:gap-20 lg:flex-row text-center items-center justify-between lg:justify-center w-screen h-auto md:w-full md:h-auto mt-4 text-[#F70059]">
           <div className="flex flex-col gap-2 font-bold font-monserrat">
             <h1 className="text-[60px]">
               {inView && <CountUp end={150} duration={2} />}+
@@ -160,7 +160,7 @@ export default function Volentier() {
           <div className="flex flex-col gap-2 font-bold font-monserrat">
             <Link to="/allvolunteers">
               <h1 className="text-[60px]">
-                {volCount !== null ? (inView && <CountUp end={volCount} duration={3} />) : "Loading..."}+
+                {volCount !== null ? (inView && <CountUp end={volCount} duration={3} />) : "Load..."}+
               </h1>
             </Link>
             <Link to="/allvolunteers">

@@ -44,7 +44,7 @@ const Main = () => {
             <img
               src={slideImages[currentImageIndex].url}
               alt={slideImages[currentImageIndex].caption}
-              className="w-full object-cover shadow-md h-[30vh] lg:h-[50vh] xl:h-[65vh] 2xl:h-[90vh]"
+              className="w-full object-cover shadow-md h-[30vh] md:h-[80vh] lg:h-[50vh] xl:h-[65vh] 2xl:h-[90vh]"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60  text-white text-center py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin">
               <div className="flex flex-col justify-center items-center gap-2">

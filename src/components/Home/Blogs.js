@@ -15,9 +15,9 @@ export default function Blogs() {
           Community <span className="bg-[#E91E63] p-3 text-white">Blogs</span>{" "}
         </p>
         {user ?(
-           <button className="font-monserrat font-semibold text-xl md:text-sm p-2"><Link to="/addblog" className="flex justify-center text-center items-center gap-2 underline" > <FaPen/> Write A Blog</Link></button>
+           <button className="font-monserrat font-semibold text-sm p-2"><Link to="/addblog" className="flex justify-center text-center items-center gap-2 underline" > <FaPen/> Write A Blog</Link></button>
         ):(
-          <p className="font-monserrat font-semibold text-xl md:text-sm p-2 ">You Must have to <Link to="/login" className="text-red-500 underline">Login</Link> to write a blog</p>
+          <p className="font-monserrat font-semibold text-sm md:text-sm p-2 ">You Must have to <Link to="/login" className="text-red-500 underline">Login</Link> to write a blog</p>
         )
 
         }
