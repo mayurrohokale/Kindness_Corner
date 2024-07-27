@@ -10,7 +10,7 @@ export default function AllCampaigns() {
       const data = await getDonationForm();
       const sortedData = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       setDonationData(sortedData);
-      console.log(data);
+      console.log(sortedData);
     }
     fetchData();
   }, []);
@@ -24,9 +24,9 @@ export default function AllCampaigns() {
       {donationData.map((donation) => (
         <div key={donation._id} className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 flex flex-col gap-2 border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg">
           <img
-            src="./images/camp.jpg"
+            src={donation.image}
             alt="ngoimage"
-            className="object-contain w-full max-h-[200px]"
+            className="object-fit w-full h-[200px] "
           />
           <h1 className="font-monserrat text-center font-bold">{donation.title}</h1>
           <div className="w-full flex flex-col items-center">
@@ -39,8 +39,8 @@ export default function AllCampaigns() {
             <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
           </div>
           <Link to={`/donationdetail/${donation._id}`} className="text-blue-500 underline">
-          View Details
-        </Link>
+            View Details
+          </Link>
         </div>
       ))}
     </div>

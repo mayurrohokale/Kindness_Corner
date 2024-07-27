@@ -31,9 +31,9 @@ export default function Votingform() {
     {donationData.slice(0, showAll ? donationData.length : 3).map((donation) => (
       <div key={donation._id} className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg">
         <img
-          src="./images/camp.jpg"
+          src={donation.image}
           alt="ngoimage"
-          className="object-contain w-full max-h-[200px]"
+          className="object-fit w-full h-[200px] "
         />
      
         <h1 className="font-monserrat text-start font-bold">{donation.title}</h1>
