@@ -98,30 +98,30 @@ const Footer = () => {
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]  ">QUICK LINKS</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
               <li className="py-2 ">
-                <Link to="/donate" className="text-white hover:underline flex gap-2">
+                <Link to="/donate" className="text-white hover:underline flex items-center justify-center gap-2">
                      <TbMathGreater/> Donate
                 </Link>
               </li>
              
               <li>
-                <Link to="/transaction" className="text-white hover:underline flex gap-2">
+                <Link to="/transaction" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/>Transactions
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/about" className="text-white hover:underline flex gap-2">
+                <Link to="/about" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/>About Us
                 </Link>
               </li>
               <li>
-                <Link to="/vote" className="text-white hover:underline flex gap-2">
+                <Link to="/vote" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/>Vote
                 </Link>
               </li>
               <li className="py-2">
-                {user ? ( <Link to="/profile" className="text-white hover:underline flex gap-2">
+                {user ? ( <Link to="/profile" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/>Profile
-                </Link>):( <Link to="/login" className="text-white hover:underline flex gap-2">
+                </Link>):( <Link to="/login" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/>Profile
                 </Link>)}
                
@@ -139,27 +139,27 @@ const Footer = () => {
             </div>
           </div> */}
 
-          <div className="py-4 font-josiefin">
+          <div className="lg:py-2 font-josiefin">
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start ">HELP</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px]  md:text-[19px]">
               <li className="py-2">
-                <Link to="/donate" className="text-white hover:underline flex gap-2">
+                <Link to="/donate" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/> FAQ
                 </Link>
               </li>
             
               <li>
-                <Link to="/ngo" className="text-white hover:underline flex gap-2">
+                <Link to="/ngo" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/> Privacy Policy
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/allvolunteers" className="text-white hover:underline flex gap-2">
+                <Link to="/allvolunteers" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/>Volunteers
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white hover:underline flex gap-2">
+                <Link to="/contact" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/> Contact Us
                 </Link>
               </li>
