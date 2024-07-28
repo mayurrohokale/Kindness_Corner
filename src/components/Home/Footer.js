@@ -80,7 +80,7 @@ const Footer = () => {
             <img
               src="./images/logo4.png"
               alt="logo"
-              className="w-40 md:w-52 p-1 mt-0  md:py-6"
+              className="w-40 md:w-52 p-1 mt-0 py-4  md:py-6"
             />
             <div className="flex flex-col items-start text-[12px] md:text-[19px] font-josiefin gap-2">
             <p className="flex flex-row gap-2"><IoLocationSharp/>  Pune, India</p>
@@ -100,8 +100,8 @@ const Footer = () => {
               </li>
              
               <li>
-                <Link to="/ngo" className="text-white hover:underline">
-                  NGO
+                <Link to="/transaction" className="text-white hover:underline">
+                  Transactions
                 </Link>
               </li>
               <li className="py-2">
@@ -110,8 +110,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white hover:underline">
-                  Contact Us
+                <Link to="/vote" className="text-white hover:underline">
+                  Vote
+                </Link>
+              </li>
+              <li className="py-2">
+                <Link to="/profile" className="text-white hover:underline">
+                  Profile
                 </Link>
               </li>
             </ul>
@@ -142,8 +147,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/about" className="text-white hover:underline">
-                   Conta Us
+                <Link to="/allvolunteers" className="text-white hover:underline">
+                   Volunteers
                 </Link>
               </li>
               <li>
@@ -164,8 +169,8 @@ const Footer = () => {
                 className="w-[300px] p-2 mb-2 bg-gray-700 rounded"
               />
               <input
-                type="email"
-                placeholder="Please Enter Email"
+                type="text"
+                placeholder="Write your Query"
                 className="w-[300px] p-2 mb-2 bg-gray-700 rounded"
               />
               <button
