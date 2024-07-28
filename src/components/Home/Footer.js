@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
+import { TbMathGreater } from "react-icons/tb";
+import { useAppState } from "../../utils/appState";
 
 const Footer = () => {
   const faqs = [
@@ -42,6 +44,8 @@ const Footer = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(null);
+  const {user, setUser} = useAppState();
+
 
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -74,7 +78,7 @@ const Footer = () => {
         </div>
       ))}
 
-      <div className="mt-6 bg-gray-800 text-white font-itim lg:px-16 lg:py-20">
+      <div className="mt-6 bg-gray-700 text-white font-itim lg:px-16 lg:py-20">
         <div className="flex flex-col lg:flex-row lg:justify-between  ">
           <div className="justify-center items-center lg:justify-start lg:items-start  flex flex-col">
             <img
@@ -83,9 +87,9 @@ const Footer = () => {
               className="w-40 md:w-52 p-1 mt-0 py-4  md:py-6"
             />
             <div className="flex flex-col items-start text-[12px] md:text-[19px] font-josiefin gap-2">
-            <p className="flex flex-row gap-2"><IoLocationSharp/>  Pune, India</p>
-            <p className="flex flex-row gap-2"><IoIosMail/>  kindness@mail.com</p>
-            <p className="flex flex-row gap-2"><IoCall/>  +91 1234567890</p>
+            <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoLocationSharp/></span>  Pune, India</p>
+            <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoIosMail/> </span> kindness@mail.com</p>
+            <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoCall/> </span> +91 1234567890</p>
             </div>
             
           </div>
@@ -93,31 +97,34 @@ const Footer = () => {
           <div className="py-4 font-josiefin">
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]  ">QUICK LINKS</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
-              <li className="py-2">
-                <Link to="/donate" className="text-white hover:underline">
-                  Donate
+              <li className="py-2 ">
+                <Link to="/donate" className="text-white hover:underline flex gap-2">
+                     <TbMathGreater/> Donate
                 </Link>
               </li>
              
               <li>
-                <Link to="/transaction" className="text-white hover:underline">
-                  Transactions
+                <Link to="/transaction" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/>Transactions
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/about" className="text-white hover:underline">
-                  About Us
+                <Link to="/about" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/>About Us
                 </Link>
               </li>
               <li>
-                <Link to="/vote" className="text-white hover:underline">
-                  Vote
+                <Link to="/vote" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/>Vote
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/profile" className="text-white hover:underline">
-                  Profile
-                </Link>
+                {user ? ( <Link to="/profile" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/>Profile
+                </Link>):( <Link to="/login" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/>Profile
+                </Link>)}
+               
               </li>
             </ul>
           </div>
@@ -136,24 +143,24 @@ const Footer = () => {
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start ">HELP</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px]  md:text-[19px]">
               <li className="py-2">
-                <Link to="/donate" className="text-white hover:underline">
-                  FAQ
+                <Link to="/donate" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/> FAQ
                 </Link>
               </li>
             
               <li>
-                <Link to="/ngo" className="text-white hover:underline">
-                  Privacy Policy
+                <Link to="/ngo" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/> Privacy Policy
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/allvolunteers" className="text-white hover:underline">
-                   Volunteers
+                <Link to="/allvolunteers" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/>Volunteers
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white hover:underline">
-                  Contact Us
+                <Link to="/contact" className="text-white hover:underline flex gap-2">
+                <TbMathGreater/> Contact Us
                 </Link>
               </li>
             </ul>
@@ -166,16 +173,16 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="Please Enter Name"
-                className="w-[300px] p-2 mb-2 bg-gray-700 rounded"
+                className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded"
               />
               <input
                 type="text"
                 placeholder="Write your Query"
-                className="w-[300px] p-2 mb-2 bg-gray-700 rounded"
+                className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded"
               />
               <button
                 type="submit"
-                className="w-[300px] md:w-[160px] p-2 mb-2 bg-[#E91E63] rounded"
+                className="w-[300px] md:w-[160px] p-2 mb-2 bg-[#E91E63] hover:bg-pink-700 rounded"
               >
                 Submit
               </button>
