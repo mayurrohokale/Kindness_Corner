@@ -3,38 +3,41 @@ import { FaXTwitter } from "react-icons/fa6";
 import { SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { IoLocationSharp } from "react-icons/io5";
+import { IoIosMail } from "react-icons/io";
+import { IoCall } from "react-icons/io5";
 
 const Footer = () => {
   const faqs = [
     {
-      question: "how can i make Donation?",
+      question: "How can I make a donation?",
       answer:
-        "You can Simply go to Donation page where you can donate Nomously or Anonymously",
+        "You can simply go to the Donation page where you can donate anonymously or openly.",
     },
     {
-      question: "How does the Donation System Work?",
+      question: "How does the donation system work?",
       answer:
-        "Our donation Voting system allows user to vote for preferred NGO from a list of options if the vote ratio is above 51% then money will disburseed to that NGO",
+        "Our donation voting system allows users to vote for their preferred NGO from a list of options. If the vote ratio is above 51%, the money will be disbursed to that NGO.",
     },
     {
-      question: "How can i trust that my donation will be used transparently?",
+      question: "How can I trust that my donation will be used transparently?",
       answer:
-        "We ensure transparency by providing real-time transactions system on how funds are being transffered and recieved and you have authority to donate the money from list of options of NGO",
+        "We ensure transparency by providing real-time transaction systems showing how funds are being transferred and received. You have the authority to donate the money from a list of NGO options.",
     },
     {
-      question: "Can I suggest an NGO that is not on list?",
+      question: "Can I suggest an NGO that is not on the list?",
       answer:
-        "Absolutely! We welcome suggestions for NGOs that you would like to see included. just fill out the add NGO Form in the NGO page",
+        "Absolutely! We welcome suggestions for NGOs that you would like to see included. Just fill out the add NGO form on the NGO page.",
     },
     {
       question: "Is my donation tax-deductible?",
       answer:
-        "We work withregistered NGOs that are eligible for tax deductions. You will recieve a donation reciept that you can use for tax purpose.",
+        "We work with registered NGOs that are eligible for tax deductions. You will receive a donation receipt that you can use for tax purposes.",
     },
     {
-      question: "How often can i vote for an NGO?",
+      question: "How often can I vote for an NGO?",
       answer:
-        "You can vote once for each donation cycle. We believe in giving everyone equal opportunity to support their preffered cause.",
+        "You can vote once for each donation cycle. We believe in giving everyone an equal opportunity to support their preferred cause.",
     },
   ];
 
@@ -45,12 +48,12 @@ const Footer = () => {
   };
 
   return (
-    <div className="faq ">
+    <div className="faq">
       <div className="pt-8 pb-2">
         <h1 className="font-bold pb-4 text-[26px] md:text-[35px]">
-          Frequently Asked Questions ?
+          Frequently Asked Questions
         </h1>
-        <hr border border-black />
+        <hr className="border border-black" />
       </div>
 
       {faqs.map((faq, index) => (
@@ -63,105 +66,127 @@ const Footer = () => {
             {faq.question}
           </div>
           {activeIndex === index && (
-            <div className="answer pb-2 px-14 md:px-32 cursor-pointer text-black  text-[10px] md:text-[18px] italic ">
+            <div className="answer pb-2 px-14 md:px-32 cursor-pointer text-black text-[10px] md:text-[18px] italic">
               {faq.answer}
-              <hr className="border border-gray-400 border-spacing-1 " />
+              <hr className="border border-gray-400" />
             </div>
           )}
         </div>
       ))}
 
-      <div className="mt-6 max-w-screen text-white  bg-gray-800  font-itim md:px-8">
-        <div className="flex flex-col md:flex-row md:justify-between  ">
-          <div className="md:items-center justify-center flex flex-col">
+      <div className="mt-6 bg-gray-800 text-white font-itim lg:px-16 lg:py-20">
+        <div className="flex flex-col lg:flex-row lg:justify-between  ">
+          <div className="justify-center items-center lg:justify-start lg:items-start  flex flex-col">
             <img
               src="./images/logo4.png"
               alt="logo"
-              className="w-36 md:w-44 p-1 mt-0 md:p-2 md:py-8 "
+              className="w-40 md:w-52 p-1 mt-0  md:py-6"
             />
-            <p>Pune, India</p>
-            <p>kindness@mail.com</p>
-            <p> +91 1234567890</p>
+            <div className="flex flex-col items-start text-[12px] md:text-[19px] font-josiefin gap-2">
+            <p className="flex flex-row gap-2"><IoLocationSharp/>  Pune, India</p>
+            <p className="flex flex-row gap-2"><IoIosMail/>  kindness@mail.com</p>
+            <p className="flex flex-row gap-2"><IoCall/>  +91 1234567890</p>
+            </div>
+            
           </div>
 
-          <div className="py-4">
-            <h1 className="font-bold font-monserrat py-2">Quick Links</h1>
-            <ul className="flex flex-col  md:justify-between md:items-center">
+          <div className="py-4 font-josiefin">
+            <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]  ">QUICK LINKS</h1>
+            <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
               <li className="py-2">
-                <Link
-                  to="/donation"
-                  className="text-white hover   
-                            underline"
-                >
+                <Link to="/donate" className="text-white hover:underline">
                   Donate
                 </Link>
               </li>
+             
               <li>
-                <Link to="/ngo" className="text-white hover underline">
+                <Link to="/ngo" className="text-white hover:underline">
                   NGO
                 </Link>
               </li>
               <li className="py-2">
-                <Link
-                  to="/about"
-                  className="text-white hover underline
-                            "
-                >
+                <Link to="/about" className="text-white hover:underline">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white hover underline">
+                <Link to="/contact" className="text-white hover:underline">
                   Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="py-4">
-            <h1 className="font-bold py-2 font-monserrat">Help</h1>
-            <div className="flex flex-col md:flex-row gap-0 md:gap-2 text-white">
-              <h3>FAQ</h3>
-              <h3>Privacy policy</h3>
+          {/* <div className="py-4 font-josiefin">
+            <h1 className="font-bold py-2 text-[27px]">Help</h1>
+            <div className="flex flex-col text-white">
+              <h3 className="py-1">FAQ</h3>
+              <h3 className="py-1">Privacy Policy</h3>
+              <h3 className="py-1">Access</h3>
+              <h3 className="py-1">Contact Us</h3>
             </div>
-            <div className="flex flex-col md:flex-row gap-0 md:gap-2 text-white">
-              <h3>Acess</h3>
-              <h3>Contact US</h3>
-            </div>
+          </div> */}
+
+          <div className="py-4 font-josiefin">
+            <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start ">HELP</h1>
+            <ul className="flex flex-col lg:justify-between lg:items-start text-[12px]  md:text-[19px]">
+              <li className="py-2">
+                <Link to="/donate" className="text-white hover:underline">
+                  FAQ
+                </Link>
+              </li>
+            
+              <li>
+                <Link to="/ngo" className="text-white hover:underline">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li className="py-2">
+                <Link to="/about" className="text-white hover:underline">
+                   Conta Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-white hover:underline">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+        
           </div>
 
-          <div className="py-4">
-            <h1 className="font-bold py-2 font-monserrat">GET IN TOUCH</h1>
-            <form>
+          <div className="py-4 px-2 items-start font-josiefin">
+            <h1 className="font-bold py-2 text-center  lg:text-start text-[15px] md:text-[22px]">GET IN TOUCH</h1>
+            <form className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
               <input
                 type="text"
                 placeholder="Please Enter Name"
-                className="w-full p-2 mb-2 bg-gray-700 rounded"
+                className="w-[300px] p-2 mb-2 bg-gray-700 rounded"
               />
               <input
                 type="email"
                 placeholder="Please Enter Email"
-                className="w-full p-2 mb-2 bg-gray-700 rounded"
+                className="w-[300px] p-2 mb-2 bg-gray-700 rounded"
               />
               <button
                 type="submit"
-                className="w-full p-2 bg-orange-500 rounded"
+                className="w-[300px] md:w-[160px] p-2 mb-2 bg-[#E91E63] rounded"
               >
                 Submit
               </button>
             </form>
+            <div className="flex flex-row gap-8 text-[20px] pt-4 justify-center lg:justify-start">
+              <FaXTwitter />
+              <SiInstagram />
+              <FaLinkedin />
+            </div>
           </div>
         </div>
-        <hr className="border border-white  " />
-        <div className="flex flex-col mt-4 pb-3 md:flex-row justify-center gap-8 ">
+        <hr/>
+        <div className="flex flex-col mt-4 pb-8 lg:flex-row justify-center gap-8">
           <div>
-            <h1>@Kinder2024</h1>
+            <h1>@Kindness2024</h1>
             <h1>All rights Reserved</h1>
-          </div>
-          <div className="flex flex-row gap-8 text-[20px] pt-4 justify-center">
-            <FaXTwitter />
-            <SiInstagram />
-            <FaLinkedin className="" />
           </div>
         </div>
       </div>
