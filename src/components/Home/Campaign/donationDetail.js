@@ -37,16 +37,16 @@ export default function DonationDetail() {
   }
 
   return (
-    <div className="flex flex-col-2 justify-center items-center py-4">
-      <div className="flex flex-row  w-full max-w-[800px] ">
-        <div className="w-1/2 p-4">
+    <div className="flex flex-col justify-center items-center py-4">
+      <div className="flex flex-col lg:flex-row  w-full max-w-[800px] ">
+        <div className="w-1/2  p-4">
           <img
-            src="/images/img3.jpg"
+            src={donation.image}
             alt="ngoimage"
             className="object-contain w-full max-h-[200px]"
           />
           <div className="pt-8">
-            <p className="text-start">{donation.description}</p>
+            <p className=" text-justify ">{donation.description}</p>
           </div>
         </div>
         <div className="w-1/2 p-4">
@@ -160,7 +160,7 @@ const Poll = ({ voteFormId }) => {
             style={{
               width: `${yesPercentage}%`,
               backgroundColor: "#2196F3",
-              height: "20px",
+              height: "10px",
             }}
             className="rounded-lg"
           ></div>

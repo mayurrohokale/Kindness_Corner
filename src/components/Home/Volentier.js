@@ -141,7 +141,7 @@ export default function Volentier() {
           </div>
           <div className="flex flex-col gap-2 font-bold font-monserrat">
             <h1 className="text-[60px]">
-              {inView && <CountUp end={4267} duration={2} />}+
+              {inView && <CountUp end={4267} duration={2} />}K+
             </h1>
             <h1 className="text-xl lg:text-2xl">Total Money</h1>
             <h1 className="text-black font-josiefin font-normal text-[14px]">
@@ -150,7 +150,7 @@ export default function Volentier() {
           </div>
           <div className="flex flex-col gap-2 font-bold font-monserrat">
             <h1 className="text-[60px]">
-              {inView && <CountUp end={570} duration={2} />}+
+              {inView && <CountUp end={570} duration={2} />}K+
             </h1>
             <h1 className="text-xl lg:text-2xl">To Go</h1>
             <h1 className="text-black font-josiefin font-normal text-[14px]">
