@@ -9,6 +9,8 @@ const defaultValue = {
     setUser: () => {},
     volunteer: {},
     setVolunteer: ()=> {},
+    user_status: {},
+    setUserStatus: () => {},
 
 };
 
