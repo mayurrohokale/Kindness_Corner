@@ -13,7 +13,7 @@ export default function Layout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Fetch user profile and status
+
   async function fetchProfile() {
     try {
       const data = await getMe();
@@ -31,6 +31,8 @@ export default function Layout({ children }) {
 
   useEffect(() => {
     fetchProfile();
+    const intervalId = setInterval(fetchProfile, 3000);
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export default function Layout({ children }) {
     localStorage.removeItem("user");
     setUser(null);
     setUserStatus('false');
-    navigate('/login'); // Redirect to login page
+    navigate('/login'); 
   };
 
   const value = {

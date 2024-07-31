@@ -55,9 +55,9 @@ const Footer = () => {
     <div className="faq">
       <div className="pt-8 pb-2">
         <h1 className="font-bold pb-4 text-[26px] md:text-[35px]">
-          Frequently Asked Questions
+          Frequently Asked Questions?
         </h1>
-        <hr className="border border-black" />
+        <hr  />
       </div>
 
       {faqs.map((faq, index) => (
