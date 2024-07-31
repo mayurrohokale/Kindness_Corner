@@ -64,7 +64,7 @@ export default function AboutUs() {
           </Link>
         </div>
       </div>
-      <div className="flex items-center text-center justify-center  min-h-screen w-[100px] lg:max-w-full">
+      <div className="flex  justify-center max-w-full">
         <Map />
         {/* <WorldMap /> */}
       </div>

@@ -33,7 +33,7 @@ function App() {
         color="#F70059"
         title="Volunteers"
         value-suffix="volunteers"
-        size="xxl"
+        size="responsive"
         data={volunteerData}
       />
     </div>
