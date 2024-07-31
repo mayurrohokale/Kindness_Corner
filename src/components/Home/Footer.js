@@ -171,14 +171,14 @@ const Footer = () => {
             <h1 className="font-bold py-2 text-center  lg:text-start text-[15px] md:text-[22px]">GET IN TOUCH</h1>
             <form className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
               <input
-                type="text"
-                placeholder="Please Enter Name"
-                className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded"
+                type="email"
+                placeholder="Enter Your Email"
+                className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded" required
               />
               <input
                 type="text"
                 placeholder="Write your Query"
-                className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded"
+                className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded" required
               />
               <button
                 type="submit"
