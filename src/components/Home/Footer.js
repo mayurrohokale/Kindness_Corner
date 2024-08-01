@@ -8,6 +8,8 @@ import { IoIosMail } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
 import { TbMathGreater } from "react-icons/tb";
 import { useAppState } from "../../utils/appState";
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
 
 const Footer = () => {
   const faqs = [
@@ -155,12 +157,12 @@ const Footer = () => {
               </li>
               <li className="py-2">
                 <Link to="/allvolunteers" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/>Volunteers
+                <TbMathGreater/>Terms
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/> Contact Us
+                <TbMathGreater/> Cookie Policy
                 </Link>
               </li>
             </ul>
@@ -188,9 +190,11 @@ const Footer = () => {
               </button>
             </form>
             <div className="flex flex-row gap-8 text-[20px] pt-4 justify-center lg:justify-start">
+              <FaFacebook />
               <FaXTwitter />
               <SiInstagram />
               <FaLinkedin />
+              <IoLogoYoutube />
             </div>
           </div>
         </div>

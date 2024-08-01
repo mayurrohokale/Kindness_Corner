@@ -38,18 +38,18 @@ export default function DonationDetail() {
 
   return (
     <div className="flex flex-col justify-center items-center py-4">
-      <div className="flex flex-col lg:flex-row  w-full max-w-[800px] ">
-        <div className="w-1/2  p-4">
+      <div className="flex flex-col lg:flex-row w-full max-w-[800px]">
+        <div className="w-full lg:w-1/2 p-4">
           <img
             src={donation.image}
             alt="ngoimage"
             className="object-contain w-full max-h-[200px]"
           />
           <div className="pt-8">
-            <p className=" text-justify ">{donation.description}</p>
+            <p className="text-justify">{donation.description}</p>
           </div>
         </div>
-        <div className="w-1/2 p-4">
+        <div className="w-full lg:w-1/2 p-4">
           <h1 className="font-monserrat text-start font-bold">
             {donation.title}
           </h1>
@@ -64,15 +64,10 @@ export default function DonationDetail() {
             {donation.amount}
           </h1>
           <div>
-            <Poll voteFormId={donation._id} />{" "}
-            {/* Pass the appropriate voteFormId */}
+            <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
           </div>
           <hr />
         </div>
-        <div>
-          
-        </div>
-        
       </div>
     </div>
   );

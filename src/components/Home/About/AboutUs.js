@@ -25,7 +25,7 @@ export default function AboutUs() {
           are Happy, because of you!
         </p>
       </div>
-      <div className="text-base md:text-lg  text-justify font-josiefin my-8">
+      <div className="text-xs md:text-lg  text-justify font-josiefin my-8">
         <p className="mb-4">
           There's a part of every one of us that dreams of a better world. That
           spark of inspiration to help a person, fix something broken, or show
@@ -45,32 +45,36 @@ export default function AboutUs() {
         </p>
       </div>
       <div className="flex font-josiefin justify-center my-8">
-        <div className="bg-gray-100 p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 text-center">
+        <div className="bg-gray-100 p-6 rounded-lg shadow-lg  md:w-2/3 lg:w-1/2 text-center">
           <img
             src="./images/logo3.png"
             alt="Kindness Corner Logo"
             className="mx-auto mb-4 w-44"
           />
-          <p className="text-lg mb-4">
+          <p className=" text-sm lg:text-lg mb-4">
             Launched in 2023, Kindness Corner is the world's leading platform
             for social good. With millions of dollars raised from donations,
             volunteers, and support from generous individuals and organizations,
             we continue our mission to help people everywhere.
           </p>
           <Link to="/learn-more">
-            <button className="bg-transparent px-4 py-2 border border-blue-500 font-bold rounded-[4px] text-blue-500">
+            <button className="bg-transparent  px-4 py-2 border border-blue-500 font-bold rounded-[4px] text-blue-500">
               Learn more
             </button>
           </Link>
         </div>
       </div>
-      <div className="flex  justify-center max-w-full">
-        <Map />
+      <div className="flex items-center  justify-center max-w-full">
+        <div>
+        <img  src="./images/map.png" alt='map' />
+        </div>
+        {/* <Map /> */}
+        
         {/* <WorldMap /> */}
       </div>
-      <div className="flex font-josiefin flex-col md:flex-row justify-around text-center my-8 px-4">
+      <div className="flex font-josiefin flex-col md:flex-row justify-around text-justify my-8 px-4">
         <div className="bg-white shadow-lg p-6 m-4 rounded-lg flex-1">
-          <h2 className="font-bold text-xl mb-4">Trust</h2>
+          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">Trust</h2>
           <p>
             Our Trust & Safety team works around the clock to protect against
             fraud. We are proud to offer the first and only donor guarantee in
@@ -78,7 +82,7 @@ export default function AboutUs() {
           </p>
         </div>
         <div className="bg-white shadow-lg p-6 m-4 rounded-lg flex-1">
-          <h2 className="font-bold text-xl mb-4">Speed</h2>
+          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">Speed</h2>
           <p>
             Our efficient and easy-to-use fundraising tools help you get your
             campaign up and running quickly, so you can start raising money
@@ -86,8 +90,8 @@ export default function AboutUs() {
           </p>
         </div>
         <div className="bg-white shadow-lg p-6 m-4 rounded-lg flex-1">
-          <h2 className="font-bold text-xl mb-4">Reach</h2>
-          <p>
+          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">Reach</h2>
+          <p >
             With the help of our platform, you can share your campaign with
             friends, family, and even strangers to maximize the impact of your
             cause.

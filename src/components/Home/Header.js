@@ -61,8 +61,13 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
+    const confirmed = window.confirm("Are you sure you want to logout?");
+    if (confirmed) {
+      localStorage.removeItem("token");
+      setUser(null);
+    }
+    
+    
   };
 
   const filteredMenuItems = user
