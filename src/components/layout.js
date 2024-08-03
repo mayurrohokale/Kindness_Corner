@@ -3,16 +3,17 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getMe } from "./api/user";
 import AppStateContext from "../utils/appState";
+import Notification from "../components/Elements/Notificationbar";
 
 export default function Layout({ children }) {
   const [amount, setAmount] = useState(0);
   const [payment_type, setPaymentType] = useState("one_time");
   const [user, setUser] = useState(null);
   const [userStatus, setUserStatus] = useState(""); 
+  const [notificationMessage, setNotificationMessage] = useState("This is a notification message!");
 
   const location = useLocation();
   const navigate = useNavigate();
-
 
   async function fetchProfile() {
     try {
@@ -62,10 +63,10 @@ export default function Layout({ children }) {
   };
 
   return (
-    <div className="justify-center">
+    <div className="flex flex-col min-h-screen">
       <AppStateContext.Provider value={value}>
         <Header />
-        <div className="pt-12 md:pt-20">{children}</div>
+        <div className="flex-1 pt-12 md:pt-20">{children}</div>
       </AppStateContext.Provider>
     </div>
   );

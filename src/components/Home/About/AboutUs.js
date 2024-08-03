@@ -66,7 +66,7 @@ export default function AboutUs() {
       </div>
       <div className="flex items-center  justify-center max-w-full">
         <div>
-        <img  src="./images/map.png" alt='map' />
+        <img  src="./images/world2.png" alt='map' />
         </div>
         {/* <Map /> */}
         

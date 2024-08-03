@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAppState } from "../../utils/appState";
+import Notification from "../Elements/Notificationbar";
+import { FaVoteYea } from "react-icons/fa";
+import { FaRegHandPointRight } from "react-icons/fa";
 
 const MENU_ITEMS = [
   { title: "Home", path: "home" },
@@ -10,10 +13,10 @@ const MENU_ITEMS = [
   { title: "Transactions", path: "transaction" },
   { title: "Works", path: "works" },
   { title: "Vote", path: "vote" },
-  { title: "Profile", path: "profile"},
-  { title: "Login", path: "login"},
-  { title: "Logout", path: "logout"},
-  { title: "Register", path: "register"},
+  { title: "Profile", path: "profile" },
+  { title: "Login", path: "login" },
+  { title: "Logout", path: "logout" },
+  { title: "Register", path: "register" },
 ];
 
 export const DropdownMenu = ({ user, handleLogout }) => {
@@ -23,7 +26,7 @@ export const DropdownMenu = ({ user, handleLogout }) => {
         {user ? (
           <>
             <div className="px-4 py-2 cursor-pointer hover:bg-gray-100 hover:text-[#F70059] hover:underline">
-              <Link to="/profile" >Profile</Link>
+              <Link to="/profile">Profile</Link>
             </div>
             <div
               className="px-4 py-2 cursor-pointer hover:bg-gray-100 hover:text-[#F70059] hover:underline"
@@ -51,6 +54,20 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const { user, setUser } = useAppState();
+  // check isvisble value from session storage and set as is isvisble
+  const catchedVisibleValue = sessionStorage.getItem("isVisible") === "false";
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    sessionStorage.setItem("isVisible", false);
+  };
+
+  useEffect(() => {
+    if (!catchedVisibleValue) {
+      setIsVisible(true);
+    }
+  }, [catchedVisibleValue]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -66,8 +83,6 @@ export default function Header() {
       localStorage.removeItem("token");
       setUser(null);
     }
-    
-    
   };
 
   const filteredMenuItems = user
@@ -83,18 +98,48 @@ export default function Header() {
   return (
     <div className="bg-transparent ">
       <div className="relative bg-white">
-        <header className="bg-white fixed top-0 left-0 right-0 md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-50  border-x-2 font-medium" id="home">
+        <div className="fixed top-0 left-0 right-0 w-full z-50 ">
+          <Notification
+            // message={"Please take a moment to vote on our latest initiatives and help shape the future of our cause."}
+            message={<div className="flex flex-row my-auto  text-center items-start md:items-center text-[10px] lg:text-[18px]">
+              <FaVoteYea className="w-10  mt-2 md:mt-0" />
+              <h1 className="">
+                {"Vote on our latest initiatives to shape the future!"}
+              </h1>
+              <FaRegHandPointRight className="w-10 mt-2 md:mt-0" />
+              <h2 className="underline">
+              <Link to="/vote">Vote Now!</Link>
+              </h2>
+            </div>}
+            isVisible={isVisible}
+            handleClose={handleClose}
+          />
+        </div>
+
+        <header
+          className={`bg-white fixed ${
+            isVisible ? "top-10" : "top-0"
+          } left-0 right-0 md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-50  border-x-2 font-medium`}
+          id="home"
+        >
           <div className="flex flex-row justify-between w-full items-center">
             <div className="logo text-lg md:text-2xl font-bold">
               <Link to="/" className="cursor-pointer">
-                <img src="./images/logo3.png" alt="logo" className="w-28 md:w-36 p-2" />
+                <img
+                  src="./images/logo3.png"
+                  alt="logo"
+                  className="w-28 md:w-36 p-2"
+                />
               </Link>
             </div>
 
             <nav className="lg:flex hidden">
               <ul className="flex gap-10 items-start text-[22px] font-sans font-semibold text-[#013159]">
-                {MENU_ITEMS.slice(0,5).map(({ path, title }) => (
-                  <li className="transform hover:scale-110 hover:underline hover:text-[#E91E63]" key={title}>
+                {MENU_ITEMS.slice(0, 5).map(({ path, title }) => (
+                  <li
+                    className="transform hover:scale-110 hover:underline hover:text-[#E91E63]"
+                    key={title}
+                  >
                     <Link to={path}>{title}</Link>
                   </li>
                 ))}
@@ -102,7 +147,10 @@ export default function Header() {
             </nav>
 
             <div className="hidden md:flex justify-end items-center p-4 bg-gray-100">
-              <div className="relative cursor-pointer group" onClick={toggleDropdown}>
+              <div
+                className="relative cursor-pointer group"
+                onClick={toggleDropdown}
+              >
                 <div className="flex items-center">
                   <span className="mr-2 text-[32px] text-[#013159]">
                     <FiUser />
@@ -127,8 +175,11 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="lg:hidden cursor-pointer text-[25px] text-[#E91E63] flex items-center" onClick={toggleMenu}>
-              <MdMenu className="mr-1" /> 
+            <div
+              className="lg:hidden cursor-pointer text-[25px] text-[#E91E63] flex items-center"
+              onClick={toggleMenu}
+            >
+              <MdMenu className="mr-1" />
             </div>
           </div>
         </header>
@@ -136,7 +187,7 @@ export default function Header() {
       <div className="fixed top-12 right-0  z-30">
         {menuOpen && (
           <nav className=" lg:hidden flex flex-col items-start bg-white border shadow-lg p-3 w-32">
-             <ul className="flex flex-col gap-3 items-start text-sm font-semibold">
+            <ul className="flex flex-col gap-3 items-start text-sm font-semibold">
               {filteredMenuItems.map(({ path, title }) => (
                 <li
                   className="hover:underline hover:text-[#E91E63] cursor-pointer"
