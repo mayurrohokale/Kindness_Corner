@@ -82,7 +82,7 @@ export default function Header() {
       text: "Are you really sure you want to logout?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#128AED",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, logout",
     }).then((result) => {

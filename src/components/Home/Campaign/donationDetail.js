@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import {
   getDonationFormById,
   hasVoted,
@@ -118,6 +119,14 @@ const Poll = ({ voteFormId }) => {
       } else if (option === "no") {
         setNoVotes((prevVotes) => prevVotes + 1);
       }
+      
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "You have successfully voted",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       setMessage(error.message);
     }

@@ -3,10 +3,11 @@ import { castVote, hasVoted, getCurrentVotes, getDonationForm } from "../../api/
 import { Link } from "react-router-dom";
 import { FaCalendarAlt } from "react-icons/fa";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
+import Swal from "sweetalert2";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB'); 
+  return date.toLocaleDateString("en-GB");
 };
 
 export default function Votingform() {
@@ -21,41 +22,40 @@ export default function Votingform() {
     }
     fetchData();
   }, []);
-  
+
   if (!donationData || donationData.length === 0) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="flex mb-8 flex-col lg:flex-row gap-4 h-auto justify-center py-2 w-full ">
-    {donationData.slice(0, showAll ? donationData.length : 3).map((donation) => (
-      <div key={donation._id} className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg">
-        <img
-          src={donation.image}
-          alt="ngoimage"
-          className="object-fit w-full h-[200px] "
-        />
-     
-        <h1 className="font-monserrat text-start font-bold">{donation.title}</h1>
-        <div className="w-full flex flex-col items-start  text-black/60">
-          <p className="text-start max-w-[300px] h-10 truncate">
-            {donation.description}
-          </p>
-          <h1>{donation.contact}</h1>
+      {donationData.slice(0, showAll ? donationData.length : 3).map((donation) => (
+        <div
+          key={donation._id}
+          className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg"
+        >
+          <img src={donation.image} alt="ngoimage" className="object-fit w-full h-[200px]" />
+          <h1 className="font-monserrat text-start font-bold">{donation.title}</h1>
+          <div className="w-full flex flex-col items-start text-black/60">
+            <p className="text-start max-w-[300px] h-10 truncate">{donation.description}</p>
+            <h1>{donation.contact}</h1>
+          </div>
+          <h2 className="flex flex-row gap-2">
+            <FaCalendarAlt className="mt-1 text-[#E91E63]" />
+            {formatDate(donation.eventFromDate)} to {formatDate(donation.eventToDate)}
+          </h2>
+          <h1 className="flex flex-row gap-1 font-bold text-xl text-start">
+            <RiMoneyRupeeCircleFill className="mt-1 text-[#E91E63]" /> {donation.amount}
+          </h1>
+          <div>
+            <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
+          </div>
+          <Link to={`/donationdetail/${donation._id}`} className="text-blue-500 underline">
+            View Details
+          </Link>
         </div>
-        <h2 className="flex flex-row gap-2"> <FaCalendarAlt className="mt-1 text-[#E91E63]"/>{formatDate(donation.eventFromDate)} to {formatDate(donation.eventToDate)}</h2>
-        <h1 className="flex flex-row gap-1 font-bold text-xl text-start"> <RiMoneyRupeeCircleFill className="mt-1 text-[#E91E63]" />  {donation.amount}</h1>
-        
-        <div>
-          <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
-        </div>
-        <Link to={`/donationdetail/${donation._id}`} className="text-blue-500 underline">
-          View Details
-        </Link>
-      </div>
-    ))}
- 
-  </div>
+      ))}
+    </div>
   );
 }
 
@@ -64,7 +64,7 @@ const Poll = ({ voteFormId }) => {
   const [noVotes, setNoVotes] = useState(0);
   const [hasVotedStatus, setHasVotedStatus] = useState(false);
   const [userVote, setUserVote] = useState(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("token");
 
@@ -104,6 +104,14 @@ const Poll = ({ voteFormId }) => {
       } else if (option === "no") {
         setNoVotes((prevVotes) => prevVotes + 1);
       }
+      
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "You have successfully voted",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       setMessage(error.message);
     }
@@ -166,7 +174,9 @@ const Poll = ({ voteFormId }) => {
             <p className="text-[16px] pt-3 text-green-500">You have already voted!</p>
           )
         ) : (
-          <p className="text-[16px] text-red-500">Please <Link to="/login" className="underline">Log In</Link> to vote</p>
+          <p className="text-[16px] text-red-500">
+            Please <Link to="/login" className="underline">Log In</Link> to vote
+          </p>
         )}
       </div>
     </div>
