@@ -1,7 +1,5 @@
 import { ImCross } from "react-icons/im";
-import { Link } from "react-router-dom";
-import { FaVoteYea } from "react-icons/fa";
-import { FaRegHandPointRight } from "react-icons/fa";
+
 
 
 
@@ -15,7 +13,7 @@ const Notification = ({ message, isVisible, handleClose }) => {
             {message}
           </span>
         </div>        
-        <button onClick={handleClose} className="text-[8px] lg:text-xs font-bold w-5 mt-2 md:mt-0 ">
+        <button onClick={handleClose} className="text-[8px] right-0 lg:text-xs font-bold w-5 mt-2 md:mt-0 ">
           <ImCross  />
         </button>
       </div>

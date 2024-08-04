@@ -11,6 +11,7 @@ import { useAppState } from "../../utils/appState";
 import { FaFacebook } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { postQuery } from "../api/user";
+import { toast, ToastContainer } from 'react-toastify';
 
 const Footer = () => {
   const faqs = [
@@ -64,12 +65,19 @@ const Footer = () => {
     try{
       const response = await postQuery(QueryData);
       console.log(response.data);
-      alert("Your query has been submitted successfully");
+      toast.success("Your query has been submitted successfully", {
+        position: "top-center",
+      })
+      // alert("Your query has been submitted successfully");
       setEmail('');
       setDescription('');
     } catch(error){
       console.error(error);
-      alert("Failed to submit query");
+      toast.error("somthing went Wrong", {
+        position: "top-center",
+      });
+      
+      
     }
   }
 
@@ -234,6 +242,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
