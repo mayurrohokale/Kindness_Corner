@@ -22,6 +22,7 @@ import AboutUS from './components/Home/About/AboutUs';
 import AddBlog from './components/Home/Blogs/AddBlog';
 import AllBlog from "./components/Home/Blogs/AllBlogs";
 import BlogDetail from "./components/Home/Blogs/BlogDetails";
+import PrivacyPolicy from "./components/Home/Policy/privacyPolicy";
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
             <Route path="/addblog" element={<AddBlog/>} />
             <Route path="/allblog" element={<AllBlog/>} />
             <Route path="/blog/:id" element={<BlogDetail/>} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}

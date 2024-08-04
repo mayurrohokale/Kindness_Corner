@@ -46,7 +46,7 @@ export default function DonationDetail() {
             alt="ngoimage"
             className="object-contain w-full max-h-[200px]"
           />
-          <div className="pt-8">
+          <div className="pt-8 font-inter">
             <p className="text-justify">{donation.description}</p>
           </div>
         </div>

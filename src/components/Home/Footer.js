@@ -177,13 +177,13 @@ const Footer = () => {
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start ">HELP</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px]  md:text-[19px]">
               <li className="py-2">
-                <Link to="/donate" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/> FAQ
                 </Link>
               </li>
             
               <li>
-                <Link to="/ngo" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="/privacy-policy" className="text-white hover:underline flex gap-2 items-center justify-center">
                 <TbMathGreater/> Privacy Policy
                 </Link>
               </li>
