@@ -10,6 +10,7 @@ import { TbMathGreater } from "react-icons/tb";
 import { useAppState } from "../../utils/appState";
 import { FaFacebook } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
+import { postQuery } from "../api/user";
 
 const Footer = () => {
   const faqs = [
@@ -47,7 +48,30 @@ const Footer = () => {
 
   const [activeIndex, setActiveIndex] = useState(null);
   const {user, setUser} = useAppState();
+  const [email, setEmail] = useState('');
+  const [description, setDescription] = useState('');
+  
 
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    const QueryData = {
+      email,
+      description,
+    };
+
+    try{
+      const response = await postQuery(QueryData);
+      console.log(response.data);
+      alert("Your query has been submitted successfully");
+      setEmail('');
+      setDescription('');
+    } catch(error){
+      console.error(error);
+      alert("Failed to submit query");
+    }
+  }
 
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -171,16 +195,20 @@ const Footer = () => {
 
           <div className="py-4 px-2 items-start font-josiefin">
             <h1 className="font-bold py-2 text-center  lg:text-start text-[15px] md:text-[22px]">GET IN TOUCH</h1>
-            <form className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
+            <form className="flex flex-col items-center justify-center lg:items-start lg:justify-start" onSubmit={handleSubmit}>
               <input
                 type="email"
                 placeholder="Enter Your Email"
                 className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded" required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Write your Query"
                 className="w-[300px] p-2 mb-2 bg-gray-600 border hover:border-blue-400 rounded" required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
               <button
                 type="submit"

@@ -7,6 +7,7 @@ import Notification from "../Elements/Notificationbar";
 import { FaVoteYea } from "react-icons/fa";
 import { FaRegHandPointRight } from "react-icons/fa";
 
+
 const MENU_ITEMS = [
   { title: "Home", path: "home" },
   { title: "Donate", path: "donate" },
@@ -101,12 +102,12 @@ export default function Header() {
         <div className="fixed top-0 left-0 right-0 w-full z-50 ">
           <Notification
             // message={"Please take a moment to vote on our latest initiatives and help shape the future of our cause."}
-            message={<div className="flex flex-row my-auto  text-center items-start md:items-center text-[10px] lg:text-[18px]">
+            message={<div className="flex flex-row my-auto text-center items-start md:items-center text-[10px] lg:text-[18px]">
               <FaVoteYea className="w-10  mt-2 md:mt-0" />
               <h1 className="">
                 {"Vote on our latest initiatives to shape the future!"}
               </h1>
-              <FaRegHandPointRight className="w-10 mt-2 md:mt-0" />
+              <FaRegHandPointRight className="w-5 md:w-10 mt-2 md:mt-0" />
               <h2 className="underline">
               <Link to="/vote">Vote Now!</Link>
               </h2>

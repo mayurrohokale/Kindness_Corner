@@ -170,3 +170,14 @@ export const getApprovedBlogbyID = async (id) => {
     return null;
   }
 };
+
+export async function postQuery(queryData) {
+  try{
+    const headers = getHeaders();
+    const response = await Axios.post(`${BASE_URL}/post-query`,queryData, {headers});
+    return response;
+  } catch(error){
+    console.error('Error posting query:', error);
+    return null;
+  }
+}
