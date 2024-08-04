@@ -4,9 +4,8 @@ import { FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useAppState } from "../../utils/appState";
 import Notification from "../Elements/Notificationbar";
-import { FaVoteYea } from "react-icons/fa";
-import { FaRegHandPointRight } from "react-icons/fa";
-
+import { FaVoteYea, FaRegHandPointRight } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MENU_ITEMS = [
   { title: "Home", path: "home" },
@@ -22,7 +21,7 @@ const MENU_ITEMS = [
 
 export const DropdownMenu = ({ user, handleLogout }) => {
   return (
-    <div className="absolute top-full  right-0 mt-2 w-30 text-[#013159]  bg-white border border-gray-200 rounded-md shadow-lg z-10 ">
+    <div className="absolute top-full right-0 mt-2 w-30 text-[#013159] bg-white border border-gray-200 rounded-md shadow-lg z-10">
       <div className="py-2">
         {user ? (
           <>
@@ -55,7 +54,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const { user, setUser } = useAppState();
-  // check isvisble value from session storage and set as is isvisble
   const catchedVisibleValue = sessionStorage.getItem("isVisible") === "false";
   const [isVisible, setIsVisible] = useState(false);
 
@@ -79,12 +77,20 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    
-    const confirmed = window.confirm("Are you sure you want to logout?");
-    if (confirmed) {
-      localStorage.removeItem("token");
-      setUser(null);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Are you really sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("token");
+        setUser(null);
+      }
+    });
   };
 
   const filteredMenuItems = user
@@ -98,21 +104,20 @@ export default function Header() {
       );
 
   return (
-    <div className="bg-transparent ">
+    <div className="bg-transparent">
       <div className="relative bg-white">
-        <div className="fixed top-0 left-0 right-0 w-full z-50 ">
+        <div className="fixed top-0 left-0 right-0 w-full z-50">
           <Notification
-            // message={"Please take a moment to vote on our latest initiatives and help shape the future of our cause."}
-            message={<div className="flex flex-row my-auto text-center items-start md:items-center text-[10px] lg:text-[18px]">
-              <FaVoteYea className="w-10  mt-2 md:mt-0" />
-              <h1 className="">
-                {"Vote on our latest initiatives to shape the future!"}
-              </h1>
-              <FaRegHandPointRight className="w-5 md:w-10 mt-2 md:mt-0" />
-              <h2 className="underline">
-              <Link to="/vote">Vote Now!</Link>
-              </h2>
-            </div>}
+            message={
+              <div className="flex flex-row my-auto text-center items-start md:items-center text-[10px] lg:text-[18px]">
+                <FaVoteYea className="w-10 mt-2 md:mt-0" />
+                <h1>{"Vote on our latest initiatives to shape the future!"}</h1>
+                <FaRegHandPointRight className="w-5 md:w-10 mt-2 md:mt-0" />
+                <h2 className="underline">
+                  <Link to="/vote">Vote Now!</Link>
+                </h2>
+              </div>
+            }
             isVisible={isVisible}
             handleClose={handleClose}
           />
@@ -121,7 +126,7 @@ export default function Header() {
         <header
           className={`bg-white fixed ${
             isVisible ? "top-10" : "top-0"
-          } left-0 right-0 md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-50  border-x-2 font-medium`}
+          } left-0 right-0 md:bg-inherit text-black md:text-black px-2 md:px-10 xl:px-5 z-50 border-x-2 font-medium`}
           id="home"
         >
           <div className="flex flex-row justify-between w-full items-center">
@@ -157,7 +162,7 @@ export default function Header() {
                   <span className="mr-2 text-[32px] text-[#013159]">
                     <FiUser />
                   </span>
-                  <span className="flex flex-col text-[#013159] ">
+                  <span className="flex flex-col text-[#013159]">
                     {user ? (
                       <>
                         <span className="text-sm">hello</span>
@@ -186,9 +191,9 @@ export default function Header() {
           </div>
         </header>
       </div>
-      <div className="fixed top-12 right-0  z-30">
+      <div className="fixed top-12 right-0 z-30">
         {menuOpen && (
-          <nav className=" lg:hidden flex flex-col items-start bg-white border shadow-lg p-3 w-32">
+          <nav className="lg:hidden flex flex-col items-start bg-white border shadow-lg p-3 w-32">
             <ul className="flex flex-col gap-3 items-start text-sm font-semibold">
               {filteredMenuItems.map(({ path, title }) => (
                 <li
@@ -196,11 +201,7 @@ export default function Header() {
                   key={title}
                   onClick={title === "Logout" ? handleLogout : null}
                 >
-                  {title === "Logout" ? (
-                    "Logout"
-                  ) : (
-                    <Link to={path}>{title}</Link>
-                  )}
+                  {title === "Logout" ? "Logout" : <Link to={path}>{title}</Link>}
                 </li>
               ))}
             </ul>
