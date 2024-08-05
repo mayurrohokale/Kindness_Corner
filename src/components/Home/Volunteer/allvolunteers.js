@@ -54,7 +54,6 @@ export default function Allvolunteers() {
                                     <th className="py-2 px-4 border-b">Name</th>
                                     <th className="py-2 px-4 border-b">Email</th>
                                     <th className="py-2 px-4 border-b">Phone</th>
-                                    <th className="py-2 px-4 border-b">Address</th>
                                     <th className="py-2 px-4 border-b">PinCode</th>
                                     <th className="py-2 px-4 border-b">City</th>
                                     <th className="py-2 px-4 border-b">State</th>
@@ -67,7 +66,6 @@ export default function Allvolunteers() {
                                         <td className="py-2 px-4 border-b">{volunteer.name}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.email}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.phone}</td>
-                                        <td className="py-2 px-4 border-b">{volunteer.address}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.pincode}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.city}</td>
                                         <td className="py-2 px-4 border-b">{volunteer.state}</td>

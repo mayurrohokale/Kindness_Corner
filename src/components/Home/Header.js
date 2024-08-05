@@ -6,6 +6,7 @@ import { useAppState } from "../../utils/appState";
 import Notification from "../Elements/Notificationbar";
 import { FaVoteYea, FaRegHandPointRight } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { BiSupport } from "react-icons/bi";
 
 const MENU_ITEMS = [
   { title: "Home", path: "home" },
