@@ -125,8 +125,7 @@ const Footer = () => {
             <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoIosMail/> </span> kindness@mail.com</p>
             <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoCall/> </span> +91 1234567890</p>
             </div>
-            
-          </div>
+            </div>
 
           <div className="py-4 font-josiefin">
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]  ">QUICK LINKS</h1>
