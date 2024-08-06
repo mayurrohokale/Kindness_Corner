@@ -18,7 +18,7 @@ export default function AllCampaigns() {
   }, []);
 
   if (!donationData || donationData.length === 0) {
-    return <div className="h-12"><ScaleLoader color="#E91E63" /></div>;
+    return <div className="h-12 mt-11"><ScaleLoader color="#E91E63" /></div>;
   }
 
   return (
