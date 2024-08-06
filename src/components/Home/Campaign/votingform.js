@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaCalendarAlt } from "react-icons/fa";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 import Swal from "sweetalert2";
+import { ScaleLoader } from 'react-spinners';
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -24,7 +25,7 @@ export default function Votingform() {
   }, []);
 
   if (!donationData || donationData.length === 0) {
-    return <div>Loading...</div>;
+    return <div className="h-14"><ScaleLoader color="#E91E63" /></div>;
   }
 
   return (

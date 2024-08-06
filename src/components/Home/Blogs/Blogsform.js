@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getApprovedBlogs } from '../../api/user';
 import BlogElement from './BlogElement';
 import sortedBlogs from '../../../utils/functions';
+import { ScaleLoader } from 'react-spinners';
 export default function BlogsForm() {
   const [blogs, setBlogs] = useState([]);
 
@@ -20,6 +21,9 @@ export default function BlogsForm() {
     fetchBlogs();
   }, []);
 
+  if (!blogs || blogs.length === 0) {
+    return <div className="h-14"><ScaleLoader color="#E91E63" /></div>;
+  }
 
 
   return (

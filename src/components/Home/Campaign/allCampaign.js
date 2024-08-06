@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { hasVoted, castVote, getCurrentVotes, getDonationForm } from "../../api/user";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { ScaleLoader } from 'react-spinners';
 
 export default function AllCampaigns() {
   const [donationData, setDonationData] = useState([]);
@@ -17,7 +18,7 @@ export default function AllCampaigns() {
   }, []);
 
   if (!donationData || donationData.length === 0) {
-    return <div>Loading...</div>;
+    return <div className="h-12"><ScaleLoader color="#E91E63" /></div>;
   }
 
   return (
