@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
@@ -48,38 +48,68 @@ const Footer = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(null);
-  const {user, setUser} = useAppState();
+  const { user } = useAppState();
   const [email, setEmail] = useState('');
   const [description, setDescription] = useState('');
-  
+  const [emailError, setEmailError] = useState('');
+  const [descriptionError, setDescriptionError] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false);
 
+  useEffect(() => {
+    setIsFormValid(validateEmail(email) && validateDescription(description));
+  }, [email, description]);
 
-  const handleSubmit = async(e) => {
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validateDescription = (description) => {
+    return description.length > 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    let valid = true;
 
-    const QueryData = {
+    if (!validateEmail(email)) {
+      setEmailError('Invalid email format');
+      valid = false;
+    } else {
+      setEmailError('');
+    }
+
+    if (!validateDescription(description)) {
+      setDescriptionError('Description is required');
+      valid = false;
+    } else {
+      setDescriptionError('');
+    }
+
+    if (!valid) {
+      return;
+    }
+
+    const queryData = {
       email,
       description,
     };
 
-    try{
-      const response = await postQuery(QueryData);
+    try {
+      const response = await postQuery(queryData);
       console.log(response.data);
       toast.success("Your query has been submitted successfully", {
         position: "top-center",
-      })
-      // alert("Your query has been submitted successfully");
+      });
       setEmail('');
       setDescription('');
-    } catch(error){
+    } catch (error) {
       console.error(error);
-      toast.error("somthing went Wrong", {
+      toast.error("Something went wrong", {
         position: "top-center",
       });
-      
-      
     }
-  }
+  };
 
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -91,7 +121,7 @@ const Footer = () => {
         <h1 className="font-bold pb-4 text-[26px] md:text-[35px]">
           Frequently Asked Questions?
         </h1>
-        <hr  />
+        <hr />
       </div>
 
       {faqs.map((faq, index) => (
@@ -113,95 +143,85 @@ const Footer = () => {
       ))}
 
       <div className="mt-6 bg-gray-700 text-white font-itim lg:px-16 lg:py-20">
-        <div className="flex flex-col lg:flex-row lg:justify-between  ">
-          <div className="justify-center items-center lg:justify-start lg:items-start  flex flex-col">
+        <div className="flex flex-col lg:flex-row lg:justify-between">
+          <div className="justify-center items-center lg:justify-start lg:items-start flex flex-col">
             <img
               src="./images/logo4.png"
               alt="logo"
-              className="w-40 md:w-52 p-1 mt-0 py-4  md:py-6"
+              className="w-40 md:w-52 p-1 mt-0 py-4 md:py-6"
             />
             <div className="flex flex-col items-start text-[12px] md:text-[19px] font-josiefin gap-2">
-            <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoLocationSharp/></span>  Pune, India</p>
-            <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoIosMail/> </span> kindness@mail.com</p>
-            <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoCall/> </span> +91 1234567890</p>
+              <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoLocationSharp /></span> Pune, India</p>
+              <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoIosMail /> </span> kindness@mail.com</p>
+              <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoCall /> </span> +91 1234567890</p>
             </div>
-            </div>
+          </div>
 
           <div className="py-4 font-josiefin">
-            <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]  ">QUICK LINKS</h1>
+            <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]">QUICK LINKS</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
-              <li className="py-2 ">
+              <li className="py-2">
                 <Link to="/donate" className="text-white hover:underline flex items-center justify-center gap-2">
-                     <TbMathGreater/> Donate
+                  <TbMathGreater /> Donate
                 </Link>
               </li>
-             
               <li>
                 <Link to="/transaction" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/>Transactions
+                  <TbMathGreater /> Transactions
                 </Link>
               </li>
               <li className="py-2">
                 <Link to="/about" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/>About Us
+                  <TbMathGreater /> About Us
                 </Link>
               </li>
               <li>
                 <Link to="/vote" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/>Vote
+                  <TbMathGreater /> Vote
                 </Link>
               </li>
               <li className="py-2">
-                {user ? ( <Link to="/profile" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/>Profile
-                </Link>):( <Link to="/login" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/>Profile
-                </Link>)}
-               
+                {user ? (
+                  <Link to="/profile" className="text-white hover:underline flex gap-2 items-center justify-center">
+                    <TbMathGreater /> Profile
+                  </Link>
+                ) : (
+                  <Link to="/login" className="text-white hover:underline flex gap-2 items-center justify-center">
+                    <TbMathGreater /> Profile
+                  </Link>
+                )}
               </li>
             </ul>
           </div>
 
-          {/* <div className="py-4 font-josiefin">
-            <h1 className="font-bold py-2 text-[27px]">Help</h1>
-            <div className="flex flex-col text-white">
-              <h3 className="py-1">FAQ</h3>
-              <h3 className="py-1">Privacy Policy</h3>
-              <h3 className="py-1">Access</h3>
-              <h3 className="py-1">Contact Us</h3>
-            </div>
-          </div> */}
-
           <div className="lg:py-2 font-josiefin">
-            <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start ">HELP</h1>
-            <ul className="flex flex-col lg:justify-between lg:items-start text-[12px]  md:text-[19px]">
+            <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start">HELP</h1>
+            <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
               <li className="py-2">
                 <Link to="" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/> FAQ
+                  <TbMathGreater /> FAQ
                 </Link>
               </li>
-            
               <li>
                 <Link to="/privacy-policy" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/> Privacy Policy
+                  <TbMathGreater /> Privacy Policy
                 </Link>
               </li>
               <li className="py-2">
                 <Link to="/allvolunteers" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/>Terms
+                  <TbMathGreater /> Terms
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-white hover:underline flex gap-2 items-center justify-center">
-                <TbMathGreater/> Cookie Policy
+                  <TbMathGreater /> Cookie Policy
                 </Link>
               </li>
             </ul>
-        
           </div>
 
           <div className="py-4 px-2 items-start font-josiefin">
-            <h1 className="font-bold py-2 text-center  lg:text-start text-[15px] md:text-[22px]">GET IN TOUCH</h1>
+            <h1 className="font-bold py-2 text-center lg:text-start text-[15px] md:text-[22px]">GET IN TOUCH</h1>
             <form className="flex flex-col items-center justify-center lg:items-start lg:justify-start" onSubmit={handleSubmit}>
               <input
                 type="email"
@@ -210,6 +230,7 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {emailError && <p className="text-red-500 text-sm mb-2">{emailError}</p>}
               <input
                 type="text"
                 placeholder="Write your Query"
@@ -217,9 +238,11 @@ const Footer = () => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
+              {descriptionError && <p className="text-red-500 text-sm mb-2">{descriptionError}</p>}
               <button
                 type="submit"
-                className="w-[300px] md:w-[160px] p-2 mb-2 bg-[#E91E63] hover:bg-pink-700 rounded"
+                className={`w-[300px] md:w-[160px] p-2 mb-2 rounded ${isFormValid ? 'bg-[#E91E63] hover:bg-pink-700' : 'bg-gray-500 cursor-not-allowed'}`}
+                disabled={!isFormValid}
               >
                 Submit
               </button>
@@ -233,7 +256,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr/>
+        <hr />
         <div className="flex flex-col mt-4 pb-8 lg:flex-row justify-center gap-8">
           <div>
             <h1>@Kindness2024</h1>
