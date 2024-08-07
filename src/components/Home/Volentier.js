@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { getVolunteersCount } from "../api/user";
 import CountUp from 'react-countup';
+import { ScaleLoader } from 'react-spinners';
 
 export default function Volentier() {
   const slides = [

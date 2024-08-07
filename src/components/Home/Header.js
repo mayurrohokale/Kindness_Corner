@@ -7,6 +7,7 @@ import Notification from "../Elements/Notificationbar";
 import { FaVoteYea, FaRegHandPointRight } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { BiSupport } from "react-icons/bi";
+import { ScaleLoader } from 'react-spinners';
 
 const MENU_ITEMS = [
   { title: "Home", path: "home" },
