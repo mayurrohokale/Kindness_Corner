@@ -97,6 +97,8 @@ export default function VolunteerForm() {
   }
 
 
+
+
   async function handleVolunteer(e) {
     e.preventDefault();
     if (!isPhoneValid) {
@@ -134,7 +136,9 @@ export default function VolunteerForm() {
               <br /> Weekends
             </h1>
             <button className="bg-[#F70059] text-[20px] md:text-[25px] p-2 flex items-center gap-2">
-              Volunteer Now
+              <a href="#targetdiv">
+              Volunteer Now 
+              </a>
               <MdArrowOutward />
             </button>
           </div>
@@ -173,7 +177,7 @@ export default function VolunteerForm() {
           </span>
         </div>
       ) : (
-        <div className="flex flex-col justify-center items-center m-4 p-6">
+        <div className="flex flex-col justify-center items-center m-4 p-6 " id='targetdiv'>
           <h1 className="font-monserrat font-bold text-[20px] md:text-[36px]">
             Register For the Volunteer
           </h1>

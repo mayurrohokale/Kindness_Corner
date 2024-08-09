@@ -11,6 +11,8 @@ const defaultValue = {
     setVolunteer: ()=> {},
     user_status: {},
     setUserStatus: () => {},
+    isMenuOpen: () => {},
+    setisMenuOpen:{},
 
 };
 
