@@ -21,7 +21,7 @@ export default function AboutUs() {
       </div>
       <div className="text-center my-4 font-semibold font-itim text-sm md:text-xl">
         <p>
-          ...Life is good when you are happy, but much better <br/> when others
+          ...Life is good when you are happy, but much better <br /> when others
           are Happy, because of you!
         </p>
       </div>
@@ -66,15 +66,17 @@ export default function AboutUs() {
       </div>
       <div className="flex items-center  justify-center max-w-full">
         <div>
-        <img  src="./images/world2.png" alt='map' />
+          <img src="./images/world2.png" alt="map" />
         </div>
         {/* <Map /> */}
-        
+
         {/* <WorldMap /> */}
       </div>
       <div className="flex font-josiefin flex-col md:flex-row justify-around text-justify my-8 px-4">
         <div className="bg-white shadow-lg p-6 m-4 rounded-lg flex-1">
-          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">Trust</h2>
+          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">
+            Trust
+          </h2>
           <p>
             Our Trust & Safety team works around the clock to protect against
             fraud. We are proud to offer the first and only donor guarantee in
@@ -82,7 +84,9 @@ export default function AboutUs() {
           </p>
         </div>
         <div className="bg-white shadow-lg p-6 m-4 rounded-lg flex-1">
-          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">Speed</h2>
+          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">
+            Speed
+          </h2>
           <p>
             Our efficient and easy-to-use fundraising tools help you get your
             campaign up and running quickly, so you can start raising money
@@ -90,12 +94,47 @@ export default function AboutUs() {
           </p>
         </div>
         <div className="bg-white shadow-lg p-6 m-4 rounded-lg flex-1">
-          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">Reach</h2>
-          <p >
+          <h2 className="font-bold text-lg lg:text-xl mb-4 text-center">
+            Reach
+          </h2>
+          <p>
             With the help of our platform, you can share your campaign with
             friends, family, and even strangers to maximize the impact of your
             cause.
           </p>
+        </div>
+      </div>
+      <div className="md:m-8 ">
+        <h1 className="font-monserrat font-bold text-lg md:text-xl ">Testimonial</h1>
+        <div className="p-2">
+          <h1 className="font-monserrat font-semibold md:text-center text-start text-sm md:text-lg ">
+            <span className="text-[#F70059]">Kindness Corner</span> Representative
+          </h1>
+          <div className="">
+            <p className="text-xs pt-2 font-monserrat text-justify">
+               As a representative of Kindness Corner, I'd like to express our
+              heartfelt gratitude for the incredible support we've received from
+              our volunteers, donors, and community members. At Kindness Corner,
+              we believe in the power of collective action to bring about
+              meaningful change, and it's the testimonials from those we've
+              served and those who've joined us in our mission that truly
+              highlight the impact of our work. Our testimonials are real
+              stories from real people whose lives have been touched by our
+              initiatives. They reflect the essence of what we do—bridging the
+              gap between those who want to help and those in need. Whether it's
+              a volunteer sharing their rewarding experience of giving back, a
+              donor who has witnessed the tangible difference their
+              contributions have made, or a beneficiary whose life has been
+              transformed, these testimonials are a testament to the kindness
+              and compassion that drives our cause. We invite you to read
+              through these stories and see for yourself the ripple effect of
+              kindness. Your support, whether through time, resources, or
+              spreading the word, helps us continue our mission of creating a
+              brighter, more compassionate world for all. Together, we can make
+              a lasting difference, one act of kindness at a time.
+            </p>
+            <h1 className="font-itim text-end">-Mayur Rohokale</h1>
+          </div>
         </div>
       </div>
     </div>
