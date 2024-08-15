@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { castVote, hasVoted, getCurrentVotes, getDonationForm } from "../../api/user";
+import {
+  castVote,
+  hasVoted,
+  getCurrentVotes,
+  getDonationForm,
+} from "../../api/user";
 import { Link } from "react-router-dom";
 import { FaCalendarAlt } from "react-icons/fa";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 import Swal from "sweetalert2";
-import { ScaleLoader } from 'react-spinners';
+import { ScaleLoader } from "react-spinners";
+import { FaVoteYea } from "react-icons/fa";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -25,47 +31,68 @@ export default function Votingform() {
   }, []);
 
   if (!donationData || donationData.length === 0) {
-    return <div className="h-14"><ScaleLoader color="#E91E63" /></div>;
+    return (
+      <div className="h-14">
+        <ScaleLoader color="#E91E63" />
+      </div>
+    );
   }
 
   return (
     <div className="flex mb-8 flex-col lg:flex-row gap-4 h-auto justify-center py-2 w-full ">
-      {donationData.slice(0, showAll ? donationData.length : 3).map((donation) => (
-        <div
-          key={donation._id}
-          className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg"
-        >
-          <img src={donation.image} alt="ngoimage" className="object-fit w-full h-[200px]" />
-          <h1 className="font-monserrat text-start font-bold">{donation.title}</h1>
-          <div className="w-full flex flex-col items-start text-black/60">
-            <p className="text-start max-w-[300px] h-10 truncate">{donation.description}</p>
-            <h1>{donation.contact}</h1>
+      {donationData
+        .slice(0, showAll ? donationData.length : 3)
+        .map((donation) => (
+          <div
+            key={donation._id}
+            className="w-full flex flex-col gap-2 md:max-w-[391px] md:h-max border-2 rounded-lg hover:border-blue-500 border-black p-3 hover:scale-105 hover:shadow-lg"
+          >
+            <img
+              src={donation.image}
+              alt="ngoimage"
+              className="object-fit w-full h-[200px]"
+            />
+            <h1 className="font-monserrat text-start font-bold">
+              {donation.title}
+            </h1>
+            <div className="w-full flex flex-col items-start text-black/60">
+              <p className="text-start max-w-[300px] h-10 truncate">
+                {donation.description}
+              </p>
+              <h1>{donation.contact}</h1>
+            </div>
+            <h2 className="flex flex-row gap-2">
+              <FaCalendarAlt className="mt-1 text-[#E91E63]" />
+              {formatDate(donation.eventFromDate)} to{" "}
+              {formatDate(donation.eventToDate)}
+            </h2>
+            <h1 className="flex flex-row gap-1 font-bold text-xl text-start">
+              <RiMoneyRupeeCircleFill className="mt-1 text-[#E91E63]" />{" "}
+              {donation.amount}
+            </h1>
+            <div>
+              <Poll voteFormId={donation._id} />{" "}
+              {/* Pass the appropriate voteFormId */}
+            </div>
+            <Link
+              to={`/donationdetail/${donation._id}`}
+              className="text-blue-500 underline hover:text-blue-700"
+            >
+              View Details
+            </Link>
           </div>
-          <h2 className="flex flex-row gap-2">
-            <FaCalendarAlt className="mt-1 text-[#E91E63]" />
-            {formatDate(donation.eventFromDate)} to {formatDate(donation.eventToDate)}
-          </h2>
-          <h1 className="flex flex-row gap-1 font-bold text-xl text-start">
-            <RiMoneyRupeeCircleFill className="mt-1 text-[#E91E63]" /> {donation.amount}
-          </h1>
-          <div>
-            <Poll voteFormId={donation._id} /> {/* Pass the appropriate voteFormId */}
-          </div>
-          <Link to={`/donationdetail/${donation._id}`} className="text-blue-500 underline">
-            View Details
-          </Link>
-        </div>
-      ))}
+        ))}
     </div>
   );
 }
 
-const Poll = ({ voteFormId }) => {
+export const Poll = ({ voteFormId }) => {
   const [yesVotes, setYesVotes] = useState(0);
   const [noVotes, setNoVotes] = useState(0);
   const [hasVotedStatus, setHasVotedStatus] = useState(false);
   const [userVote, setUserVote] = useState(null);
   const [message, setMessage] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -105,7 +132,7 @@ const Poll = ({ voteFormId }) => {
       } else if (option === "no") {
         setNoVotes((prevVotes) => prevVotes + 1);
       }
-      
+
       Swal.fire({
         position: "top-center",
         icon: "success",
@@ -119,8 +146,10 @@ const Poll = ({ voteFormId }) => {
   };
 
   const totalVotes = yesVotes + noVotes;
-  const yesPercentage = totalVotes === 0 ? 0 : ((yesVotes / totalVotes) * 100).toFixed(2);
-  const noPercentage = totalVotes === 0 ? 0 : ((noVotes / totalVotes) * 100).toFixed(2);
+  const yesPercentage =
+    totalVotes === 0 ? 0 : ((yesVotes / totalVotes) * 100).toFixed(2);
+  const noPercentage =
+    totalVotes === 0 ? 0 : ((noVotes / totalVotes) * 100).toFixed(2);
 
   return (
     <div className="">
@@ -154,29 +183,57 @@ const Poll = ({ voteFormId }) => {
           ></div>
         </div>
       </div>
-      <div className="flex flex-row justify-between py-2 text-xl md:text-[25px]">
+      <div className="flex flex-row justify-between font-Roboto font-semibold py-2 text-xl md:text-[25px]">
         {token ? (
           !hasVotedStatus ? (
             <>
-              <button
+              {/* <button
                 className="bg-[#2196F3] px-8 py-1 font-bold border rounded-lg border-black/50 text-white"
                 onClick={() => handleVote("yes")}
               >
                 Donate
-              </button>
+              </button> */}
               <button
-                className="text-end font-bold px-8 border rounded-lg border-black/50 py-1 shadow-lg"
+                className="relative bg-[#2196F3] shadow-xl w-32 px-8 py-1 font-semibold  rounded-lg text-white overflow-hidden"
+                onClick={() => handleVote("yes")}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <span
+                  className={`absolute inset-0 flex items-center justify-center transform transition-transform duration-300 ease-in-out ${
+                    isHovered ? "-translate-x-full" : "translate-x-0"
+                  }`}
+                >
+                  Donate
+                </span>
+                <span
+                  className={`absolute inset-0 flex items-center justify-center transform transition-transform duration-300 ease-in-out ${
+                    isHovered ? "translate-x-0" : "translate-x-full"
+                  }`}
+                >
+                  <FaVoteYea />
+                </span>
+              </button>
+
+              <button
+                className="text-end px-8 border rounded-lg border-black/50 py-1  hover:shadow-xl "
                 onClick={() => handleVote("no")}
               >
                 No
               </button>
             </>
           ) : (
-            <p className="text-[16px] pt-3 text-green-500">You have already voted!</p>
+            <p className="text-[16px] pt-3 text-green-500">
+              You have already voted!
+            </p>
           )
         ) : (
           <p className="text-[16px] text-red-500">
-            Please <Link to="/login" className="underline">Log In</Link> to vote
+            Please{" "}
+            <Link to="/login" className="underline">
+              Log In
+            </Link>{" "}
+            to vote
           </p>
         )}
       </div>

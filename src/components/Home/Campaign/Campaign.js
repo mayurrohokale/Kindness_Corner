@@ -14,7 +14,7 @@ export default function Campaign(){
             <div><Votingform/></div>
          
         </div>
-        <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-blue-600 transition-colors duration-300"><Link to="/allcampaign">View All Campaign</Link></button>
+        <button className="bg-[#2196F3] text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-blue-600 transition-colors duration-300"><Link to="/allcampaign">View All Campaign</Link></button>
         </div>
     )
 }

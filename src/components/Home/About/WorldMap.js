@@ -6,7 +6,5 @@ export default function WorldMap(){
     return (
         <VectorMap
            map={worldMill}
-           
-
         />
 )}

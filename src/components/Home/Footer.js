@@ -13,6 +13,7 @@ import { IoLogoYoutube } from "react-icons/io";
 import { postQuery } from "../api/user";
 import { toast, ToastContainer } from 'react-toastify';
 
+
 const Footer = () => {
   const faqs = [
     {
@@ -241,7 +242,7 @@ const Footer = () => {
               {descriptionError && <p className="text-red-500 text-sm mb-2">{descriptionError}</p>}
               <button
                 type="submit"
-                className={`w-[300px] md:w-[160px] p-2 mb-2 rounded ${isFormValid ? 'bg-[#E91E63] hover:bg-pink-700' : 'bg-gray-500 cursor-not-allowed'}`}
+                className={`w-[300px]  md:w-[160px] p-2 mb-2 rounded ${isFormValid ? 'bg-[#E91E63] hover:bg-pink-700' : 'bg-gray-500 cursor-not-allowed'}`}
                 disabled={!isFormValid}
               >
                 Submit

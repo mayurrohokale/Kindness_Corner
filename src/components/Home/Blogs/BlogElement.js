@@ -26,7 +26,7 @@ export default function BlogElement(blog) {
                   </span>
                 </div>
                 <p
-                  className="inline-flex text-[14px] md:text-[18px] items-center font-medium text-blue-600 hover:underline"
+                  className="inline-flex text-[14px] md:text-[18px] items-center font-medium text-[#2196F3] hover:text-blue-700 hover:underline"
                 >
                   Read more
                   <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
