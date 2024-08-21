@@ -27,7 +27,8 @@ export default function Allvolunteers() {
         volunteer.name.toLowerCase().includes(search.toLowerCase()) ||
         volunteer.email.toLowerCase().includes(search.toLowerCase()) ||
         volunteer.phone.toLowerCase().includes(search.toLowerCase()) ||
-        volunteer.city.toLowerCase().includes(search.toLowerCase())
+        volunteer.city.toLowerCase().includes(search.toLowerCase()) ||
+        volunteer.state.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
