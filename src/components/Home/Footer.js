@@ -153,7 +153,7 @@ const Footer = () => {
             />
             <div className="flex flex-col items-start text-[12px] md:text-[19px] font-josiefin gap-2">
               <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoLocationSharp /></span> Pune, India</p>
-              <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoIosMail /> </span> kindness@mail.com</p>
+              <p className="flex flex-row gap-2 cursor-pointer hover:underline "><span className="text-[#128AED] "><IoIosMail /> </span> kindness@mail.com</p>
               <p className="flex flex-row gap-2"><span className="text-[#128AED]"><IoCall /> </span> +91 1234567890</p>
             </div>
           </div>
@@ -162,32 +162,32 @@ const Footer = () => {
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]">QUICK LINKS</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
               <li className="py-2">
-                <Link to="/donate" className="text-white hover:underline flex items-center justify-center gap-2">
+                <Link to="/donate" className="text-white hover:underline flex items-center justify-center gap-2 hover:text-blue-500">
                   <TbMathGreater /> Donate
                 </Link>
               </li>
               <li>
-                <Link to="/transaction" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="/transaction" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> Transactions
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/about" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="/about" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> About Us
                 </Link>
               </li>
               <li>
-                <Link to="/vote" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="/vote" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> Vote
                 </Link>
               </li>
               <li className="py-2">
                 {user ? (
-                  <Link to="/profile" className="text-white hover:underline flex gap-2 items-center justify-center">
+                  <Link to="/profile" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                     <TbMathGreater /> Profile
                   </Link>
                 ) : (
-                  <Link to="/login" className="text-white hover:underline flex gap-2 items-center justify-center">
+                  <Link to="/login" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                     <TbMathGreater /> Profile
                   </Link>
                 )}
@@ -199,22 +199,22 @@ const Footer = () => {
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start">HELP</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
               <li className="py-2">
-                <Link to="" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/privacy-policy" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="/privacy-policy" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> Privacy Policy
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/allvolunteers" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="/allvolunteers" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> Terms
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white hover:underline flex gap-2 items-center justify-center">
+                <Link to="/contact" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> Cookie Policy
                 </Link>
               </li>
@@ -248,12 +248,12 @@ const Footer = () => {
                 Submit
               </button>
             </form>
-            <div className="flex flex-row gap-8 text-[20px] pt-4 justify-center lg:justify-start">
-              <FaFacebook />
-              <FaXTwitter />
-              <SiInstagram />
-              <FaLinkedin />
-              <IoLogoYoutube />
+            <div className="flex flex-row gap-8  text-[20px] pt-4 justify-center lg:justify-start">
+              <FaFacebook className="hover:text-[#1877F2] cursor-pointer" />
+              <FaXTwitter className="hover:text-black cursor-pointer" />
+              <SiInstagram className="hover:text-[#d62976] cursor-pointer" />
+              <FaLinkedin className="hover:text-blue-500 cursor-pointer" />
+              <IoLogoYoutube className="hover:text-red-500 cursor-pointer" />
             </div>
           </div>
         </div>

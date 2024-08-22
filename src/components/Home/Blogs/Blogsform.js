@@ -43,8 +43,8 @@ export default function BlogsForm() {
         <div className="pt-12 pb-8 text-center">
           <Link
             to="/allblog"
-            className="border bg-slate-200 hover:bg-gray-300 font-semibold hover:border-black border-gray-300 rounded-[50px] text-[13px] md:text-xl px-8 md:px-14 p-4 hover:shadow-2xl"
-          >
+            className=" bg-transparent hover:bg-blue-500 text-[#2196F3] font-semibold hover:text-white py-3 md:py-4  border border-[#2196F3] hover:border-transparent rounded text-[13px] md:text-xl px-5 md:px-8 p-4 hover:shadow-2xl"
+          >   
             View All
           </Link>
         </div>

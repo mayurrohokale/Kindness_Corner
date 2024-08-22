@@ -80,7 +80,7 @@ export default function Blogs() {
               </Link>
             </button>
             <button
-              className="relative bg-[#E91E63] hover:shadow-xl w-16 md:w-32 h-10 md:h-12 px-8 py-1 font-normal  rounded-lg text-white overflow-hidden"
+              className="relative bg-[#F70059] hover:shadow-xl w-16 md:w-32 h-10 md:h-12 px-8 py-1 font-normal  rounded-lg text-white overflow-hidden"
               to="/volunteer"
               onMouseEnter={() => setDonateHovered(true)}
               onMouseLeave={() => setDonateHovered(false)}
