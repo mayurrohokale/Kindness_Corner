@@ -206,7 +206,7 @@ export default function Register() {
             <Cstbutton text="Sign Up" disabled={!isFormValid} />
           </form>
           <p className="py-4">
-            Already Registered? <Link to="/login">Login!</Link>
+            Already Registered? <Link to="/login" className='underline text-blue-500'>Login!</Link>
           </p>
         </div>
         <div className="hidden md:flex items-center max-w-[300px] w-full md:w-[300px] h-200px]">

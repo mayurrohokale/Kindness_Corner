@@ -192,3 +192,12 @@ export async function forgotPassword(email){
   }
 
 }
+
+export async function resetPassword(token, password){
+  try{
+    const response = await Axios.post(`${BASE_URL}/reset-password/${token}`, { password});
+    return response.data;
+  }catch(error){
+    console.error('Error in resetPassword:', error.response?.data || error.message);
+  }
+}
