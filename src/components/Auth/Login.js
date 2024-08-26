@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { getMe } from "../api/user";
 import { useAppState } from "../../utils/appState";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const BASE_URL = process.env.REACT_APP_API_KEY || "http://localhost:8000";
 
@@ -13,7 +13,9 @@ const Cstbutton = ({ text, disabled }) => {
   return (
     <button
       type="submit"
-      className={`hover:shadow-xl mt-4 text-white font-bold py-2 px-6 rounded text-xl ${disabled ? 'bg-gray-400' : 'bg-[#2196F3]'}`}
+      className={`hover:shadow-xl mt-4 text-white font-bold py-2 px-6 rounded text-xl ${
+        disabled ? "bg-gray-400" : "bg-[#2196F3]"
+      }`}
       disabled={disabled}
     >
       {text}
@@ -21,7 +23,16 @@ const Cstbutton = ({ text, disabled }) => {
   );
 };
 
-const CustomInput = ({ label, type, placeholder, value, onChange, error, toggleVisibility, isPassword }) => {
+const CustomInput = ({
+  label,
+  type,
+  placeholder,
+  value,
+  onChange,
+  error,
+  toggleVisibility,
+  isPassword,
+}) => {
   return (
     <div className="relative">
       <label className="flex flex-col gap-1">{label}</label>
@@ -34,11 +45,11 @@ const CustomInput = ({ label, type, placeholder, value, onChange, error, toggleV
       />
       {error && <p className="text-red-500">{error}</p>}
       {isPassword && (
-        <span 
+        <span
           className="absolute right-4 top-10 cursor-pointer"
           onClick={toggleVisibility}
         >
-          {type === 'password' ? <FaEyeSlash /> : <FaEye />}
+          {type === "password" ? <FaEyeSlash /> : <FaEye />}
         </span>
       )}
     </div>
@@ -109,12 +120,9 @@ export default function Login() {
       navigate("/home");
     } catch (error) {
       const data = error?.response?.data;
-      toast.error(
-        data?.message || "Something went wrong",
-        {
-          position: "top-center",
-        }
-      );
+      toast.error(data?.message || "Something went wrong", {
+        position: "top-center",
+      });
     }
   };
 
@@ -153,9 +161,15 @@ export default function Login() {
             </div>
             <Cstbutton text="Sign In" disabled={!isFormValid} />
           </form>
-          <p className="py-4">
-            Not Registered? <Link to="/register">Register Now!</Link>
-          </p>
+          <div className="py-4">
+          <p className="py-2 underline text-blue-500"> <Link to="/forgot-password">Forgot Password?</Link></p>
+          <hr/>
+            <p className="py-2" >
+              Not Registered? <Link to="/register" className="underline text-blue-500" >Register Now!</Link>
+            </p>
+           
+          </div>
+
         </div>
         <div className="hidden md:flex items-center max-w-[270px] w-full md:w-[200px]">
           <img
