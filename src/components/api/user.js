@@ -181,3 +181,14 @@ export async function postQuery(queryData) {
     return null;
   }
 }
+
+export async function forgotPassword(email){
+  try{
+    const response = await Axios.post(`${BASE_URL}/forgot-password`, {email});
+    return response;
+  }catch(error){
+    console.error('Error in forgotPassword:', error.response?.data || error.message);
+    throw error.response?.data || { message: 'Something went wrong' };
+  }
+
+}
