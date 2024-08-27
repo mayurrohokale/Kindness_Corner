@@ -193,11 +193,31 @@ export async function forgotPassword(email){
 
 }
 
-export async function resetPassword(token, password){
-  try{
-    const response = await Axios.post(`${BASE_URL}/reset-password/${token}`, { password});
-    return response.data;
-  }catch(error){
-    console.error('Error in resetPassword:', error.response?.data || error.message);
+// export async function resetPassword(token, password){
+//   try{
+//     const response = await Axios.post(`${BASE_URL}/reset-password/${token}`, { password});
+//     return response.data;
+//   }catch(error){
+//     console.error('Error in resetPassword:', error.response?.data || error.message);
+//   }
+// }
+
+export async function resetPassword(token, password) {
+  try {
+    const response = await Axios.post(`${BASE_URL}/reset-password/${token}`, { password });
+    return { success: true, data: response.data };
+  } catch (error) {
+    const errorMessage = error.response?.data?.message || error.message;
+
+    if (error.response) {
+      if (error.response.status === 401 && error.response.data.message === "Token has expired. Please request a new password reset link.") {
+        return { success: false, error: "TokenExpired", message: errorMessage };
+      } else if (error.response.status === 404) {
+        return { success: false, error: "UserNotFound", message: errorMessage };
+      }
+    }
+
+    console.error('Error in resetPassword:', errorMessage);
+    return { success: false, error: "GeneralError", message: errorMessage };
   }
 }
