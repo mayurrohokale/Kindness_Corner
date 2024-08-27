@@ -14,7 +14,7 @@ export default function ResetPassword() {
   const [passwordMismatchError, setPasswordMismatchError] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
   const [isLinkExpired, setIsLinkExpired] = useState(false); // Track if the link is expired
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const validatePassword = (password) => {
     const errors = [];
@@ -70,7 +70,7 @@ export default function ResetPassword() {
       const response = await resetPassword(token, password);
       if (response.success) {
         setMessage("Password has been reset successfully.");
-        // setTimeout(() => navigate('/login'), 3000); // Redirect to login after success
+        setTimeout(() => navigate('/login'), 3000); // Redirect to login after success
       } else {
         if (response.error === "TokenExpired") {
           setIsLinkExpired(true); // Mark the link as expired
