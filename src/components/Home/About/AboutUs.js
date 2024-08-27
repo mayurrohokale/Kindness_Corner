@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import Map from "./Map";
-import MapChart from "./MapChart";
-import WorldMap from "react-svg-worldmap";
+
 
 export default function AboutUs() {
   return (
