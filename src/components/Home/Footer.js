@@ -117,9 +117,9 @@ const Footer = () => {
   };
 
   return (
-    <div className="faq">
+    <div className="faq" >
       <div className="pt-8 pb-2">
-        <h1 className="font-bold pb-4 text-[26px] md:text-[35px]">
+        <h1 className="font-bold pb-4 text-[26px] md:text-[35px]" id="faq">
           Frequently Asked Questions?
         </h1>
         <hr />
@@ -199,9 +199,9 @@ const Footer = () => {
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px] text-center lg:text-start">HELP</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
               <li className="py-2">
-                <Link to="" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
+                <a href="#faq" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> FAQ
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/privacy-policy" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
@@ -209,7 +209,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/allvolunteers" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
+                <Link to="/privacy-policy" className="text-white hover:underline flex gap-2 items-center justify-center hover:text-blue-500">
                   <TbMathGreater /> Terms
                 </Link>
               </li>
