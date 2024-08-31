@@ -122,7 +122,7 @@ export default function ResetPassword() {
                 className="absolute right-3 top-3 cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
-                {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+                {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
               </span>
               {passwordErrors.length > 0 && (
                 <div className="text-red-500 text-[12px] md:text-[15px] flex text-start flex-col">
