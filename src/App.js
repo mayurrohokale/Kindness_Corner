@@ -25,6 +25,7 @@ import BlogDetail from "./components/Home/Blogs/BlogDetails";
 import PrivacyPolicy from "./components/Home/Policy/privacyPolicy";
 import ForgotPassword from "./components/Auth/ForgotPass";
 import ResetPassword from "./components/Auth/ResetPass";
+import VerifyOTP from "./components/Auth/VerifyOTP";
 
 function App() {
 
@@ -82,6 +83,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
             <Route path="/forgot-password" element={<ForgotPassword/>}/>
             <Route path="/reset-password/:token" element={<ResetPassword/>}/>
+            <Route path="/verify-otp/:token" element={<VerifyOTP/>}/>
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}
