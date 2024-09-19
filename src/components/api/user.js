@@ -26,6 +26,26 @@ export async function getMe() {
   return response?.data;
 }
 
+//verify-otp
+
+export async function verifyOTP(email, otp){
+  const headers = getHeaders();
+  try{
+    const response = await Axios.post(`${BASE_URL}/verify-otp`, {email, otp},
+      {headers});
+      return response?.data;
+
+  }catch(error){
+    console.log(error);
+    if (error.response && error.response.data) {
+      return { error: true, message: error.response.data.message };
+    } else {
+      return { error: true, message: "An unexpected error occurred" };
+    }
+
+  }
+
+}
 export async function setVolunteer(data) {
   const headers = getHeaders();
   if (!headers?.Authorization) {

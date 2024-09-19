@@ -61,7 +61,6 @@ function App() {
     <div className="App">
       {/* <BrowserRouter>
         <Layout> */}
-        
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/home" element={<Main />} />
@@ -83,7 +82,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
             <Route path="/forgot-password" element={<ForgotPassword/>}/>
             <Route path="/reset-password/:token" element={<ResetPassword/>}/>
-            <Route path="/verify-otp/:token" element={<VerifyOTP/>}/>
+            <Route path="/verify-otp" element={<VerifyOTP/>}/>
           </Routes>
         {/* </Layout>
       </BrowserRouter> */}

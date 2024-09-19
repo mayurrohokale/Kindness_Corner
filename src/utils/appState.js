@@ -12,7 +12,9 @@ const defaultValue = {
     user_status: {},
     setUserStatus: () => {},
     isMenuOpen: () => {},
-    setisMenuOpen:{},
+    setisMenuOpen: false,
+    showDropdown: false,
+    setShowDropdown: () => {}
 
 };
 

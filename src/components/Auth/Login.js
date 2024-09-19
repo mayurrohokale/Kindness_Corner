@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash,FaEnvelope, FaLock } from "react-icons/fa";
 import { getMe } from "../api/user";
 import { useAppState } from "../../utils/appState";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,26 +32,29 @@ const CustomInput = ({
   error,
   toggleVisibility,
   isPassword,
+  icon
 }) => {
   return (
     <div className="relative">
       <label className="flex flex-col gap-1">{label}</label>
-      <input
-        className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-10 py-3 w-full"
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-      {error && <p className="text-red-500">{error}</p>}
-      {isPassword && (
-        <span
-          className="absolute right-4 top-10 cursor-pointer"
-          onClick={toggleVisibility}
-        >
-          {type === "password" ? <FaEyeSlash /> : <FaEye />}
-        </span>
-      )}
+      <div className="relative">
+        <span className="absolute left-4 top-4 text-gray-500">{icon}</span>
+        <input
+          className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-10 py-3 w-full"
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+        {isPassword && (
+          <span
+            className="absolute right-4 top-4 cursor-pointer text-gray-500"
+            onClick={toggleVisibility}
+          >
+            {type === "password" ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        )}
+      </div>
     </div>
   );
 };
@@ -65,6 +68,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const { user, setUser } = useAppState();
   const navigate = useNavigate();
+ 
 
   useEffect(() => {
     const isFormValid = validateEmail(email) && password.length > 0;
@@ -126,6 +130,7 @@ export default function Login() {
     }
   };
 
+
   async function fetchProfile() {
     const data = await getMe();
     if (data) {
@@ -147,6 +152,7 @@ export default function Login() {
                 value={email}
                 onChange={handleEmailChange}
                 error={emailError}
+                icon={<FaEnvelope />}
               />
               <CustomInput
                 label="Password"
@@ -157,6 +163,7 @@ export default function Login() {
                 error={passwordError}
                 toggleVisibility={() => setShowPassword(!showPassword)}
                 isPassword={true}
+                icon={<FaLock />}
               />
             </div>
             <Cstbutton text="Sign In" disabled={!isFormValid} />

@@ -158,7 +158,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="py-4 font-josiefin">
+          <div className="py-2 font-josiefin">
             <h1 className="font-bold font-monserrat py-2 text-[15px] md:text-[22px]">QUICK LINKS</h1>
             <ul className="flex flex-col lg:justify-between lg:items-start text-[12px] md:text-[19px]">
               <li className="py-2">

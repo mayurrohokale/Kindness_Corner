@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaEnvelope, FaLock, FaUser, } from 'react-icons/fa';
+
 
 const BASE_URL = process.env.REACT_APP_API_KEY || "http://localhost:8000";
 
@@ -18,10 +19,12 @@ const Cstbutton = ({ text, disabled }) => {
   );
 };
 
-const CustomInput = ({ label, type, placeholder, value, onChange, toggleVisibility, isPassword }) => {
+const CustomInput = ({ label, type, placeholder, value, onChange, toggleVisibility, isPassword, icon }) => {
   return (
     <div className="relative">
       <label className="flex flex-col gap-1">{label}</label>
+      <div className='relative'>
+      <span className="absolute left-4 top-4 text-gray-500">{icon}</span>
       <input
         className="border border-gray-300 hover:border-[#2196F3] rounded shadow-lg px-10 py-3 w-full"
         type={type}
@@ -32,12 +35,14 @@ const CustomInput = ({ label, type, placeholder, value, onChange, toggleVisibili
       />
       {isPassword && (
         <span 
-          className="absolute right-4 top-10 cursor-pointer"
+          className="absolute right-4 top-4 cursor-pointer text-gray-500"
           onClick={toggleVisibility}
         >
           {type === 'password' ? <FaEyeSlash /> : <FaEye />}
         </span>
       )}
+      </div>
+     
     </div>
   );
 };
@@ -125,30 +130,40 @@ export default function Register() {
         name,
         email,
         password,
-      });
-
-      const data = response?.data
-
-      if (data?.token) {
-        localStorage.setItem("token", data?.token);
-      }
-      
-      toast.success("Registered Successfully", {
-        position: "top-center",
-      })
-      setTimeout(() => {
-        navigate('/login');
-      }, 2000); 
-    } catch (error) {
-      const data = error.response.data
-      
-      toast.error(
-        data?.message ||
-          "Something went wrong",
-        {
+      }).then(()=> {
+        toast.info("OTP sent  successful", {
           position: "top-center",
-        }
-      );
+          });
+          navigate("/verify-otp", {state: {email}});
+      }).catch((err)=> {
+        console.error(err);
+      })
+     
+
+      // const data = response?.data
+
+      // if (data?.token) {
+      //   localStorage.setItem("token", data?.token);
+      // }
+      
+      // toast.success("Registered Successfully", {
+      //   position: "top-center",
+      // })
+      // setTimeout(() => {
+      //   navigate('/login');
+      // }, 2000); 
+    } catch (error) {
+      
+      // const data = error.response.data
+      
+      // toast.error(
+      //   data?.message ||
+      //     "Something went wrong",
+      //   {
+      //     position: "top-center",
+      //   }
+      // );
+
     }
   };
 
@@ -165,6 +180,8 @@ export default function Register() {
                 placeholder="John Doe"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                icon={<FaUser/>}
+                
                 
               />
               <CustomInput
@@ -173,6 +190,7 @@ export default function Register() {
                 placeholder="xyz@gmail.com"
                 value={email}
                 onChange={handleEmailChange}
+                icon={<FaEnvelope/>}
               />
               {emailError && <p className="text-red-500">{emailError}</p>}
               <CustomInput
@@ -183,6 +201,7 @@ export default function Register() {
                 onChange={handlePasswordChange}
                 toggleVisibility={() => setShowPassword(!showPassword)}
                 isPassword={true}
+                icon={<FaLock/>}
               />
               {passwordErrors.length > 0 && (
                 <div className="text-red-500 text-[12px] md:text-[15px]">
@@ -199,6 +218,7 @@ export default function Register() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 toggleVisibility={() => setShowConfirmPassword(!showConfirmPassword)}
                 isPassword={true}
+                icon={<FaLock />}
               />
               {passwordMismatchError && <p className="text-red-500">{passwordMismatchError}</p>}
             </div>
