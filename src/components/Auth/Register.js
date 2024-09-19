@@ -130,11 +130,15 @@ export default function Register() {
         name,
         email,
         password,
-      });
-      toast.alert("OTP sent  successful", {
-        position: "top-center",
-        });
-        navigate("/verify-otp", {state: {email}});
+      }).then(()=> {
+        toast.info("OTP sent  successful", {
+          position: "top-center",
+          });
+          navigate("/verify-otp", {state: {email}});
+      }).catch((err)=> {
+        console.error(err);
+      })
+     
 
       // const data = response?.data
 
@@ -149,15 +153,17 @@ export default function Register() {
       //   navigate('/login');
       // }, 2000); 
     } catch (error) {
-      const data = error.response.data
       
-      toast.error(
-        data?.message ||
-          "Something went wrong",
-        {
-          position: "top-center",
-        }
-      );
+      // const data = error.response.data
+      
+      // toast.error(
+      //   data?.message ||
+      //     "Something went wrong",
+      //   {
+      //     position: "top-center",
+      //   }
+      // );
+
     }
   };
 

@@ -53,9 +53,9 @@ export const DropdownMenu = ({ user, handleLogout }) => {
 };
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const { user, setUser } = useAppState();
+  // const [menuOpen, setMenuOpen] = useState(false);
+  // const [showDropdown, setShowDropdown] = useState(false);
+  const { user, setUser, menuOpen, setMenuOpen, showDropdown, setShowDropdown } = useAppState();
   const catchedVisibleValue = sessionStorage.getItem("isVisible") === "false";
   const [isVisible, setIsVisible] = useState(false);
 
@@ -70,11 +70,13 @@ export default function Header() {
     }
   }, [catchedVisibleValue]);
 
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
+    e.stopPropagation();
     setMenuOpen(!menuOpen);
   };
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
     setShowDropdown(!showDropdown);
   };
 

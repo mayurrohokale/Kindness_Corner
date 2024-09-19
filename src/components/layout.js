@@ -11,6 +11,8 @@ export default function Layout({ children }) {
   const [user, setUser] = useState(null);
   const [userStatus, setUserStatus] = useState(""); 
   const [notificationMessage, setNotificationMessage] = useState("This is a notification message!");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,8 +34,8 @@ export default function Layout({ children }) {
 
   useEffect(() => {
     fetchProfile();
-    const intervalId = setInterval(fetchProfile, 3000);
-    return () => clearInterval(intervalId);
+    // const intervalId = setInterval(fetchProfile, 3000);
+    // return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -60,10 +62,21 @@ export default function Layout({ children }) {
     setUser,
     userStatus,
     setUserStatus, 
+    menuOpen,
+    setMenuOpen,
+    showDropdown,
+    setShowDropdown
+
   };
 
+  function CloseMenuandDropDown(){
+    setMenuOpen(false);
+    setShowDropdown(false);
+  }
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen" onClick={CloseMenuandDropDown}>
+
       <AppStateContext.Provider value={value}>
         <Header />
         <div className="flex-1 pt-12 md:pt-20">{children}</div>

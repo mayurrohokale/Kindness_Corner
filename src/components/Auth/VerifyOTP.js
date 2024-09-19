@@ -34,7 +34,7 @@ export default function VerifyOTP() {
     event.preventDefault();
     try {
       const response = await Axios.post(`${BASE_URL}/verify-otp`,{email, otp});
-      alert(response.data.messsage);
+      toast.info("Successful");
       localStorage.setItem('token', response.data.token);
       navigate('/home');
     } catch (error) {
