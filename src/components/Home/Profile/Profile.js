@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
+
 const Cstbutton = ({ text, type }) => {
     return (
       <button className="bg-[#E91E63] mt-3 text-white font-monserrat font-bold py-2 px-4 rounded" type={type} >
@@ -15,6 +16,9 @@ const Cstbutton = ({ text, type }) => {
 
 export default function Profile() {
   const { user, setUser } = useAppState();
+  
+  console.log(user);
+
 
   if (!user) {
     return <Navigate to="/" />;
@@ -58,6 +62,7 @@ export default function Profile() {
           <p className="mt-2 text-gray-500">City: {user.city}</p>
           <p className="mt-2 text-gray-500">State: {user.state}</p>
           <p className="mt-2 text-gray-500">Pincode: {user.pincode}</p>
+         
           </div>
           {user.is_volunteer ? (
             <span className="mt-4 inline-block font-courier border-4 border-green-600 transform rotate-[0deg] text-green-600 font-bold uppercase tracking-wide p-2 rounded-lg text-[11px] md:text-[20px]">
@@ -73,7 +78,11 @@ export default function Profile() {
             
           )}
         </div>
+        
       </div>
+
+     
+      
       <div>
         <butoon className="bg-[#128AED] mt-3 text-white font-monserrat font-bold py-2 px-4 rounded cursor-pointer" onClick={handleLogout}>Logout</butoon>
       </div>
