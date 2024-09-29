@@ -12,8 +12,11 @@ const BASE_URL = process.env.REACT_APP_API_KEY || "http://localhost:8000";
 export default function VerifyOTP() {
   const [otp, setOtp] = useState("");
   const { user, setUser } = useAppState();
+  const [isLoading, setIsLoading] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
   const [message, setMessage] = useState("");
   // const [email, setEmail] = useState("");
+  const [isOtpValid, setIsOtpValid] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
@@ -29,9 +32,20 @@ export default function VerifyOTP() {
   //     navigate("/login");  // Redirect to login if email is not found
   //   }
   // }, [user, navigate]);
+  const validateOTP = (otp) => {
+    const otpPattern = /^[0-9]{4}$/; // Regular expression for 6-digit OTP
+    return otpPattern.test(otp);
+  };
 
+  // Handle OTP input change and validation
+  const handleOtpChange = (e) => {
+    const otpInput = e.target.value;
+    setOtp(otpInput);
+    setIsOtpValid(validateOTP(otpInput)); // Update validation state based on input
+  };
   const handleVerify = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     try {
       const response = await Axios.post(`${BASE_URL}/verify-otp`,{email, otp});
       toast.info("Successful");
@@ -42,6 +56,8 @@ export default function VerifyOTP() {
       toast.error(error.message || "Something went wrong. Please try again.", {
         position: "top-center",
       });
+    }  finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,13 +83,17 @@ export default function VerifyOTP() {
               type="text"
               placeholder="Enter OTP"
               value={otp}
-              onChange={(e) => setOtp(e.target.value)}
+              onChange={handleOtpChange}
+              
             />
             <button
               onClick={handleVerify}
-              className="hover:shadow-xl mt-4 text-white font-bold py-2 px-6 rounded text-xl bg-[#2196F3]"
+              className={`hover:shadow-xl mt-4 text-white font-bold py-2 px-6 rounded text-xl bg-[#2196F3] ${
+                !isOtpValid || isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              disabled={ isLoading || !isOtpValid}
             >
-              Verify OTP
+               {isLoading ? "Verifying..." : "Verify OTP"}
             </button>
           </div>
           {message && <p className="text-red-500 mt-4">{message}</p>}
