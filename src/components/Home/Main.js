@@ -1,44 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import Donateform from "./Donateform";
-import Campaign from "./Campaign/Campaign";
+import { FaDonate } from "react-icons/fa";
 import Volentier from "./Volentier";
+import Campaign from "./Campaign/Campaign";
 import Completedworks from "./Completedworks";
 import Blogs from "./Blogs";
 import Footer from "./Footer";
-import { FaDonate } from "react-icons/fa";
 
-// Updated media array with videos instead of images
-const media = [
-  {
-    type: "video",
-    url: "./images/video1.mp4",
-    caption: "We Believe in Transparency",
-    caption2: "Read more",
-  },
-  {
-    type: "video",
-    url: "./images/video2.mp4",
-    caption: "Give a little, change a lot.",
-  },
-  {
-    type: "video",
-    url: "./images/video6.mp4",
-    caption: "Helping hands, caring hearts.",
-  },
-];
+const media = {
+  type: "video",
+  url: "./images/video7.mp4",
+  captions: [
+    "We Believe in Transparency",
+    "Give a little, change a lot.",
+    "Helping hands, caring hearts.",
+  ],
+};
 
 const Main = () => {
-  const [currentMediaIndex, setCurrentMediaIndex] = React.useState(0);
+  const [currentCaptionIndex, setCurrentCaptionIndex] = useState(0);
   const [donateHovered, setDonateHovered] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentMediaIndex((prevIndex) =>
-        prevIndex === media.length - 1 ? 0 : prevIndex + 1
+      setCurrentCaptionIndex((prevIndex) =>
+        prevIndex === media.captions.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000);
+    }, 5040); // Change caption every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -48,34 +36,33 @@ const Main = () => {
       <div className="flex flex-col">
         <div className="relative w-full">
           <div className="relative z-0 ease-in-out">
-            {media[currentMediaIndex].type === "video" ? (
+            {media.type === "video" ? (
               <video
-                src={media[currentMediaIndex].url}
+                src={media.url}
                 className="w-full object-cover shadow-md h-[93vh] md:h-[94vh] lg:h-[80vh] xl:h-[92vh] 2xl:h-[90vh]"
                 autoPlay
                 loop
                 muted
                 preload="auto"
-                
               />
             ) : (
               <img
-                src={media[currentMediaIndex].url}
-                alt={media[currentMediaIndex].caption}
+                src={media.url}
+                alt={media.captions[currentCaptionIndex]}
                 className="w-full object-cover shadow-md h-[93vh] md:h-[94vh] lg:h-[80vh] xl:h-[92vh] 2xl:h-[90vh]"
               />
             )}
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 text-white text-center py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin">
               <div className="flex flex-col justify-center items-center gap-2">
                 <div className="text-[17px] md:text-[30px]">
-                  {media[currentMediaIndex].caption}
+                  {media.captions[currentCaptionIndex]}
                 </div>
                 <button
                   className="relative rounded-md w-[120px] h-[45px] md:w-[220px] md:h-[70px] bg-[#F70059] text-white text-[12px] md:text-[22px] font-bold shadow-lg font-monserrat hover:scale-105 overflow-hidden"
                   onMouseEnter={() => setDonateHovered(true)}
                   onMouseLeave={() => setDonateHovered(false)}
                 >
-                  <Link to="/donate">
+                  <a href="https://rzp.io/rzp/CYevgb0T">
                     <span
                       className={`absolute inset-0 flex items-center justify-center transform transition-transform duration-300 ease-in-out ${
                         donateHovered ? "-translate-x-full" : "translate-x-0"
@@ -90,7 +77,7 @@ const Main = () => {
                     >
                       <FaDonate />
                     </span>
-                  </Link>
+                  </a>
                 </button>
               </div>
             </div>
@@ -115,123 +102,3 @@ const Main = () => {
 };
 
 export default Main;
-
-
-
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import Donateform from "./Donateform";
-// import Campaign from "./Campaign/Campaign";
-// import Volentier from "./Volentier";
-// import Completedworks from "./Completedworks";
-// import Blogs from "./Blogs";
-// import Footer from "./Footer";
-// import { FaDonate } from "react-icons/fa";
-
-// const slideImages = [
-//   {
-//     url: "./images/img1.jpg",
-//     caption: "We Believe in Transparency",
-//     caption2: "Read more",
-//   },
-//   {
-//     url: "./images/img3.jpg",
-//     caption: "Give a little, change a lot.",
-//   },
-//   {
-//     url: "./images/img4.jpg",
-//     caption: "Helping hands, caring hearts.",
-//   },
-// ];
-
-// const Main = () => {
-//   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-//   const [donateHovered, setDonateHovered] = useState(false);
-
-//   React.useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentImageIndex((prevIndex) =>
-//         prevIndex === slideImages.length - 1 ? 0 : prevIndex + 1
-//       );
-//     }, 5000);
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <div id="home">
-//       <div className="flex flex-col">
-//         <div className="relative w-full">
-//           <div className="relative z-0 ease-in-out">
-//             <img
-//               src={slideImages[currentImageIndex].url}
-//               alt={slideImages[currentImageIndex].caption}
-//               className="w-full object-cover shadow-md h-[93vh] md:h-[94vh] lg:h-[80vh] xl:h-[92vh] 2xl:h-[90vh]"
-//             />
-//             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60  text-white text-center py-2 px-8 md:px-12 text-[22px] md:text-[38px] font-bold font-josiefin">
-//               <div className="flex flex-col justify-center items-center gap-2">
-//                 <div className="text-[17px] md:text-[30px]">
-//                   {slideImages[currentImageIndex].caption}
-//                 </div>
-//                 <button
-//                   className="relative rounded-md w-[120px] h-[45px] md:w-[220px] md:h-[70px] bg-[#F70059] text-white text-[12px] md:text-[22px] font-bold  shadow-lg font-monserrat hover:scale-105 overflow-hidden"
-//                   onMouseEnter={() => setDonateHovered(true)}
-//                   onMouseLeave={() => setDonateHovered(false)}
-//                 >
-//                   {" "}
-//                   <Link to="/donate">
-//                     <span
-//                       className={`absolute inset-0 flex items-center justify-center transform transition-transform duration-300 ease-in-out ${
-//                         donateHovered ? "-translate-x-full" : "translate-x-0"
-//                       }`}
-//                     >
-//                       DONATE NOW
-//                     </span>
-//                     <span
-//                       className={`absolute inset-0 flex items-center text-[14px] md:text-[28px] justify-center transform transition-transform duration-300 ease-in-out ${
-//                         donateHovered ? "translate-x-0" : "translate-x-full"
-//                       }`}
-//                     >
-//                       <FaDonate />
-//                     </span>
-//                   </Link>
-//                 </button>
-//                 {/* <button className=" rounded-md w-[120px] h-[45px] md:w-[220px] md:h-[70px] bg-[#F70059] text-white text-[12px] md:text-[22px] font-bold  shadow-lg font-monserrat hover:scale-105">
-//                   <Link to="/donate">DONATE NOW</Link>
-//                 </button> */}
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* <div className="absolute top-3 xl:top-8 right-3 sm:right-5">
-//             <div className="hidden lg:flex">
-//               <Donateform />
-//             </div>
-//           </div> */}
-//         </div>
-//         {/* <div className="lg:hidden w-full flex flex-col items-center z-10 px-3 py-2 lg:px-3 lg:py-5">
-//           <Donateform />
-//         </div> */}
-//         <Volentier />
-//         <div className="mt-8">
-//           <Campaign />
-//         </div>
-//         <div>
-//           <Completedworks />
-//         </div>
-//         <div>
-//           <Blogs />
-//         </div>
-//         <div>
-//           <Footer />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Main;

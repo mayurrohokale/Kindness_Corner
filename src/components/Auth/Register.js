@@ -51,6 +51,7 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -117,6 +118,7 @@ export default function Register() {
 
   const handleRegister = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     if (!isFormValid) {
       toast.error("Please fill out the form correctly", {
@@ -164,6 +166,8 @@ export default function Register() {
       //   }
       // );
 
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -223,7 +227,7 @@ export default function Register() {
               {passwordMismatchError && <p className="text-red-500">{passwordMismatchError}</p>}
             </div>
             
-            <Cstbutton text="Sign Up" disabled={!isFormValid} />
+            <Cstbutton text="Sign Up" disabled={isLoading || !isFormValid} />
           </form>
           <p className="py-4">
             Already Registered? <Link to="/login" className='underline text-blue-500'>Login!</Link>
